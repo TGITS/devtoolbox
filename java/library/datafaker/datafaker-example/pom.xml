@@ -134,7 +134,7 @@
 		<!-- Failsafe Maven Plugin -->
 		<maven-failsafe-plugin.version>3.0.0-M6</maven-failsafe-plugin.version>
 		<!-- DataFaker Version -->
-		<datafaker.version>1.4.0</datafaker.version>
+		<datafaker.version>1.5.0</datafaker.version>
 	</properties>
 
 
@@ -292,7 +292,7 @@
 		<dependency>
 			<groupId>net.datafaker</groupId>
 			<artifactId>datafaker</artifactId>
-		</dependency>
+        </dependency>
 	</dependencies>
 
 	<build>
