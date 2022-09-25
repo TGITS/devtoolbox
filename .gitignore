@@ -22,3 +22,7 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 /java/library/datafaker/datafaker-example/.idea
+/java/library/guava/guava-memoization-example/.idea
+/java/library/guava/guava-memoization-example/target
+/java/library/guava/guava-memoization-example/.flattened-pom.xml
+/java/library/guava/guava-cache-example/target
