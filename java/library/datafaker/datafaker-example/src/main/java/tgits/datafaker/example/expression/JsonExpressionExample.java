@@ -1,25 +1,25 @@
-package tgits.datafaker.example.provider;
+package tgits.datafaker.example.expression;
 
 import net.datafaker.Faker;
 
 import java.io.PrintStream;
 
-public class MiscProviderExample {
+public class JsonExpressionExample {
 
     private final Faker faker;
     private final PrintStream out;
 
-    public MiscProviderExample() {
+    public JsonExpressionExample() {
         this.faker = new Faker();
         this.out = System.out;
     }
 
-    public MiscProviderExample(final Faker faker) {
+    public JsonExpressionExample(final Faker faker) {
         this.faker = faker;
         this.out = System.out;
     }
 
-    public MiscProviderExample(final Faker faker, final PrintStream out) {
+    public JsonExpressionExample(final Faker faker, final PrintStream out) {
         this.faker = faker;
         this.out = out;
     }

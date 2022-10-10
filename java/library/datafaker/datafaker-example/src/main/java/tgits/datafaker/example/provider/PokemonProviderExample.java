@@ -1,4 +1,4 @@
 package tgits.datafaker.example.provider;
 
-public class BusinessProviderExample {
+public class PokemonProviderExample {
 }

@@ -3,41 +3,61 @@ package tgits.datafaker;
 import net.datafaker.Faker;
 import tgits.datafaker.example.collection.CollectionExample;
 import tgits.datafaker.example.provider.AddressProviderExample;
+import tgits.datafaker.example.provider.BusinessAndFinanceProviderExample;
+import tgits.datafaker.example.provider.ChuckNorrisProviderExample;
 import tgits.datafaker.example.provider.NameProviderExample;
 
+import java.io.PrintStream;
 import java.util.Locale;
+import java.util.stream.IntStream;
 
 public class Main {
 
     public static void main(String... args) {
-        Faker defaultFaker = new Faker();
-        Faker frenchLocalizedFaker = new Faker(Locale.FRANCE);
-        Faker japaneseLocalizedFaker = new Faker(Locale.JAPANESE);
+        final Faker defaultFaker = new Faker();
+        final Faker frenchLocalizedFaker = new Faker(Locale.FRANCE);
+        final PrintStream defaultPrintStream = System.out;
 
-        System.out.println("### Datafaker Examples ###");
-        System.out.println();
-        System.out.println("#### Name Provider ####");
-        System.out.println();
-        NameProviderExample.print(defaultFaker);
-        System.out.println();
-        System.out.println("#### Address Provider ####");
-        System.out.println();
-        AddressProviderExample.print(defaultFaker);
-        System.out.println();
-        System.out.println("#### French Localized Name Provider ####");
-        System.out.println();
-        NameProviderExample.print(frenchLocalizedFaker);
-        System.out.println();
-        System.out.println("#### Japanese Localized Name Provider ####");
-        System.out.println();
-        NameProviderExample.print(japaneseLocalizedFaker);
-        System.out.println();
-        System.out.println("#### Examples with Collections ####");
-        System.out.println();
-        CollectionExample.printRandomCharactersFromTVShow(defaultFaker);
-        System.out.println();
-        CollectionExample.printISBNs(defaultFaker);
-        System.out.println();
-        System.out.println("####################");
+        defaultPrintStream.println("### Datafaker Examples ###");
+        defaultPrintStream.println();
+        defaultPrintStream.println("#### Name Provider ####");
+        defaultPrintStream.println();
+        final NameProviderExample defaultNameProviderExample = new NameProviderExample(defaultFaker, defaultPrintStream);
+        defaultNameProviderExample.print();
+
+        defaultPrintStream.println();
+        defaultPrintStream.println("#### Address Provider ####");
+        defaultPrintStream.println();
+        final AddressProviderExample defaultAddressProviderExample = new AddressProviderExample(defaultFaker, defaultPrintStream);
+        defaultAddressProviderExample.print();
+
+        defaultPrintStream.println();
+        defaultPrintStream.println("#### French Localized Name Provider ####");
+        defaultPrintStream.println();
+        final NameProviderExample frenchNameProviderExample = new NameProviderExample(frenchLocalizedFaker, defaultPrintStream);
+        frenchNameProviderExample.print();
+        defaultPrintStream.println();
+
+        defaultPrintStream.println();
+        defaultPrintStream.println("#### Business and Finance Provider ####");
+        defaultPrintStream.println();
+        final BusinessAndFinanceProviderExample defaultBusinessAndFinanceProviderExample = new BusinessAndFinanceProviderExample(defaultFaker, defaultPrintStream);
+        defaultBusinessAndFinanceProviderExample.print();
+
+        defaultPrintStream.println();
+        defaultPrintStream.println("#### Chuck Norris Facts Provider ####");
+        defaultPrintStream.println();
+        final ChuckNorrisProviderExample defaultChuckNorrisProviderExample = new ChuckNorrisProviderExample(defaultFaker, defaultPrintStream);
+        IntStream.range(0, 10).forEach(i -> defaultChuckNorrisProviderExample.print());
+
+        defaultPrintStream.println();
+        defaultPrintStream.println("#### Collection generation ####");
+        defaultPrintStream.println();
+        final CollectionExample collectionExample = new CollectionExample(defaultFaker, defaultPrintStream);
+        collectionExample.printRandomCharactersFromTVShow();
+        defaultPrintStream.println("------------------");
+        collectionExample.printISBNs();
+        defaultPrintStream.println();
+        defaultPrintStream.println("####################");
     }
 }

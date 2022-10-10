@@ -2,11 +2,30 @@ package tgits.datafaker.example.collection;
 
 import net.datafaker.Faker;
 
+import java.io.PrintStream;
 import java.util.List;
 
 public class CollectionExample {
 
-    public static void printRandomCharactersFromTVShow(Faker faker) {
+    private final Faker faker;
+    private final PrintStream out;
+
+    public CollectionExample() {
+        this.faker = new Faker();
+        this.out = System.out;
+    }
+
+    public CollectionExample(final Faker faker) {
+        this.faker = faker;
+        this.out = System.out;
+    }
+
+    public CollectionExample(final Faker faker, final PrintStream out) {
+        this.faker = faker;
+        this.out = out;
+    }
+
+    public void printRandomCharactersFromTVShow() {
         List<String> charactersFromTVShows = faker.<String>collection()
                 .suppliers(
                         () -> faker.gameOfThrones().character(),
@@ -16,11 +35,11 @@ public class CollectionExample {
                 .maxLen(10)
                 .build()
                 .get();
-        System.out.println(charactersFromTVShows.size() + " random characters from TV Show");
-        charactersFromTVShows.forEach(System.out::println);
+        this.out.println(charactersFromTVShows.size() + " random characters from TV Show");
+        charactersFromTVShows.forEach(this.out::println);
     }
 
-    public static void printISBNs(Faker faker) {
+    public void printISBNs() {
         List<String> isbns = faker.<String>collection()
                 .suppliers(
                         () -> faker.code().isbn10(true),
@@ -31,7 +50,7 @@ public class CollectionExample {
                 .maxLen(12)
                 .build()
                 .get();
-        System.out.println(isbns.size() + " ISBN (possible null value)");
-        isbns.forEach(System.out::println);
+        this.out.println(isbns.size() + " ISBN (possible null value)");
+        isbns.forEach(this.out::println);
     }
 }
