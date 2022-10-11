@@ -27,5 +27,12 @@ public class CodeProviderExample {
 
     public void print() {
         final Code code = this.faker.code();
+        this.out.println("ISBN10 : " + code.isbn10());
+        this.out.println("ISBN10 with separator: " + code.isbn10(true));
+        this.out.println("ISBN13 : " + code.isbn13());
+        this.out.println("ISBN13 with separator: " + code.isbn13(true));
+        //Pour ASIN voir https://en.wikipedia.org/wiki/Amazon_Standard_Identification_Number
+        this.out.println("ASIN (Amazon Standard Identification Number) : " + code.asin());
+
     }
 }

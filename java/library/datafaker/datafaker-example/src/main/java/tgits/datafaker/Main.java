@@ -5,7 +5,9 @@ import tgits.datafaker.example.collection.CollectionExample;
 import tgits.datafaker.example.provider.AddressProviderExample;
 import tgits.datafaker.example.provider.BusinessAndFinanceProviderExample;
 import tgits.datafaker.example.provider.ChuckNorrisProviderExample;
+import tgits.datafaker.example.provider.CodeProviderExample;
 import tgits.datafaker.example.provider.NameProviderExample;
+import tgits.datafaker.example.provider.PokemonProviderExample;
 
 import java.io.PrintStream;
 import java.util.Locale;
@@ -49,6 +51,18 @@ public class Main {
         defaultPrintStream.println();
         final ChuckNorrisProviderExample defaultChuckNorrisProviderExample = new ChuckNorrisProviderExample(defaultFaker, defaultPrintStream);
         IntStream.range(0, 10).forEach(i -> defaultChuckNorrisProviderExample.print());
+
+        defaultPrintStream.println();
+        defaultPrintStream.println("#### Code Provider ####");
+        defaultPrintStream.println();
+        final CodeProviderExample defaultCodeProviderExample = new CodeProviderExample(defaultFaker, defaultPrintStream);
+        defaultCodeProviderExample.print();
+
+        defaultPrintStream.println();
+        defaultPrintStream.println("#### Pokemon Provider ####");
+        defaultPrintStream.println();
+        final PokemonProviderExample defaultPokemonProviderExample = new PokemonProviderExample(defaultFaker, defaultPrintStream);
+        defaultPokemonProviderExample.print();
 
         defaultPrintStream.println();
         defaultPrintStream.println("#### Collection generation ####");
