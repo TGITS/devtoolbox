@@ -27,5 +27,10 @@ public class GameOfThroneProviderExample {
 
     public void print() {
         final GameOfThrones got = this.faker.gameOfThrones();
+        this.out.println("A city of GoT : " + got.city());
+        this.out.println("A dragon name of GoT : " + got.dragon());
+        this.out.println("A character of GoT : " + got.character());
+        this.out.println("A House of GoT : " + got.house());
+        this.out.println("A quote from GoT : " + got.quote());
     }
 }

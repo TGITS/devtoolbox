@@ -27,5 +27,13 @@ public class FileProviderExample {
 
     public void print() {
         final File file = this.faker.file();
+        this.out.println("File name : " + file.fileName());
+        this.out.println("File name : " + file.fileName("directory", "name", "extension", "/"));
+        this.out.println("File name : " + file.fileName(null, "name", "extension", "\\"));
+        this.out.println("File name : " + file.fileName("directory", null, "extension", "/"));
+        this.out.println("File name : " + file.fileName("directory", "name", null, "/"));
+        this.out.println("File name : " + file.fileName("directory", "name", "txt", null));
+        this.out.println("File extension : " + file.extension());
+        this.out.println("MimeType : " + file.mimeType());
     }
 }

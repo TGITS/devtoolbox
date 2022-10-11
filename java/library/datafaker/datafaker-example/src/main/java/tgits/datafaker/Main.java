@@ -6,6 +6,9 @@ import tgits.datafaker.example.provider.AddressProviderExample;
 import tgits.datafaker.example.provider.BusinessAndFinanceProviderExample;
 import tgits.datafaker.example.provider.ChuckNorrisProviderExample;
 import tgits.datafaker.example.provider.CodeProviderExample;
+import tgits.datafaker.example.provider.DateTimeAndDurationProviderExample;
+import tgits.datafaker.example.provider.FileProviderExample;
+import tgits.datafaker.example.provider.GameOfThroneProviderExample;
 import tgits.datafaker.example.provider.NameProviderExample;
 import tgits.datafaker.example.provider.PokemonProviderExample;
 
@@ -57,6 +60,24 @@ public class Main {
         defaultPrintStream.println();
         final CodeProviderExample defaultCodeProviderExample = new CodeProviderExample(defaultFaker, defaultPrintStream);
         defaultCodeProviderExample.print();
+
+        defaultPrintStream.println();
+        defaultPrintStream.println("#### Date & Time Provider ####");
+        defaultPrintStream.println();
+        final DateTimeAndDurationProviderExample defaultDateAndTimeProviderExample = new DateTimeAndDurationProviderExample(defaultFaker, defaultPrintStream);
+        defaultDateAndTimeProviderExample.print();
+
+        defaultPrintStream.println();
+        defaultPrintStream.println("#### File Provider ####");
+        defaultPrintStream.println();
+        final FileProviderExample defaultFileProviderExample = new FileProviderExample(defaultFaker, defaultPrintStream);
+        defaultFileProviderExample.print();
+
+        defaultPrintStream.println();
+        defaultPrintStream.println("#### a Game of Thrones Provider ####");
+        defaultPrintStream.println();
+        final GameOfThroneProviderExample defaultGotProviderExample = new GameOfThroneProviderExample(defaultFaker, defaultPrintStream);
+        defaultGotProviderExample.print();
 
         defaultPrintStream.println();
         defaultPrintStream.println("#### Pokemon Provider ####");
