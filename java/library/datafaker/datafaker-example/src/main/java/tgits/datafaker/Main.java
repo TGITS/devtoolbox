@@ -1,6 +1,7 @@
 package tgits.datafaker;
 
 import net.datafaker.Faker;
+import net.datafaker.Hacker;
 import tgits.datafaker.example.collection.CollectionExample;
 import tgits.datafaker.example.provider.AddressProviderExample;
 import tgits.datafaker.example.provider.BusinessAndFinanceProviderExample;
@@ -9,6 +10,7 @@ import tgits.datafaker.example.provider.CodeProviderExample;
 import tgits.datafaker.example.provider.DateTimeAndDurationProviderExample;
 import tgits.datafaker.example.provider.FileProviderExample;
 import tgits.datafaker.example.provider.GameOfThroneProviderExample;
+import tgits.datafaker.example.provider.HashingProviderExample;
 import tgits.datafaker.example.provider.NameProviderExample;
 import tgits.datafaker.example.provider.PokemonProviderExample;
 
@@ -78,6 +80,12 @@ public class Main {
         defaultPrintStream.println();
         final GameOfThroneProviderExample defaultGotProviderExample = new GameOfThroneProviderExample(defaultFaker, defaultPrintStream);
         defaultGotProviderExample.print();
+
+        defaultPrintStream.println();
+        defaultPrintStream.println("#### a Hash Provider ####");
+        defaultPrintStream.println();
+        final HashingProviderExample defaultHashingProviderExample = new HashingProviderExample(defaultFaker, defaultPrintStream);
+        defaultHashingProviderExample.print();
 
         defaultPrintStream.println();
         defaultPrintStream.println("#### Pokemon Provider ####");

@@ -27,5 +27,11 @@ public class HashingProviderExample {
 
     public void print() {
         final Hashing hashing = this.faker.hashing();
+        out.println("md2 hash : " + hashing.md2());
+        out.println("md5 hash : " + hashing.md5());
+        out.println("sha1 hash : " + hashing.sha1());
+        out.println("sha256 hash : " + hashing.sha256());
+        out.println("sha384 hash : " + hashing.sha384());
+        out.println("sha512 hash : " + hashing.sha512());
     }
 }
