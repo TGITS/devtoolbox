@@ -1,6 +1,6 @@
 package tgits.datafaker.example.provider;
 
-import net.datafaker.ChuckNorris;
+import net.datafaker.providers.movie.ChuckNorris;
 import net.datafaker.Faker;
 
 import java.io.PrintStream;

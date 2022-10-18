@@ -1,6 +1,6 @@
 package tgits.datafaker.example.provider;
 
-import net.datafaker.Address;
+import net.datafaker.providers.base.Address;
 import net.datafaker.Faker;
 
 import java.io.PrintStream;

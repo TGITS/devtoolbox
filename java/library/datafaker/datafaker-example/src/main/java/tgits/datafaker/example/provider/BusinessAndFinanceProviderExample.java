@@ -1,9 +1,9 @@
 package tgits.datafaker.example.provider;
 
-import net.datafaker.Business;
-import net.datafaker.CreditCardType;
+import net.datafaker.providers.base.Business;
+import net.datafaker.providers.base.CreditCardType;
 import net.datafaker.Faker;
-import net.datafaker.Finance;
+import net.datafaker.providers.base.Finance;
 
 import java.io.PrintStream;
 

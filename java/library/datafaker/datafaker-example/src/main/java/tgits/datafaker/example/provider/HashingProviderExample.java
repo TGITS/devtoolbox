@@ -1,7 +1,7 @@
 package tgits.datafaker.example.provider;
 
 import net.datafaker.Faker;
-import net.datafaker.Hashing;
+import net.datafaker.providers.base.Hashing;
 
 import java.io.PrintStream;
 

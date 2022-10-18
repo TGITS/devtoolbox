@@ -1,7 +1,6 @@
 package tgits.datafaker;
 
 import net.datafaker.Faker;
-import net.datafaker.Hacker;
 import tgits.datafaker.example.collection.CollectionExample;
 import tgits.datafaker.example.provider.AddressProviderExample;
 import tgits.datafaker.example.provider.BusinessAndFinanceProviderExample;
@@ -88,12 +87,6 @@ public class Main {
         defaultHashingProviderExample.print();
 
         defaultPrintStream.println();
-        defaultPrintStream.println("#### Pokemon Provider ####");
-        defaultPrintStream.println();
-        final PokemonProviderExample defaultPokemonProviderExample = new PokemonProviderExample(defaultFaker, defaultPrintStream);
-        defaultPokemonProviderExample.print();
-
-        defaultPrintStream.println();
         defaultPrintStream.println("#### Collection generation ####");
         defaultPrintStream.println();
         final CollectionExample collectionExample = new CollectionExample(defaultFaker, defaultPrintStream);
@@ -102,5 +95,18 @@ public class Main {
         collectionExample.printISBNs();
         defaultPrintStream.println();
         defaultPrintStream.println("####################");
+
+        defaultPrintStream.println();
+        defaultPrintStream.println("#### Pokemon Provider ####");
+        defaultPrintStream.println();
+        final PokemonProviderExample defaultPokemonProviderExample = new PokemonProviderExample(defaultFaker, defaultPrintStream);
+        defaultPokemonProviderExample.print();
+
+        defaultPrintStream.println();
+        defaultPrintStream.println("#### French Localized Pokemon Provider ####");
+        defaultPrintStream.println();
+        final PokemonProviderExample frenchPokemonProviderExample = new PokemonProviderExample(frenchLocalizedFaker, defaultPrintStream);
+        frenchPokemonProviderExample.print();
+        defaultPrintStream.println();
     }
 }

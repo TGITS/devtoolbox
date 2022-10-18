@@ -1,6 +1,6 @@
 package tgits.datafaker.example.provider;
 
-import net.datafaker.DateAndTime;
+import net.datafaker.providers.base.DateAndTime;
 import net.datafaker.Faker;
 
 import java.io.PrintStream;

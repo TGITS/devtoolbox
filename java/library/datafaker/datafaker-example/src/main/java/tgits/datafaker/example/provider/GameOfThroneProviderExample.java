@@ -1,7 +1,7 @@
 package tgits.datafaker.example.provider;
 
 import net.datafaker.Faker;
-import net.datafaker.GameOfThrones;
+import net.datafaker.providers.movie.GameOfThrones;
 
 import java.io.PrintStream;
 

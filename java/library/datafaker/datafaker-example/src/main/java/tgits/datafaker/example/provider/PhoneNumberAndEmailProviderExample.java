@@ -1,9 +1,8 @@
 package tgits.datafaker.example.provider;
 
 import net.datafaker.Faker;
-import net.datafaker.Internet;
-import net.datafaker.Number;
-import net.datafaker.PhoneNumber;
+import net.datafaker.providers.base.Internet;
+import net.datafaker.providers.base.PhoneNumber;
 
 import java.io.PrintStream;
 

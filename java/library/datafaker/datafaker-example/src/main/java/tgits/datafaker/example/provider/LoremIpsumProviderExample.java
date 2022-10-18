@@ -1,7 +1,7 @@
 package tgits.datafaker.example.provider;
 
 import net.datafaker.Faker;
-import net.datafaker.Lorem;
+import net.datafaker.providers.base.Lorem;
 
 import java.io.PrintStream;
 
