@@ -28,5 +28,6 @@ public class PokemonProviderExample {
         final Pokemon code = this.faker.pokemon();
         this.out.println("Pokemon name : " + code.name());
         this.out.println("Pokemon location : " + code.location());
+        this.out.println("Pokemon move : " + code.move());
     }
 }
