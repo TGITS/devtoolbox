@@ -1,8 +1,8 @@
 package tgits.datafaker.example.provider;
 
+import net.datafaker.Faker;
 import net.datafaker.providers.base.Business;
 import net.datafaker.providers.base.CreditCardType;
-import net.datafaker.Faker;
 import net.datafaker.providers.base.Finance;
 
 import java.io.PrintStream;
@@ -11,19 +11,17 @@ public class BusinessAndFinanceProviderExample {
     private final Faker faker;
     private final PrintStream out;
 
-    public BusinessAndFinanceProviderExample() {
-        this.faker = new Faker();
-        this.out = System.out;
-    }
-
-    public BusinessAndFinanceProviderExample(final Faker faker) {
-        this.faker = faker;
-        this.out = System.out;
-    }
-
     public BusinessAndFinanceProviderExample(final Faker faker, final PrintStream out) {
         this.faker = faker;
         this.out = out;
+    }
+
+    public BusinessAndFinanceProviderExample() {
+        this(new Faker(), System.out);
+    }
+
+    public BusinessAndFinanceProviderExample(final Faker faker) {
+        this(faker, System.out);
     }
 
     public void print() {

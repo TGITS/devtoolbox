@@ -9,25 +9,24 @@ public class PokemonProviderExample {
     private final Faker faker;
     private final PrintStream out;
 
-    public PokemonProviderExample() {
-        this.faker = new Faker();
-        this.out = System.out;
-    }
-
-    public PokemonProviderExample(final Faker faker) {
-        this.faker = faker;
-        this.out = System.out;
-    }
-
     public PokemonProviderExample(final Faker faker, final PrintStream out) {
         this.faker = faker;
         this.out = out;
     }
 
+    public PokemonProviderExample() {
+        this(new Faker(), System.out);
+    }
+
+    public PokemonProviderExample(final Faker faker) {
+        this(faker, System.out);
+    }
+
     public void print() {
-        final Pokemon code = this.faker.pokemon();
-        this.out.println("Pokemon name : " + code.name());
-        this.out.println("Pokemon location : " + code.location());
-        this.out.println("Pokemon move : " + code.move());
+        final Pokemon pokemon = this.faker.pokemon();
+        this.out.println("Pokemon name : " + pokemon.name());
+        this.out.println("Pokemon location : " + pokemon.location());
+        this.out.println("Pokemon move : " + pokemon.move());
+        this.out.println("Pokemon type : " + pokemon.type());
     }
 }

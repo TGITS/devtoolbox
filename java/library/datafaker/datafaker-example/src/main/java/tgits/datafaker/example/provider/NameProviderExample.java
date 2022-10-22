@@ -10,19 +10,17 @@ public class NameProviderExample {
     private final Faker faker;
     private final PrintStream out;
 
-    public NameProviderExample() {
-        this.faker = new Faker();
-        this.out = System.out;
-    }
-
-    public NameProviderExample(final Faker faker) {
-        this.faker = faker;
-        this.out = System.out;
-    }
-
     public NameProviderExample(final Faker faker, final PrintStream out) {
         this.faker = faker;
         this.out = out;
+    }
+
+    public NameProviderExample() {
+        this(new Faker(), System.out);
+    }
+
+    public NameProviderExample(final Faker faker) {
+        this(faker, System.out);
     }
 
     public void print() {

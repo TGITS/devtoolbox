@@ -9,19 +9,17 @@ public class JsonExpressionExample {
     private final Faker faker;
     private final PrintStream out;
 
-    public JsonExpressionExample() {
-        this.faker = new Faker();
-        this.out = System.out;
-    }
-
-    public JsonExpressionExample(final Faker faker) {
-        this.faker = faker;
-        this.out = System.out;
-    }
-
     public JsonExpressionExample(final Faker faker, final PrintStream out) {
         this.faker = faker;
         this.out = out;
+    }
+
+    public JsonExpressionExample() {
+        this(new Faker(), System.out);
+    }
+
+    public JsonExpressionExample(final Faker faker) {
+        this(faker, System.out);
     }
 
     public void print() {

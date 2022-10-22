@@ -10,19 +10,17 @@ public class HashingProviderExample {
     private final Faker faker;
     private final PrintStream out;
 
-    public HashingProviderExample() {
-        this.faker = new Faker();
-        this.out = System.out;
-    }
-
-    public HashingProviderExample(final Faker faker) {
-        this.faker = faker;
-        this.out = System.out;
-    }
-
     public HashingProviderExample(final Faker faker, final PrintStream out) {
         this.faker = faker;
         this.out = out;
+    }
+
+    public HashingProviderExample() {
+        this(new Faker(), System.out);
+    }
+
+    public HashingProviderExample(final Faker faker) {
+        this(faker, System.out);
     }
 
     public void print() {

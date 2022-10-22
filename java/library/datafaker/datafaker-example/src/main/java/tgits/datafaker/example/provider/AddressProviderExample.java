@@ -1,7 +1,7 @@
 package tgits.datafaker.example.provider;
 
-import net.datafaker.providers.base.Address;
 import net.datafaker.Faker;
+import net.datafaker.providers.base.Address;
 
 import java.io.PrintStream;
 
@@ -10,19 +10,17 @@ public class AddressProviderExample {
     private final Faker faker;
     private final PrintStream out;
 
-    public AddressProviderExample() {
-        this.faker = new Faker();
-        this.out = System.out;
-    }
-
-    public AddressProviderExample(final Faker faker) {
-        this.faker = faker;
-        this.out = System.out;
-    }
-
     public AddressProviderExample(final Faker faker, final PrintStream out) {
         this.faker = faker;
         this.out = out;
+    }
+
+    public AddressProviderExample() {
+        this(new Faker(), System.out);
+    }
+
+    public AddressProviderExample(final Faker faker) {
+        this(faker, System.out);
     }
 
     public void print() {

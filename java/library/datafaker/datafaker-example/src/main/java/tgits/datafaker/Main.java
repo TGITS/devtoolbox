@@ -2,27 +2,20 @@ package tgits.datafaker;
 
 import net.datafaker.Faker;
 import tgits.datafaker.example.collection.CollectionExample;
-import tgits.datafaker.example.provider.AddressProviderExample;
-import tgits.datafaker.example.provider.BusinessAndFinanceProviderExample;
-import tgits.datafaker.example.provider.ChuckNorrisProviderExample;
-import tgits.datafaker.example.provider.CodeProviderExample;
-import tgits.datafaker.example.provider.DateTimeAndDurationProviderExample;
-import tgits.datafaker.example.provider.FileProviderExample;
-import tgits.datafaker.example.provider.GameOfThroneProviderExample;
-import tgits.datafaker.example.provider.HashingProviderExample;
-import tgits.datafaker.example.provider.NameProviderExample;
-import tgits.datafaker.example.provider.PokemonProviderExample;
+import tgits.datafaker.example.provider.*;
 
 import java.io.PrintStream;
 import java.util.Locale;
 import java.util.stream.IntStream;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class Main {
 
     public static void main(String... args) {
         final Faker defaultFaker = new Faker();
         final Faker frenchLocalizedFaker = new Faker(Locale.FRANCE);
-        final PrintStream defaultPrintStream = System.out;
+        final PrintStream defaultPrintStream = new PrintStream(System.out, true, UTF_8);
 
         defaultPrintStream.println("### Datafaker Examples ###");
         defaultPrintStream.println();
@@ -87,16 +80,6 @@ public class Main {
         defaultHashingProviderExample.print();
 
         defaultPrintStream.println();
-        defaultPrintStream.println("#### Collection generation ####");
-        defaultPrintStream.println();
-        final CollectionExample collectionExample = new CollectionExample(defaultFaker, defaultPrintStream);
-        collectionExample.printRandomCharactersFromTVShow();
-        defaultPrintStream.println("------------------");
-        collectionExample.printISBNs();
-        defaultPrintStream.println();
-        defaultPrintStream.println("####################");
-
-        defaultPrintStream.println();
         defaultPrintStream.println("#### Pokemon Provider ####");
         defaultPrintStream.println();
         final PokemonProviderExample defaultPokemonProviderExample = new PokemonProviderExample(defaultFaker, defaultPrintStream);
@@ -108,5 +91,31 @@ public class Main {
         final PokemonProviderExample frenchPokemonProviderExample = new PokemonProviderExample(frenchLocalizedFaker, defaultPrintStream);
         frenchPokemonProviderExample.print();
         defaultPrintStream.println();
+
+        defaultPrintStream.println();
+        defaultPrintStream.println("#### Phone Numbers and Internet Related Data Provider ####");
+        defaultPrintStream.println();
+        final PhoneNumberAndEmailProviderExample phoneNumberAndEmailProviderExample = new PhoneNumberAndEmailProviderExample(defaultFaker, defaultPrintStream);
+        phoneNumberAndEmailProviderExample.print();
+        defaultPrintStream.println();
+
+        defaultPrintStream.println();
+        defaultPrintStream.println("#### Numbers Provider ####");
+        defaultPrintStream.println();
+        final NumberProviderExample numberProviderExample = new NumberProviderExample(defaultFaker, defaultPrintStream);
+        numberProviderExample.print();
+        defaultPrintStream.println();
+
+        defaultPrintStream.println();
+        defaultPrintStream.println("#### Collection generation ####");
+        defaultPrintStream.println();
+        final CollectionExample collectionExample = new CollectionExample(defaultFaker, defaultPrintStream);
+        collectionExample.printRandomCharactersFromTVShow();
+        defaultPrintStream.println("------------------");
+        collectionExample.printISBNs();
+        defaultPrintStream.println();
+        defaultPrintStream.println("####################");
+
+
     }
 }

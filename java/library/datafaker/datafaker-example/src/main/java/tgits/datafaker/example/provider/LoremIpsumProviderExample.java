@@ -10,19 +10,17 @@ public class LoremIpsumProviderExample {
     private final Faker faker;
     private final PrintStream out;
 
-    public LoremIpsumProviderExample() {
-        this.faker = new Faker();
-        this.out = System.out;
-    }
-
-    public LoremIpsumProviderExample(final Faker faker) {
-        this.faker = faker;
-        this.out = System.out;
-    }
-
     public LoremIpsumProviderExample(final Faker faker, final PrintStream out) {
         this.faker = faker;
         this.out = out;
+    }
+
+    public LoremIpsumProviderExample() {
+        this(new Faker(), System.out);
+    }
+
+    public LoremIpsumProviderExample(final Faker faker) {
+        this(faker, System.out);
     }
 
     public void print() {
