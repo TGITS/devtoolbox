@@ -2,6 +2,7 @@ package tgits.datafaker;
 
 import net.datafaker.Faker;
 import tgits.datafaker.example.collection.CollectionExample;
+import tgits.datafaker.example.model.BasicModelBasedGenerationExample;
 import tgits.datafaker.example.provider.*;
 
 import java.io.PrintStream;
@@ -107,6 +108,14 @@ public class Main {
         defaultPrintStream.println();
 
         defaultPrintStream.println();
+        defaultPrintStream.println("#### Generation of a String based on a model ####");
+        defaultPrintStream.println();
+        final BasicModelBasedGenerationExample basicModelBasedGenerationExample = new BasicModelBasedGenerationExample(defaultFaker, defaultPrintStream);
+        basicModelBasedGenerationExample.print();
+        defaultPrintStream.println();
+        defaultPrintStream.println("####################");
+
+        defaultPrintStream.println();
         defaultPrintStream.println("#### Collection generation ####");
         defaultPrintStream.println();
         final CollectionExample collectionExample = new CollectionExample(defaultFaker, defaultPrintStream);
@@ -116,6 +125,6 @@ public class Main {
         defaultPrintStream.println();
         defaultPrintStream.println("####################");
 
-
+        //
     }
 }
