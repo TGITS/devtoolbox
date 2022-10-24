@@ -3,6 +3,9 @@ package tgits.datafaker;
 import net.datafaker.Faker;
 import tgits.datafaker.example.collection.CollectionExample;
 import tgits.datafaker.example.model.BasicModelBasedGenerationExample;
+import tgits.datafaker.example.model.RegexModelBasedGenerationExample;
+import tgits.datafaker.example.model.TemplateModelBasedGenerationExample;
+import tgits.datafaker.example.provider.options.OptionsProviderExample;
 import tgits.datafaker.example.provider.*;
 
 import java.io.PrintStream;
@@ -106,12 +109,38 @@ public class Main {
         final NumberProviderExample numberProviderExample = new NumberProviderExample(defaultFaker, defaultPrintStream);
         numberProviderExample.print();
         defaultPrintStream.println();
+        defaultPrintStream.println("####################");
+
+        defaultPrintStream.println();
+        defaultPrintStream.println("#### Generation of Data based on some options ####");
+        defaultPrintStream.println();
+        final OptionsProviderExample optionsProviderExample = new OptionsProviderExample(defaultFaker, defaultPrintStream);
+        optionsProviderExample.print();
+        defaultPrintStream.println();
+        defaultPrintStream.println("####################");
 
         defaultPrintStream.println();
         defaultPrintStream.println("#### Generation of a String based on a model ####");
         defaultPrintStream.println();
         final BasicModelBasedGenerationExample basicModelBasedGenerationExample = new BasicModelBasedGenerationExample(defaultFaker, defaultPrintStream);
         basicModelBasedGenerationExample.print();
+        defaultPrintStream.println();
+        defaultPrintStream.println("####################");
+
+        defaultPrintStream.println();
+        defaultPrintStream.println("#### Generation of a String based on a regular expression ####");
+        defaultPrintStream.println();
+        final RegexModelBasedGenerationExample regexModelBasedGenerationExample = new RegexModelBasedGenerationExample(defaultFaker, defaultPrintStream);
+        regexModelBasedGenerationExample.print();
+        defaultPrintStream.println();
+        defaultPrintStream.println("####################");
+
+        //TemplateModelBasedGenerationExample
+        defaultPrintStream.println();
+        defaultPrintStream.println("#### Generation of a String based on a template ####");
+        defaultPrintStream.println();
+        final TemplateModelBasedGenerationExample templateModelBasedGenerationExample = new TemplateModelBasedGenerationExample(defaultFaker, defaultPrintStream);
+        templateModelBasedGenerationExample.print();
         defaultPrintStream.println();
         defaultPrintStream.println("####################");
 
@@ -124,7 +153,5 @@ public class Main {
         collectionExample.printISBNs();
         defaultPrintStream.println();
         defaultPrintStream.println("####################");
-
-        //
     }
 }
