@@ -5,6 +5,8 @@ import net.datafaker.providers.base.Options;
 
 import java.io.PrintStream;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class OptionsProviderExample {
@@ -33,12 +35,14 @@ public class OptionsProviderExample {
         out.println("Choosing randomly between several options specified by an Enumeration");
         IntStream.range(0, 10).forEach(i -> out.println("My Favorite day is (iteration #" + i + ") : " + options.option(DaysOfWeek.class)));
         out.println();
-        out.println("Choosing randomly an option from the a List or an Array");
+        out.println("Choosing randomly an option from a List or an Array");
         final List<String> daysOfWeekAsList = List.of("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
         IntStream.range(0, 10).forEach(i -> out.println("My Favorite day is (iteration #" + i + ") : " + options.nextElement(daysOfWeekAsList)));
         out.println();
         final DaysOfWeek[] daysOfWeekAsArray = DaysOfWeek.values();
         IntStream.range(0, 10).forEach(i -> out.println("My Favorite day is (iteration #" + i + ") : " + options.nextElement(daysOfWeekAsArray)));
         out.println();
+        final Set<DaysOfWeek> fourDaysOfWeek = options.subset(4,daysOfWeekAsArray);
+        out.println("A set of four random days among seven : " + fourDaysOfWeek.stream().map(DaysOfWeek::toString).collect(Collectors.joining(", ")));
     }
 }
