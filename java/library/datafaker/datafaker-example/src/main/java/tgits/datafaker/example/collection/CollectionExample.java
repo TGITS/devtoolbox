@@ -22,15 +22,15 @@ public class CollectionExample {
     public CollectionExample(final Faker faker) {
         this(faker, System.out);
     }
-
+    
     public void printRandomCharactersFromTVShow() {
         List<String> charactersFromTVShows = faker.<String>collection()
                 .suppliers(
                         () -> faker.gameOfThrones().character(),
                         () -> faker.babylon5().character()
                 )
-                .minLen(5)
-                .maxLen(10)
+                .minLen(5) //Minimum length of the collection
+                .maxLen(10) //Maximun length of the collection
                 .build()
                 .get();
         this.out.println(charactersFromTVShows.size() + " random characters from TV Show");
@@ -43,7 +43,7 @@ public class CollectionExample {
                         () -> faker.code().isbn10(true),
                         () -> faker.code().isbn13(true)
                 )
-                .nullRate(0.4)
+                .nullRate(0.4) // Null values occurrences frequency in the collection
                 .minLen(8)
                 .maxLen(12)
                 .build()
