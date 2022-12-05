@@ -1,4 +1,4 @@
-package tgits.datafaker.example.collection;
+package tgits.datafaker.example.sequence;
 
 import java.io.PrintStream;
 import java.util.List;

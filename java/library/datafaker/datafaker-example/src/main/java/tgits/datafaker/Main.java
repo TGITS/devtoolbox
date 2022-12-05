@@ -6,14 +6,17 @@ import java.io.PrintStream;
 import java.util.Locale;
 import java.util.stream.IntStream;
 import net.datafaker.Faker;
-import tgits.datafaker.example.collection.CollectionExample;
+import tgits.datafaker.example.sequence.CollectionExample;
 import tgits.datafaker.example.model.BasicModelBasedGenerationExample;
 import tgits.datafaker.example.model.RegexModelBasedGenerationExample;
 import tgits.datafaker.example.model.TemplateModelBasedGenerationExample;
 import tgits.datafaker.example.provider.*;
 import tgits.datafaker.example.provider.options.OptionsProviderExample;
+import tgits.datafaker.example.sequence.StreamExample;
 
 public class Main {
+
+  private static final String SEPARATION = "####################";
 
   public static void main(String... args) {
     final Faker defaultFaker = new Faker();
@@ -122,7 +125,7 @@ public class Main {
         new NumberProviderExample(defaultFaker, defaultPrintStream);
     numberProviderExample.print();
     defaultPrintStream.println();
-    defaultPrintStream.println("####################");
+    defaultPrintStream.println(SEPARATION);
 
     defaultPrintStream.println();
     defaultPrintStream.println("#### Generation of Data based on some options ####");
@@ -131,7 +134,7 @@ public class Main {
         new OptionsProviderExample(defaultFaker, defaultPrintStream);
     optionsProviderExample.print();
     defaultPrintStream.println();
-    defaultPrintStream.println("####################");
+    defaultPrintStream.println(SEPARATION);
 
     defaultPrintStream.println();
     defaultPrintStream.println("#### Generation of a String based on a model ####");
@@ -140,7 +143,7 @@ public class Main {
         new BasicModelBasedGenerationExample(defaultFaker, defaultPrintStream);
     basicModelBasedGenerationExample.print();
     defaultPrintStream.println();
-    defaultPrintStream.println("####################");
+    defaultPrintStream.println(SEPARATION);
 
     defaultPrintStream.println();
     defaultPrintStream.println("#### Generation of a String based on a regular expression ####");
@@ -149,7 +152,7 @@ public class Main {
         new RegexModelBasedGenerationExample(defaultFaker, defaultPrintStream);
     regexModelBasedGenerationExample.print();
     defaultPrintStream.println();
-    defaultPrintStream.println("####################");
+    defaultPrintStream.println(SEPARATION);
 
     // TemplateModelBasedGenerationExample
     defaultPrintStream.println();
@@ -159,10 +162,10 @@ public class Main {
         new TemplateModelBasedGenerationExample(defaultFaker, defaultPrintStream);
     templateModelBasedGenerationExample.print();
     defaultPrintStream.println();
-    defaultPrintStream.println("####################");
+    defaultPrintStream.println(SEPARATION);
 
     defaultPrintStream.println();
-    defaultPrintStream.println("#### Collection generation ####");
+    defaultPrintStream.println("#### Collection a random items generation ####");
     defaultPrintStream.println();
     final CollectionExample collectionExample =
         new CollectionExample(defaultFaker, defaultPrintStream);
@@ -170,6 +173,17 @@ public class Main {
     defaultPrintStream.println("------------------");
     collectionExample.printISBNs();
     defaultPrintStream.println();
-    defaultPrintStream.println("####################");
+    defaultPrintStream.println(SEPARATION);
+
+    defaultPrintStream.println();
+    defaultPrintStream.println("#### Collection a random items generation ####");
+    defaultPrintStream.println();
+    final StreamExample streamExample =
+            new StreamExample(defaultFaker, defaultPrintStream);
+    streamExample.printRandomCharactersFromTVShow();
+    defaultPrintStream.println("------------------");
+    streamExample.printISBNs();
+    defaultPrintStream.println();
+    defaultPrintStream.println(SEPARATION);
   }
 }
