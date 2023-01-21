@@ -6,12 +6,12 @@ import java.io.PrintStream;
 import java.util.Locale;
 import java.util.stream.IntStream;
 import net.datafaker.Faker;
-import tgits.datafaker.example.sequence.CollectionExample;
 import tgits.datafaker.example.model.BasicModelBasedGenerationExample;
 import tgits.datafaker.example.model.RegexModelBasedGenerationExample;
 import tgits.datafaker.example.model.TemplateModelBasedGenerationExample;
 import tgits.datafaker.example.provider.*;
 import tgits.datafaker.example.provider.options.OptionsProviderExample;
+import tgits.datafaker.example.sequence.CollectionExample;
 import tgits.datafaker.example.sequence.StreamExample;
 
 public class Main {
@@ -178,8 +178,7 @@ public class Main {
     defaultPrintStream.println();
     defaultPrintStream.println("#### Collection a random items generation ####");
     defaultPrintStream.println();
-    final StreamExample streamExample =
-            new StreamExample(defaultFaker, defaultPrintStream);
+    final StreamExample streamExample = new StreamExample(defaultFaker, defaultPrintStream);
     streamExample.printRandomCharactersFromTVShow();
     defaultPrintStream.println("------------------");
     streamExample.printISBNs();
