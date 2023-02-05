@@ -1,895 +1,1012 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>tgits.devtoolbox</groupId>
-	<artifactId>datafaker-example</artifactId>
-	<version>${revision}</version>
-	<packaging>jar</packaging>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>tgits.devtoolbox</groupId>
+  <artifactId>datafaker-example</artifactId>
+  <version>${revision}</version>
+  <packaging>jar</packaging>
 
-	<url />
+  <url></url>
 
-	<licenses>
-		<license />
-	</licenses>
+  <licenses>
+    <license></license>
+  </licenses>
 
-	<developers>
-		<developer>
-			<organization>TGITS</organization>
-			<organizationUrl>https://github.com/TGITS</organizationUrl>
-		</developer>
-	</developers>
+  <developers>
+    <developer>
+      <organization>TGITS</organization>
+      <organizationUrl>https://github.com/TGITS</organizationUrl>
+    </developer>
+  </developers>
 
-	<properties>
-		<!-- Defining a default encoding for child project -->
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<!-- Version Number used with flatten plugin & CI -->
-		<revision>1.0.0-SNAPSHOT</revision>
-		<!-- Default Java version -->
-		<java.version>11</java.version>
-		<maven.compiler.source>${java.version}</maven.compiler.source>
-		<maven.compiler.target>${java.version}</maven.compiler.target>
-		<!-- Flatten Maven Plugin Version-->
-		<flatten-maven-plugin.version>1.2.7</flatten-maven-plugin.version>
-		<!-- Maven Compiler Plugin -->
-		<maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
-		<!-- Maven Jar Plugin -->
-		<maven-jar-plugin.version>3.2.2</maven-jar-plugin.version>
-		<!-- Maven Release Plugin Version -->
-		<maven.release.plugin.version>3.0.0-M5</maven.release.plugin.version>
-		<!-- JReleaser Maven Plugin Version -->
-		<jreleaser-maven-plugin.version>1.0.0</jreleaser-maven-plugin.version>
-		<!-- Maven Assembly Plugin Version -->
-		<maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
-		<!-- Maven Site Plugin Version -->
-		<maven-site-plugin.version>3.12.0</maven-site-plugin.version>
-		<maven-project-info-reports-plugin.version>3.3.0</maven-project-info-reports-plugin.version>
-		<site.locales>fr</site.locales>
-		<!-- Maven Surefire Plugin & Report Plugin -->
-		<surefire-maven-plugin.version>3.0.0-M6</surefire-maven-plugin.version>
-		<maven-surefire-report-plugin.version>3.0.0-M6</maven-surefire-report-plugin.version>
-		<!-- Maven Dependency Plugin -->
-		<maven-dependency-plugin.version>3.3.0</maven-dependency-plugin.version>
-		<!-- Dependency Check -->
-		<dependency-check.maven.version>7.1.0</dependency-check.maven.version>
-		<!-- Jacoco -->
-		<jacoco.version>0.8.8</jacoco.version>
-		<!-- AsciiDoctor -->
-		<asciidoctor-maven-plugin.version>2.2.2</asciidoctor-maven-plugin.version>
-		<asciidoctorj-pdf.version>1.6.2</asciidoctorj-pdf.version>
-		<asciidoctorj-diagram.version>2.2.1</asciidoctorj-diagram.version>
-		<!-- Javadoc / UMLDoclet -->
-		<umldoclet.version>2.0.17</umldoclet.version>
-		<!-- Javadoc Maven Plugin -->
-		<maven-javadoc-plugin.version>3.4.0</maven-javadoc-plugin.version>
-		<!-- SpotBugs -->
-		<spotbugs.version>4.7.2</spotbugs.version>
-		<spotbugs-maven-plugin.version>4.7.2.0</spotbugs-maven-plugin.version>
-		<findsecbugs-plugin.version>1.12.0</findsecbugs-plugin.version>
-		<sb-contrib-plugin.version>7.4.7</sb-contrib-plugin.version>
-		<session.executionRootDirectory>${project.basedir}</session.executionRootDirectory>
-		<!-- Lombok Maven Plugin -->
-		<lombok-maven-plugin.version>1.18.20.0</lombok-maven-plugin.version>
-		<!-- Forcing Commons IO version to avoid a CVE -->
-		<commons-io.version>2.11.0</commons-io.version>
-		<!-- PiTest -->
-		<pitest.version>1.8.0</pitest.version>
-		<pitest-junit5-plugin.version>0.15</pitest-junit5-plugin.version>
-		<!-- Lombok -->
-		<lombok.version>1.18.24</lombok.version>
-		<!-- JUnit 5  -->
-		<junit-jupiter.version>5.9.1</junit-jupiter.version>
-		<!-- Mockito -->
-		<mockito.version>4.0.0</mockito.version>
-		<!-- Jakarta Validation -->
-		<jakarta-validation.version>2.0.2</jakarta-validation.version>
-		<!-- Log4j2 -->
-		<log4j2.version>2.17.2</log4j2.version>
-		<!-- Logback -->
-		<logback.version>1.2.11</logback.version>
-		<!-- Wiremock Version -->
-		<wiremock.version>2.33.2</wiremock.version>
-		<!-- ArchUnit Version -->
-		<archunit.version>0.23.1</archunit.version>
-		<!-- JUnit Pioneer Version -->
-		<junit-pioneer.version>1.7.1</junit-pioneer.version>
-		<!-- AssertJ Version -->
-		<assertj.version>3.22.0</assertj.version>
-		<!-- Jqwik Version -->
-		<jqwik.version>1.6.5</jqwik.version>
-		<!-- Licence Maven Plugin - org.codehaus.mojo -->
-		<!-- Used to list the licenses used by the libraries of the project -->
-		<license-maven-plugin.version>2.0.0</license-maven-plugin.version>
-		<!-- Licence Maven Plugin - com.mycila -->
-		<!-- Used to automatically insert license text in source files -->
-		<mycila.license-maven-plugin.version>4.2.rc3</mycila.license-maven-plugin.version>
-		<!-- Versions Maven Plugin -->
-		<versions-maven-plugin.version>2.11.0</versions-maven-plugin.version>
-		<!-- Surefire Maven Plugin -->
-		<maven-surefire-plugin.version>3.0.0-M6</maven-surefire-plugin.version>
-		<!-- PMD Maven Plugin -->
-		<maven-pmd-plugin.version>3.16.0</maven-pmd-plugin.version>
-		<!-- Checkstyle Maven Plugin -->
-		<maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
-		<!-- Properties Maven Plugin -->
-		<properties-maven-plugin.version>1.1.0</properties-maven-plugin.version>
-		<!-- Maven Changelog Plugin -->
-		<maven-changelog-plugin.version>2.3</maven-changelog-plugin.version>
-		<!-- Changelog start Date -->
-		<changelog.start.date>2022-01-01</changelog.start.date>
-		<!-- Changelog end date -->
-		<changelog.end.date>2022-12-31</changelog.end.date>
-		<!-- Changelog date range format -->
-		<!-- Format used to specified the changelog start and end date -->
-		<changelog.date.range.format>yyyy-MM-dd</changelog.date.range.format>
-		<!-- Copy-Rename Maven Plugin -->
-		<copy-rename-maven-plugin.version>1.0.1</copy-rename-maven-plugin.version>
-		<!-- Maven Resources Plugin -->
-		<maven-resources-plugin.version>3.2.0</maven-resources-plugin.version>
-		<!-- Appassembler Maven Plugin -->
-		<appassembler-maven-plugin.version>2.1.0</appassembler-maven-plugin.version>
-		<!-- Exec Maven Plugin -->
-		<exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
-		<!-- Failsafe Maven Plugin -->
-		<maven-failsafe-plugin.version>3.0.0-M6</maven-failsafe-plugin.version>
-		<!-- DataFaker Version -->
-		<datafaker.version>1.6.0</datafaker.version>
-	</properties>
+  <scm>
+    <connection>scm:git:https://github.com/TGITS/devtoolbox.git</connection>
+    <developerConnection>scm:git:git@github.com:TGITS/devtoolbox.git</developerConnection>
+    <tag>HEAD</tag>
+  </scm>
 
+  <properties>
+    <!-- Defining a default encoding for child project -->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <!-- Version Number used with flatten plugin & CI -->
+    <revision>1.0.0-SNAPSHOT</revision>
+    <!-- Default Java version -->
+    <java.version>11</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <!-- Flatten Maven Plugin Version-->
+    <flatten-maven-plugin.version>1.3.0</flatten-maven-plugin.version>
+    <!-- Maven Compiler Plugin -->
+    <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
+    <!-- Maven Jar Plugin -->
+    <maven-jar-plugin.version>3.2.2</maven-jar-plugin.version>
+    <!-- Maven Release Plugin Version -->
+    <maven.release.plugin.version>3.0.0-M7</maven.release.plugin.version>
+    <!-- JReleaser Maven Plugin Version -->
+    <jreleaser-maven-plugin.version>1.3.1</jreleaser-maven-plugin.version>
+    <!-- Maven Assembly Plugin Version -->
+    <maven-assembly-plugin.version>3.4.2</maven-assembly-plugin.version>
+    <!-- Maven Site Plugin Version -->
+    <maven-site-plugin.version>4.0.0-M3</maven-site-plugin.version>
+    <maven-project-info-reports-plugin.version>3.4.1</maven-project-info-reports-plugin.version>
+    <site.locales>fr</site.locales>
+    <!-- Maven Surefire Plugin & Report Plugin -->
+    <surefire-maven-plugin.version>3.0.0-M7</surefire-maven-plugin.version>
+    <maven-surefire-report-plugin.version>3.0.0-M7</maven-surefire-report-plugin.version>
+    <!-- Maven Dependency Plugin -->
+    <maven-dependency-plugin.version>3.3.0</maven-dependency-plugin.version>
+    <!-- Dependency Check -->
+    <dependency-check.maven.version>7.3.2</dependency-check.maven.version>
+    <!-- Jacoco -->
+    <jacoco.version>0.8.8</jacoco.version>
+    <!-- AsciiDoctor -->
+    <asciidoctor-maven-plugin.version>2.2.2</asciidoctor-maven-plugin.version>
+    <asciidoctorj-pdf.version>2.3.3</asciidoctorj-pdf.version>
+    <asciidoctorj-diagram.version>2.2.3</asciidoctorj-diagram.version>
+    <!-- Javadoc / UMLDoclet -->
+    <umldoclet.version>2.0.20</umldoclet.version>
+    <!-- Javadoc Maven Plugin -->
+    <maven-javadoc-plugin.version>3.4.1</maven-javadoc-plugin.version>
+    <!-- SpotBugs -->
+    <spotbugs.version>4.7.3</spotbugs.version>
+    <spotbugs-maven-plugin.version>4.7.3.0</spotbugs-maven-plugin.version>
+    <findsecbugs-plugin.version>1.12.0</findsecbugs-plugin.version>
+    <sb-contrib-plugin.version>7.4.7</sb-contrib-plugin.version>
+    <session.executionRootDirectory>${project.basedir}</session.executionRootDirectory>
+    <!-- Lombok Maven Plugin -->
+    <lombok-maven-plugin.version>1.18.20.0</lombok-maven-plugin.version>
+    <!-- Forcing Commons IO version to avoid a CVE -->
+    <commons-io.version>2.11.0</commons-io.version>
+    <!-- PiTest -->
+    <pitest.version>1.9.11</pitest.version>
+    <pitest-junit5-plugin.version>1.1.0</pitest-junit5-plugin.version>
+    <!-- Lombok -->
+    <lombok.version>1.18.24</lombok.version>
+    <!-- JUnit 5  -->
+    <junit-jupiter.version>5.9.1</junit-jupiter.version>
+    <!-- Mockito -->
+    <mockito.version>4.0.0</mockito.version>
+    <!-- Jakarta Validation -->
+    <jakarta-validation.version>2.0.2</jakarta-validation.version>
+    <!-- Log4j2 -->
+    <log4j2.version>2.17.2</log4j2.version>
+    <!-- Logback -->
+    <logback.version>1.2.11</logback.version>
+    <!-- SLF4J -->
+    <slf4j.version>1.7.36</slf4j.version>
+    <!-- Wiremock Version -->
+    <wiremock.version>2.35.0</wiremock.version>
+    <!-- ArchUnit Version -->
+    <archunit.version>1.0.1</archunit.version>
+    <!-- JUnit Pioneer Version -->
+    <junit-pioneer.version>1.7.1</junit-pioneer.version>
+    <!-- AssertJ Version -->
+    <assertj.version>3.23.1</assertj.version>
+    <!-- Jqwik Version -->
+    <jqwik.version>1.7.1</jqwik.version>
+    <!-- Licence Maven Plugin - org.codehaus.mojo -->
+    <!-- Used to list the licenses used by the libraries of the project -->
+    <license-maven-plugin.version>2.0.0</license-maven-plugin.version>
+    <!-- Licence Maven Plugin - com.mycila -->
+    <!-- Used to automatically insert license text in source files -->
+    <mycila.license-maven-plugin.version>4.2.rc3</mycila.license-maven-plugin.version>
+    <!-- Versions Maven Plugin -->
+    <versions-maven-plugin.version>2.13.0</versions-maven-plugin.version>
+    <!-- Surefire Maven Plugin -->
+    <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
+    <!-- PMD Maven Plugin -->
+    <maven-pmd-plugin.version>3.19.0</maven-pmd-plugin.version>
+    <!-- Checkstyle Maven Plugin -->
+    <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
+    <!-- Properties Maven Plugin -->
+    <properties-maven-plugin.version>1.1.0</properties-maven-plugin.version>
+    <!-- Maven Changelog Plugin -->
+    <maven-changelog-plugin.version>2.3</maven-changelog-plugin.version>
+    <!-- Changelog start Date -->
+    <changelog.start.date>2022-01-01</changelog.start.date>
+    <!-- Changelog end date -->
+    <changelog.end.date>2022-12-31</changelog.end.date>
+    <!-- Changelog date range format -->
+    <!-- Format used to specify the changelog start and end date -->
+    <changelog.date.range.format>yyyy-MM-dd</changelog.date.range.format>
+    <!-- Copy-Rename Maven Plugin -->
+    <copy-rename-maven-plugin.version>1.0.1</copy-rename-maven-plugin.version>
+    <!-- Maven Resources Plugin -->
+    <maven-resources-plugin.version>3.3.0</maven-resources-plugin.version>
+    <!-- Appassembler Maven Plugin -->
+    <appassembler-maven-plugin.version>3.1.0</appassembler-maven-plugin.version>
+    <!-- Exec Maven Plugin -->
+    <exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
+    <!-- Failsafe Maven Plugin -->
+    <maven-failsafe-plugin.version>3.0.0-M7</maven-failsafe-plugin.version>
+    <!-- Spotless Maven Plugin -->
+    <spotless-maven-plugin.version>2.28.0</spotless-maven-plugin.version>
+    <!-- DataFaker Version -->
+    <datafaker.version>1.7.0</datafaker.version>
+    <!-- jshell-maven-plugin version -->
+    <jshell-maven-plugin.version>1.3</jshell-maven-plugin.version>
+  </properties>
 
-	<scm>
-		<connection>scm:git:https://github.com/TGITS/devtoolbox.git</connection>
-		<developerConnection>scm:git:git@github.com:TGITS/devtoolbox.git</developerConnection>
-		<tag>HEAD</tag>
-	</scm>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>net.datafaker</groupId>
+        <artifactId>datafaker</artifactId>
+        <version>${datafaker.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>${lombok.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-core</artifactId>
+        <version>${mockito.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-inline</artifactId>
+        <version>${mockito.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-junit-jupiter</artifactId>
+        <version>${mockito.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.junit</groupId>
+        <artifactId>junit-bom</artifactId>
+        <version>${junit-jupiter.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.github.tomakehurst</groupId>
+        <artifactId>wiremock-jre8</artifactId>
+        <version>${wiremock.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.assertj</groupId>
+        <artifactId>assertj-core</artifactId>
+        <version>${assertj.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>jul-to-slf4j</artifactId>
+        <version>${slf4j.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>log4j-over-slf4j</artifactId>
+        <version>${slf4j.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slf4j.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-ext</artifactId>
+        <version>${slf4j.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-jcl</artifactId>
+        <version>${slf4j.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-jdk14</artifactId>
+        <version>${slf4j.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+        <version>${slf4j.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-nop</artifactId>
+        <version>${slf4j.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-simple</artifactId>
+        <version>${slf4j.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-core</artifactId>
+        <version>${logback.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-access</artifactId>
+        <version>${logback.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+        <version>${logback.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-bom</artifactId>
+        <version>${log4j2.version}</version>
+        <type>pom</type>
+      </dependency>
+      <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>${commons-io.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>jakarta.validation</groupId>
+        <artifactId>jakarta.validation-api</artifactId>
+        <version>${jakarta-validation.version}</version>
+      </dependency>
+      <!-- ArchUnit Dependencies -->
+      <dependency>
+        <groupId>com.tngtech.archunit</groupId>
+        <artifactId>archunit</artifactId>
+        <version>${archunit.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.tngtech.archunit</groupId>
+        <artifactId>archunit-junit5-api</artifactId>
+        <version>${archunit.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.tngtech.archunit</groupId>
+        <artifactId>archunit-junit5</artifactId>
+        <version>${archunit.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.tngtech.archunit</groupId>
+        <artifactId>archunit-junit5-engine</artifactId>
+        <version>${archunit.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.tngtech.archunit</groupId>
+        <artifactId>archunit-junit5-engine-api</artifactId>
+        <version>${archunit.version}</version>
+      </dependency>
+      <!-- JUnit Pioneer -->
+      <dependency>
+        <groupId>org.junit-pioneer</groupId>
+        <artifactId>junit-pioneer</artifactId>
+        <version>${junit-pioneer.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <!-- Jqwik -->
+      <dependency>
+        <groupId>net.jqwik</groupId>
+        <artifactId>jqwik</artifactId>
+        <version>${jqwik.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>net.jqwik</groupId>
+        <artifactId>jqwik-web</artifactId>
+        <version>${jqwik.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>net.jqwik</groupId>
+        <artifactId>jqwik-time</artifactId>
+        <version>${jqwik.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>net.jqwik</groupId>
+        <artifactId>jqwik-api</artifactId>
+        <version>${jqwik.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>net.jqwik</groupId>
+        <artifactId>jqwik-engine</artifactId>
+        <version>${jqwik.version}</version>
+        <scope>test</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>net.datafaker</groupId>
-				<artifactId>datafaker</artifactId>
-				<version>${datafaker.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.projectlombok</groupId>
-				<artifactId>lombok</artifactId>
-				<version>${lombok.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.mockito</groupId>
-				<artifactId>mockito-core</artifactId>
-				<version>${mockito.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.mockito</groupId>
-				<artifactId>mockito-inline</artifactId>
-				<version>${mockito.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.mockito</groupId>
-				<artifactId>mockito-junit-jupiter</artifactId>
-				<version>${mockito.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.junit</groupId>
-				<artifactId>junit-bom</artifactId>
-				<version>${junit-jupiter.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-			<dependency>
-				<groupId>com.github.tomakehurst</groupId>
-				<artifactId>wiremock-jre8</artifactId>
-				<version>${wiremock.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.assertj</groupId>
-				<artifactId>assertj-core</artifactId>
-				<version>${assertj.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>ch.qos.logback</groupId>
-				<artifactId>logback-core</artifactId>
-				<version>${logback.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>ch.qos.logback</groupId>
-				<artifactId>logback-access</artifactId>
-				<version>${logback.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>ch.qos.logback</groupId>
-				<artifactId>logback-classic</artifactId>
-				<version>${logback.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-bom</artifactId>
-				<version>${log4j2.version}</version>
-				<type>pom</type>
-			</dependency>
-			<dependency>
-				<groupId>commons-io</groupId>
-				<artifactId>commons-io</artifactId>
-				<version>${commons-io.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>jakarta.validation</groupId>
-				<artifactId>jakarta.validation-api</artifactId>
-				<version>${jakarta-validation.version}</version>
-			</dependency>
-			<!-- ArchUnit Dependencies -->
-			<dependency>
-				<groupId>com.tngtech.archunit</groupId>
-				<artifactId>archunit</artifactId>
-				<version>${archunit.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.tngtech.archunit</groupId>
-				<artifactId>archunit-junit5-api</artifactId>
-				<version>${archunit.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.tngtech.archunit</groupId>
-				<artifactId>archunit-junit5</artifactId>
-				<version>${archunit.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.tngtech.archunit</groupId>
-				<artifactId>archunit-junit5-engine</artifactId>
-				<version>${archunit.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.tngtech.archunit</groupId>
-				<artifactId>archunit-junit5-engine-api</artifactId>
-				<version>${archunit.version}</version>
-			</dependency>
-			<!-- JUnit Pioneer -->
-			<dependency>
-				<groupId>org.junit-pioneer</groupId>
-				<artifactId>junit-pioneer</artifactId>
-				<version>${junit-pioneer.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<!-- Jqwik -->
-			<dependency>
-				<groupId>net.jqwik</groupId>
-				<artifactId>jqwik</artifactId>
-				<version>${jqwik.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>net.jqwik</groupId>
-				<artifactId>jqwik-web</artifactId>
-				<version>${jqwik.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>net.jqwik</groupId>
-				<artifactId>jqwik-time</artifactId>
-				<version>${jqwik.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>net.jqwik</groupId>
-				<artifactId>jqwik-api</artifactId>
-				<version>${jqwik.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>net.jqwik</groupId>
-				<artifactId>jqwik-engine</artifactId>
-				<version>${jqwik.version}</version>
-				<scope>test</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>net.datafaker</groupId>
+      <artifactId>datafaker</artifactId>
+    </dependency>
+  </dependencies>
 
-	<dependencies>
-		<dependency>
-			<groupId>net.datafaker</groupId>
-			<artifactId>datafaker</artifactId>
-        </dependency>
-	</dependencies>
+  <build>
+    <pluginManagement>
+      <plugins>
+        <!-- Flatten Maven Plugin -->
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>flatten-maven-plugin</artifactId>
+          <version>${flatten-maven-plugin.version}</version>
+        </plugin>
+        <!-- Maven Compiler Plugin -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${maven-compiler-plugin.version}</version>
+        </plugin>
+        <!-- Maven Jar Plugin -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>${maven-jar-plugin.version}</version>
+        </plugin>
+        <!-- Surefire Plugin -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>${surefire-maven-plugin.version}</version>
+        </plugin>
+        <!-- Release Maven Plugin -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-release-plugin</artifactId>
+          <version>${maven-release-plugin.version}</version>
+        </plugin>
+        <!-- Assembly Maven Plugin -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <version>${maven-assembly-plugin.version}</version>
+        </plugin>
+        <!-- Site Maven Plugin -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>${maven-site-plugin.version}</version>
+          <configuration>
+            <locales>${site.locales}</locales>
+            <outputEncoding>${project.reporting.outputEncoding}</outputEncoding>
+          </configuration>
+        </plugin>
+        <!-- Maven Project Info Reports Plugin -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>${maven-project-info-reports-plugin.version}</version>
+        </plugin>
+        <!-- Surefire Report Maven Plugin -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-report-plugin</artifactId>
+          <version>${maven-surefire-report-plugin.version}</version>
+        </plugin>
+        <!-- Javadoc Maven Plugin -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>${maven-javadoc-plugin.version}</version>
+          <configuration>
+            <doclet>nl.talsmasoftware.umldoclet.UMLDoclet</doclet>
+            <docletArtifact>
+              <groupId>nl.talsmasoftware</groupId>
+              <artifactId>umldoclet</artifactId>
+              <version>${umldoclet.version}</version>
+            </docletArtifact>
+          </configuration>
+          <executions>
+            <execution>
+              <id>attach-javadocs</id>
+              <goals>
+                <goal>jar</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+        <!-- JaCoCo Maven Plugin -->
+        <plugin>
+          <groupId>org.jacoco</groupId>
+          <artifactId>jacoco-maven-plugin</artifactId>
+          <version>${jacoco.version}</version>
+          <configuration>
+            <skip>${maven.test.skip}</skip>
+            <destFile>${basedir}/target/coverage-reports/jacoco-unit.exec</destFile>
+            <dataFile>${basedir}/target/coverage-reports/jacoco-unit.exec</dataFile>
+            <output>file</output>
+            <append>true</append>
+            <excludes>
+              <exclude>*MethodAccess</exclude>
+            </excludes>
+          </configuration>
+          <executions>
+            <execution>
+              <id>default-prepare-agent</id>
+              <goals>
+                <goal>prepare-agent</goal>
+              </goals>
+              <phase>test-compile</phase>
+            </execution>
+            <execution>
+              <id>default-report</id>
+              <goals>
+                <goal>report</goal>
+              </goals>
+              <phase>prepare-package</phase>
+            </execution>
+          </executions>
+        </plugin>
+        <!-- Dependency Check Maven Plugin -->
+        <plugin>
+          <groupId>org.owasp</groupId>
+          <artifactId>dependency-check-maven</artifactId>
+          <version>${dependency-check.maven.version}</version>
+          <configuration>
+            <format>ALL</format>
+            <!-- Beware, there are errors when running the version 5.3.2 of the plugin with pretty print to true -->
+            <prettyPrint>true</prettyPrint>
+            <failOnError>false</failOnError>
+          </configuration>
+          <executions>
+            <execution>
+              <goals>
+                <goal>check</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+        <!-- Asciidoctor Maven Plugin -->
+        <plugin>
+          <groupId>org.asciidoctor</groupId>
+          <artifactId>asciidoctor-maven-plugin</artifactId>
+          <version>${asciidoctor-maven-plugin.version}</version>
+          <dependencies>
+            <dependency>
+              <groupId>org.asciidoctor</groupId>
+              <artifactId>asciidoctorj-pdf</artifactId>
+              <version>${asciidoctorj-pdf.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>org.asciidoctor</groupId>
+              <artifactId>asciidoctorj-diagram</artifactId>
+              <version>${asciidoctorj-diagram.version}</version>
+            </dependency>
+          </dependencies>
+          <executions>
+            <execution>
+              <id>generate-docs</id>
+              <goals>
+                <goal>process-asciidoc</goal>
+              </goals>
+              <phase>prepare-package</phase>
+              <configuration>
+                <backend>html5</backend>
+                <doctype>book</doctype>
+              </configuration>
+            </execution>
+            <execution>
+              <id>generate-html-doc</id>
+              <goals>
+                <goal>process-asciidoc</goal>
+              </goals>
+              <phase>generate-resources</phase>
+              <configuration>
+                <sourceDirectory>src/main/doc/adoc</sourceDirectory>
+                <outputDirectory>target/doc/html</outputDirectory>
+                <backend>html5</backend>
+                <doctype>book</doctype>
+                <sourceHighlighter>coderay</sourceHighlighter>
+                <requires>
+                  <require>asciidoctor-diagram</require>
+                </requires>
+              </configuration>
+            </execution>
+            <execution>
+              <id>generate-pdf-doc</id>
+              <goals>
+                <goal>process-asciidoc</goal>
+              </goals>
+              <phase>generate-resources</phase>
+              <configuration>
+                <sourceDirectory>src/main/doc/adoc</sourceDirectory>
+                <outputDirectory>target/doc/pdf</outputDirectory>
+                <backend>pdf</backend>
+                <doctype>book</doctype>
+                <sourceHighlighter>coderay</sourceHighlighter>
+                <requires>
+                  <require>asciidoctor-diagram</require>
+                </requires>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+        <!-- SpotBug Maven Plugin -->
+        <plugin>
+          <groupId>com.github.spotbugs</groupId>
+          <artifactId>spotbugs-maven-plugin</artifactId>
+          <version>${spotbugs-maven-plugin.version}</version>
+          <configuration>
+            <effort>Max</effort>
+            <threshold>Low</threshold>
+            <failOnError>true</failOnError>
+            <!-- If you want to manage more finely what is included and excluded in the spotbugs you have to add the following 2 lines in comment in the configuration of the plugin in the child POM -->
+            <!--
+                                    <includeFilterFile>${session.executionRootDirectory}/spotbugs-security-include.xml</includeFilterFile>
+                                    <excludeFilterFile>${session.executionRootDirectory}/spotbugs-security-exclude.xml</excludeFilterFile>
+                                    -->
+            <plugins>
+              <plugin>
+                <groupId>com.h3xstream.findsecbugs</groupId>
+                <artifactId>findsecbugs-plugin</artifactId>
+                <version>${findsecbugs-plugin.version}</version>
+              </plugin>
+              <plugin>
+                <groupId>com.mebigfatguy.sb-contrib</groupId>
+                <artifactId>sb-contrib</artifactId>
+                <version>${sb-contrib-plugin.version}</version>
+              </plugin>
+            </plugins>
+          </configuration>
+          <executions>
+            <execution>
+              <goals>
+                <goal>spotbugs</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+        <!-- Lombok maven plugin -->
+        <plugin>
+          <groupId>org.projectlombok</groupId>
+          <artifactId>lombok-maven-plugin</artifactId>
+          <version>${lombok-maven-plugin.version}</version>
+        </plugin>
+        <!-- PiTest Maven Plugin -->
+        <plugin>
+          <groupId>org.pitest</groupId>
+          <artifactId>pitest-maven</artifactId>
+          <version>${pitest.version}</version>
+          <dependencies>
+            <dependency>
+              <groupId>org.pitest</groupId>
+              <artifactId>pitest-junit5-plugin</artifactId>
+              <version>${pitest-junit5-plugin.version}</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+        <!-- Licence Maven Plugin - org.codehaus.mojo -->
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>license-maven-plugin</artifactId>
+          <version>${license-maven-plugin.version}</version>
+          <configuration>
+            <!-- Sorting the list of licences used by artifact's name -->
+            <sortArtifactByName>true</sortArtifactByName>
+            <!-- To have same license with different names represented by the same name -->
+            <licenseMerges>
+              <licenseMerge>The Apache Software License, Version 2.0|Apache License, Version 2.0|Apache
+                                Public License 2.0|Apache 2.0|Apache License 2.0|Apache License, version 2.0|Apache
+                                Software License, version 2.0|The Apache License, Version 2.0</licenseMerge>
+              <licenseMerge>The MIT License|MIT License|MIT|The MIT License (MIT)</licenseMerge>
+              <licenseMerge>Eclipse Distribution License - v 1.0|EDL 1.0</licenseMerge>
+              <licenseMerge>Eclipse Public License - v 1.0|EPL 1.0</licenseMerge>
+              <licenseMerge>Eclipse Public License - v 2.0|EPL 2.0</licenseMerge>
+            </licenseMerges>
+            <!-- The dependencies in the scopes "system" and "test" are excluded -->
+            <excludedScopes>system,test</excludedScopes>
+          </configuration>
+          <executions>
+            <execution>
+              <id>add-third-party</id>
+              <goals>
+                <goal>add-third-party</goal>
+              </goals>
+              <phase>package</phase>
+            </execution>
+            <execution>
+              <id>third-party-report</id>
+              <goals>
+                <goal>third-party-report</goal>
+              </goals>
+              <phase>site</phase>
+            </execution>
+          </executions>
+        </plugin>
+        <!-- Licence Maven Plugin - com.mycila -->
+        <plugin>
+          <groupId>com.mycila</groupId>
+          <artifactId>license-maven-plugin</artifactId>
+          <version>${mycila.license-maven-plugin.version}</version>
+        </plugin>
+        <!-- Maven Dependency Plugin -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>${maven-dependency-plugin.version}</version>
+        </plugin>
+        <!-- Versions Maven Plugin -->
+        <!-- Offers similar functionalities to npm outdated -->
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>versions-maven-plugin</artifactId>
+          <version>${versions-maven-plugin.version}</version>
+        </plugin>
+        <!-- PMD Maven Plugin -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-pmd-plugin</artifactId>
+          <version>${maven-pmd-plugin.version}</version>
+          <configuration>
+            <sourceEncoding>${project.build.outputEncoding}</sourceEncoding>
+            <targetJdk>${java.version}</targetJdk>
+          </configuration>
+        </plugin>
+        <!-- Checkstyle Maven Plugin -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-checkstyle-plugin</artifactId>
+          <version>${maven-checkstyle-plugin.version}</version>
+        </plugin>
+        <!-- Properties Maven Plugin -->
+        <!-- To read properties from external files instead of having all the properties directly defined in the POM -->
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>properties-maven-plugin</artifactId>
+          <version>${properties-maven-plugin.version}</version>
+        </plugin>
+        <!-- Maven Changelog Plugin -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-changelog-plugin</artifactId>
+          <version>${maven-changelog-plugin.version}</version>
+        </plugin>
+        <!-- Copy-Rename Maven Plugin -->
+        <plugin>
+          <groupId>com.coderplus.maven.plugins</groupId>
+          <artifactId>copy-rename-maven-plugin</artifactId>
+          <version>${copy-rename-maven-plugin.version}</version>
+        </plugin>
+        <!-- Maven Resources Plugin -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>${maven-resources-plugin.version}</version>
+        </plugin>
+        <!-- JReleaser Maven Plugin (https://jreleaser.org/) -->
+        <plugin>
+          <groupId>org.jreleaser</groupId>
+          <artifactId>jreleaser-maven-plugin</artifactId>
+          <version>${jreleaser-maven-plugin.version}</version>
+        </plugin>
+        <!-- Appassembler Maven Plugin (https://www.mojohaus.org/appassembler/appassembler-maven-plugin/) -->
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>appassembler-maven-plugin</artifactId>
+          <version>${appassembler-maven-plugin.version}</version>
+        </plugin>
+        <!-- Exec Maven Plugin (https://www.mojohaus.org/exec-maven-plugin/index.html) -->
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>exec-maven-plugin</artifactId>
+          <version>${exec-maven-plugin.version}</version>
+        </plugin>
+        <!-- Failsafe Maven Plugin -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-failsafe-plugin</artifactId>
+          <version>${maven-failsafe-plugin.version}</version>
+        </plugin>
+        <!-- Spotless Maven Plugin -->
+        <plugin>
+          <groupId>com.diffplug.spotless</groupId>
+          <artifactId>spotless-maven-plugin</artifactId>
+          <version>${spotless-maven-plugin.version}</version>
+          <configuration>
+            <!-- only format files which have changed since origin/develop with <ratchetFrom>origin/develop</ratchetFrom> -->
+            <formats>
+              <format>
+                <includes>
+                  <include>*.md</include>
+                  <include>.gitignore</include>
+                </includes>
+                <trimTrailingWhitespace></trimTrailingWhitespace>
+                <endWithNewline></endWithNewline>
+                <indent>
+                  <tabs>true</tabs>
+                  <spacesPerTab>4</spacesPerTab>
+                </indent>
+              </format>
+            </formats>
+            <pom>
+              <includes>
+                <include>pom.xml</include>
+              </includes>
+              <sortPom></sortPom>
+            </pom>
+            <java>
+              <includes>
+                <include>src/main/java/**/*.java</include>
+                <include>src/test/java/**/*.java</include>
+              </includes>
+              <importOrder></importOrder>
+              <removeUnusedImports></removeUnusedImports>
+              <googleJavaFormat>
+                <version>1.15.0</version>
+                <style>GOOGLE</style>
+                <!-- or AOSP (optional) -->
+                <reflowLongStrings>false</reflowLongStrings>
+                <!-- optional (requires at least 1.8) -->
+              </googleJavaFormat>
+              <formatAnnotations></formatAnnotations>
+            </java>
+          </configuration>
+          <executions>
+            <execution>
+              <goals>
+                <goal>check</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>com.github.johnpoth</groupId>
+          <artifactId>jshell-maven-plugin</artifactId>
+          <version>${jshell-maven-plugin.version}</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>flatten-maven-plugin</artifactId>
+        <configuration>
+          <flattenMode>resolveCiFriendliesOnly</flattenMode>
+        </configuration>
+        <executions>
+          <execution>
+            <id>flatten</id>
+            <goals>
+              <goal>flatten</goal>
+            </goals>
+            <phase>process-resources</phase>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- Surefire Maven Plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+      </plugin>
+      <!-- Javadoc Maven Plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+      </plugin>
+      <!-- DependencyCheck Maven Plugin -->
+      <plugin>
+        <groupId>org.owasp</groupId>
+        <artifactId>dependency-check-maven</artifactId>
+      </plugin>
+      <!-- Jacoco Maven Plugin -->
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+      </plugin>
+      <!-- Spotbugs -->
+      <plugin>
+        <groupId>com.github.spotbugs</groupId>
+        <artifactId>spotbugs-maven-plugin</artifactId>
+      </plugin>
+      <!-- Maven Dependency Plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>dependencies-graphml</id>
+            <goals>
+              <goal>tree</goal>
+            </goals>
+            <phase>package</phase>
+            <configuration>
+              <outputFile>./target/${project.artifactId}-${project.version}-dependencies.graphml</outputFile>
+              <outputType>graphml</outputType>
+            </configuration>
+          </execution>
+          <execution>
+            <id>dependencies-dot</id>
+            <goals>
+              <goal>tree</goal>
+            </goals>
+            <phase>package</phase>
+            <configuration>
+              <outputFile>./target/${project.artifactId}-${project.version}-dependencies.dot</outputFile>
+              <outputType>dot</outputType>
+            </configuration>
+          </execution>
+          <execution>
+            <id>dependencies-txt</id>
+            <goals>
+              <goal>tree</goal>
+            </goals>
+            <phase>package</phase>
+            <configuration>
+              <outputFile>./target/${project.artifactId}-${project.version}-dependencies.txt</outputFile>
+              <outputType>txt</outputType>
+            </configuration>
+          </execution>
+          <execution>
+            <id>dependencies-tgf</id>
+            <goals>
+              <goal>tree</goal>
+            </goals>
+            <phase>package</phase>
+            <configuration>
+              <outputFile>./target/${project.artifactId}-${project.version}-dependencies.tgf</outputFile>
+              <outputType>tgf</outputType>
+            </configuration>
+          </execution>
+          <execution>
+            <id>dependencies-analyze</id>
+            <goals>
+              <goal>analyze-only</goal>
+            </goals>
+            <phase>package</phase>
+            <configuration>
+              <outputXML>true</outputXML>
+              <outputDirectory>./target</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- Spotless Maven Plugin -->
+      <plugin>
+        <groupId>com.diffplug.spotless</groupId>
+        <artifactId>spotless-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
 
-	<build>
-		<pluginManagement>
-			<plugins>
-				<!-- Flatten Maven Plugin -->
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>flatten-maven-plugin</artifactId>
-					<version>${flatten-maven-plugin.version}</version>
-				</plugin>
-				<!-- Maven Compiler Plugin -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>${maven-compiler-plugin.version}</version>
-				</plugin>
-				<!-- Maven Jar Plugin -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-jar-plugin</artifactId>
-					<version>${maven-jar-plugin.version}</version>
-				</plugin>
-				<!-- Surefire Plugin -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-surefire-plugin</artifactId>
-					<version>${surefire-maven-plugin.version}</version>
-				</plugin>
-				<!-- Release Maven Plugin -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-release-plugin</artifactId>
-					<version>${maven-release-plugin.version}</version>
-				</plugin>
-				<!-- Assembly Maven Plugin -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-assembly-plugin</artifactId>
-					<version>${maven-assembly-plugin.version}</version>
-				</plugin>
-				<!-- Site Maven Plugin -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-site-plugin</artifactId>
-					<version>${maven-site-plugin.version}</version>
-					<configuration>
-						<locales>${site.locales}</locales>
-						<outputEncoding>${project.reporting.outputEncoding}</outputEncoding>
-					</configuration>
-				</plugin>
-				<!-- Maven Project Info Reports Plugin -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-project-info-reports-plugin</artifactId>
-					<version>${maven-project-info-reports-plugin.version}</version>
-				</plugin>
-				<!-- Surefire Report Maven Plugin -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-surefire-report-plugin</artifactId>
-					<version>${maven-surefire-report-plugin.version}</version>
-				</plugin>
-				<!-- Javadoc Maven Plugin -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>${maven-javadoc-plugin.version}</version>
-					<executions>
-						<execution>
-							<id>attach-javadocs</id>
-							<goals>
-								<goal>jar</goal>
-							</goals>
-						</execution>
-					</executions>
-					<configuration>
-						<doclet>nl.talsmasoftware.umldoclet.UMLDoclet</doclet>
-						<docletArtifact>
-							<groupId>nl.talsmasoftware</groupId>
-							<artifactId>umldoclet</artifactId>
-							<version>${umldoclet.version}</version>
-						</docletArtifact>
-					</configuration>
-				</plugin>
-				<!-- JaCoCo Maven Plugin -->
-				<plugin>
-					<groupId>org.jacoco</groupId>
-					<artifactId>jacoco-maven-plugin</artifactId>
-					<version>${jacoco.version}</version>
-					<configuration>
-						<skip>${maven.test.skip}</skip>
-						<destFile>${basedir}/target/coverage-reports/jacoco-unit.exec</destFile>
-						<dataFile>${basedir}/target/coverage-reports/jacoco-unit.exec</dataFile>
-						<output>file</output>
-						<append>true</append>
-						<excludes>
-							<exclude>*MethodAccess</exclude>
-						</excludes>
-					</configuration>
-					<executions>
-						<execution>
-							<id>default-prepare-agent</id>
-							<goals>
-								<goal>prepare-agent</goal>
-							</goals>
-							<phase>test-compile</phase>
-						</execution>
-						<execution>
-							<id>default-report</id>
-							<phase>prepare-package</phase>
-							<goals>
-								<goal>report</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-				<!-- Dependency Check Maven Plugin -->
-				<plugin>
-					<groupId>org.owasp</groupId>
-					<artifactId>dependency-check-maven</artifactId>
-					<version>${dependency-check.maven.version}</version>
-					<configuration>
-						<format>ALL</format>
-						<!-- Beware, there are errors when running the version 5.3.2 of the plugin with pretty print to true -->
-						<prettyPrint>true</prettyPrint>
-						<failOnError>false</failOnError>
-					</configuration>
-					<executions>
-						<execution>
-							<goals>
-								<goal>check</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-				<!-- Asciidoctor Maven Plugin -->
-				<plugin>
-					<groupId>org.asciidoctor</groupId>
-					<artifactId>asciidoctor-maven-plugin</artifactId>
-					<version>${asciidoctor-maven-plugin.version}</version>
-					<dependencies>
-						<dependency>
-							<groupId>org.asciidoctor</groupId>
-							<artifactId>asciidoctorj-pdf</artifactId>
-							<version>${asciidoctorj-pdf.version}</version>
-						</dependency>
-						<dependency>
-							<groupId>org.asciidoctor</groupId>
-							<artifactId>asciidoctorj-diagram</artifactId>
-							<version>${asciidoctorj-diagram.version}</version>
-						</dependency>
-					</dependencies>
-					<executions>
-						<execution>
-							<id>generate-docs</id>
-							<phase>prepare-package</phase>
-							<goals>
-								<goal>process-asciidoc</goal>
-							</goals>
-							<configuration>
-								<backend>html5</backend>
-								<doctype>book</doctype>
-							</configuration>
-						</execution>
-						<execution>
-							<id>generate-html-doc</id>
-							<phase>generate-resources</phase>
-							<goals>
-								<goal>process-asciidoc</goal>
-							</goals>
-							<configuration>
-								<sourceDirectory>src/main/doc/adoc</sourceDirectory>
-								<outputDirectory>target/doc/html</outputDirectory>
-								<backend>html5</backend>
-								<doctype>book</doctype>
-								<sourceHighlighter>coderay</sourceHighlighter>
-								<requires>
-									<require>asciidoctor-diagram</require>
-								</requires>
-							</configuration>
-						</execution>
-						<execution>
-							<id>generate-pdf-doc</id>
-							<phase>generate-resources</phase>
-							<goals>
-								<goal>process-asciidoc</goal>
-							</goals>
-							<configuration>
-								<sourceDirectory>src/main/doc/adoc</sourceDirectory>
-								<outputDirectory>target/doc/pdf</outputDirectory>
-								<backend>pdf</backend>
-								<doctype>book</doctype>
-								<sourceHighlighter>coderay</sourceHighlighter>
-								<requires>
-									<require>asciidoctor-diagram</require>
-								</requires>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
-				<!-- SpotBug Maven Plugin -->
-				<plugin>
-					<groupId>com.github.spotbugs</groupId>
-					<artifactId>spotbugs-maven-plugin</artifactId>
-					<version>${spotbugs-maven-plugin.version}</version>
-					<configuration>
-						<effort>Max</effort>
-						<threshold>Low</threshold>
-						<failOnError>true</failOnError>
-						<!-- If you want to manage more finely what is included and excluded in the spotbugs you have to add the following 2 lines in comment in the configuration of the plugin in the child POM -->
-						<!-- 
-						<includeFilterFile>${session.executionRootDirectory}/spotbugs-security-include.xml</includeFilterFile>
-						<excludeFilterFile>${session.executionRootDirectory}/spotbugs-security-exclude.xml</excludeFilterFile> 
-						-->
-						<plugins>
-							<plugin>
-								<groupId>com.h3xstream.findsecbugs</groupId>
-								<artifactId>findsecbugs-plugin</artifactId>
-								<version>${findsecbugs-plugin.version}</version>
-							</plugin>
-							<plugin>
-								<groupId>com.mebigfatguy.sb-contrib</groupId>
-								<artifactId>sb-contrib</artifactId>
-								<version>${sb-contrib-plugin.version}</version>
-							</plugin>
-						</plugins>
-					</configuration>
-					<executions>
-						<execution>
-							<goals>
-								<goal>spotbugs</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-				<!-- Lombok maven plugin -->
-				<plugin>
-					<groupId>org.projectlombok</groupId>
-					<artifactId>lombok-maven-plugin</artifactId>
-					<version>${lombok-maven-plugin.version}</version>
-				</plugin>
-				<!-- PiTest Maven Plugin -->
-				<plugin>
-					<groupId>org.pitest</groupId>
-					<artifactId>pitest-maven</artifactId>
-					<version>${pitest.version}</version>
-					<dependencies>
-						<dependency>
-							<groupId>org.pitest</groupId>
-							<artifactId>pitest-junit5-plugin</artifactId>
-							<version>${pitest-junit5-plugin.version}</version>
-						</dependency>
-					</dependencies>
-				</plugin>
-				<!-- Licence Maven Plugin - org.codehaus.mojo -->
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>license-maven-plugin</artifactId>
-					<version>${license-maven-plugin.version}</version>
-					<configuration>
-						<!-- Sorting the list of licences used by artifact's name -->
-						<sortArtifactByName>true</sortArtifactByName>
-						<!-- To have same license with different names represented by the same name -->
-						<licenseMerges>
-							<licenseMerge>The Apache Software License, Version 2.0|Apache License, Version 2.0|Apache Public License 2.0|Apache 2.0|Apache License 2.0|Apache License, version 2.0|Apache Software License, version 2.0|The Apache License, Version 2.0</licenseMerge>
-							<licenseMerge>The MIT License|MIT License|MIT|The MIT License (MIT)</licenseMerge>
-							<licenseMerge>Eclipse Distribution License - v 1.0|EDL 1.0</licenseMerge>
-							<licenseMerge>Eclipse Public License - v 1.0|EPL 1.0</licenseMerge>
-							<licenseMerge>Eclipse Public License - v 2.0|EPL 2.0</licenseMerge>
-						</licenseMerges>
-						<!-- The dependencies in the scopes "system" and "test" are excluded -->
-						<excludedScopes>system,test</excludedScopes>
-					</configuration>
-					<executions>
-						<execution>
-							<phase>package</phase>
-							<id>add-third-party</id>
-							<goals>
-								<goal>add-third-party</goal>
-							</goals>
-						</execution>
-						<execution>
-							<phase>site</phase>
-							<id>third-party-report</id>
-							<goals>
-								<goal>third-party-report</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-				<!-- Licence Maven Plugin - com.mycila -->
-				<plugin>
-					<groupId>com.mycila</groupId>
-					<artifactId>license-maven-plugin</artifactId>
-					<version>${mycila.license-maven-plugin.version}</version>
-				</plugin>
-				<!-- Maven Dependency Plugin -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-dependency-plugin</artifactId>
-					<version>${maven-dependency-plugin.version}</version>
-				</plugin>
-				<!-- Versions Maven Plugin -->
-				<!-- Offers similar functionalities to npm outdated -->
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>versions-maven-plugin</artifactId>
-					<version>${versions-maven-plugin.version}</version>
-				</plugin>
-				<!-- PMD Maven Plugin -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-pmd-plugin</artifactId>
-					<version>${maven-pmd-plugin.version}</version>
-					<configuration>
-						<sourceEncoding>${project.build.outputEncoding}</sourceEncoding>
-						<targetJdk>${java.version}</targetJdk>
-					</configuration>
-				</plugin>
-				<!-- Checkstyle Maven Plugin -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-checkstyle-plugin</artifactId>
-					<version>${maven-checkstyle-plugin.version}</version>
-				</plugin>
-				<!-- Properties Maven Plugin -->
-				<!-- To read properties from external files instead of having all the properties directly defined in the POM -->
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>properties-maven-plugin</artifactId>
-					<version>${properties-maven-plugin.version}</version>
-				</plugin>
-				<!-- Maven Changelog Plugin -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-changelog-plugin</artifactId>
-					<version>${maven-changelog-plugin.version}</version>
-				</plugin>
-				<!-- Copy-Rename Maven Plugin -->
-				<plugin>
-					<groupId>com.coderplus.maven.plugins</groupId>
-					<artifactId>copy-rename-maven-plugin</artifactId>
-					<version>${copy-rename-maven-plugin.version}</version>
-				</plugin>
-				<!-- Maven Resources Plugin -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-resources-plugin</artifactId>
-					<version>${maven-resources-plugin.version}</version>
-				</plugin>
-				<!-- JReleaser Maven Plugin (https://jreleaser.org/) -->
-				<plugin>
-					<groupId>org.jreleaser</groupId>
-					<artifactId>jreleaser-maven-plugin</artifactId>
-					<version>${jreleaser-maven-plugin.version}</version>
-				</plugin>
-				<!-- Appassembler Maven Plugin (https://www.mojohaus.org/appassembler/appassembler-maven-plugin/) -->
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>appassembler-maven-plugin</artifactId>
-					<version>${appassembler-maven-plugin.version}</version>
-				</plugin>
-				<!-- Exec Maven Plugin (https://www.mojohaus.org/exec-maven-plugin/index.html) -->
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>exec-maven-plugin</artifactId>
-					<version>${exec-maven-plugin.version}</version>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-failsafe-plugin</artifactId>
-					<version>${maven-failsafe-plugin.version}</version>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-		<plugins>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>flatten-maven-plugin</artifactId>
-				<configuration>
-					<flattenMode>resolveCiFriendliesOnly</flattenMode>
-				</configuration>
-				<executions>
-					<execution>
-						<id>flatten</id>
-						<phase>process-resources</phase>
-						<goals>
-							<goal>flatten</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<!-- Surefire Maven Plugin -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-			</plugin>
-			<!-- Javadoc Maven Plugin -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-			</plugin>
-			<!-- DependencyCheck Maven Plugin -->
-			<plugin>
-				<groupId>org.owasp</groupId>
-				<artifactId>dependency-check-maven</artifactId>
-			</plugin>
-			<!-- Jacoco Maven Plugin -->
-			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-			</plugin>
-			<!-- Spotbugs -->
-			<plugin>
-				<groupId>com.github.spotbugs</groupId>
-				<artifactId>spotbugs-maven-plugin</artifactId>
-			</plugin>
-			<!-- Maven Dependency Plugin -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>dependencies-graphml</id>
-						<phase>package</phase>
-						<goals>
-							<goal>tree</goal>
-						</goals>
-						<configuration>
-							<outputFile>./target/${project.artifactId}-${project.version}-dependencies.graphml</outputFile>
-							<outputType>graphml</outputType>
-						</configuration>
-					</execution>
-					<execution>
-						<id>dependencies-dot</id>
-						<phase>package</phase>
-						<goals>
-							<goal>tree</goal>
-						</goals>
-						<configuration>
-							<outputFile>./target/${project.artifactId}-${project.version}-dependencies.dot</outputFile>
-							<outputType>dot</outputType>
-						</configuration>
-					</execution>
-					<execution>
-						<id>dependencies-txt</id>
-						<phase>package</phase>
-						<goals>
-							<goal>tree</goal>
-						</goals>
-						<configuration>
-							<outputFile>./target/${project.artifactId}-${project.version}-dependencies.txt</outputFile>
-							<outputType>txt</outputType>
-						</configuration>
-					</execution>
-					<execution>
-						<id>dependencies-tgf</id>
-						<phase>package</phase>
-						<goals>
-							<goal>tree</goal>
-						</goals>
-						<configuration>
-							<outputFile>./target/${project.artifactId}-${project.version}-dependencies.tgf</outputFile>
-							<outputType>tgf</outputType>
-						</configuration>
-					</execution>
-					<execution>
-						<id>dependencies-analyze</id>
-						<phase>package</phase>
-						<goals>
-							<goal>analyze-only</goal>
-						</goals>
-						<configuration>
-							<outputXML>true</outputXML>
-							<outputDirectory>./target</outputDirectory>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
-
-	<reporting>
-		<plugins>
-			<!-- Surefire Report Maven Plugin -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-report-plugin</artifactId>
-			</plugin>
-			<!-- Javadoc Maven Plugin -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-			</plugin>
-			<!-- Spotbugs Maven Plugin -->
-			<plugin>
-				<groupId>com.github.spotbugs</groupId>
-				<artifactId>spotbugs-maven-plugin</artifactId>
-			</plugin>
-			<!-- Dependency Check Maven Plugin -->
-			<plugin>
-				<groupId>org.owasp</groupId>
-				<artifactId>dependency-check-maven</artifactId>
-				<reportSets>
-					<reportSet>
-						<reports>
-							<report>check</report>
-						</reports>
-					</reportSet>
-				</reportSets>
-			</plugin>
-			<!-- Jacoco Maven Plugin -->
-			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-				<reportSets>
-					<reportSet>
-						<reports>
-							<report>report</report>
-						</reports>
-					</reportSet>
-				</reportSets>
-			</plugin>
-			<!-- License Maven Plugin -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>license-maven-plugin</artifactId>
-			</plugin>
-			<!-- Dependency Maven plugin -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-			</plugin>
-			<!-- Version Maven plugin -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>versions-maven-plugin</artifactId>
-				<reportSets>
-					<reportSet>
-						<reports>
-							<report>dependency-updates-report</report>
-							<report>plugin-updates-report</report>
-							<report>property-updates-report</report>
-						</reports>
-					</reportSet>
-				</reportSets>
-			</plugin>
-			<!-- PMD Maven Plugin -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-pmd-plugin</artifactId>
-				<reportSets>
-					<reportSet>
-						<id>default</id> <!-- not necessary by default, id = "default" -->
-						<reports>
-							<!-- select non-aggregate reports -->
-							<report>pmd</report>
-							<report>cpd</report>
-						</reports>
-					</reportSet>
-				</reportSets>
-			</plugin>
-			<!-- Checkstyle Maven Plugin -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-checkstyle-plugin</artifactId>
-				<reportSets>
-					<reportSet>
-						<reports>
-							<report>checkstyle</report>
-						</reports>
-					</reportSet>
-				</reportSets>
-			</plugin>
-			<!-- Maven Changelog Plugin -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-changelog-plugin</artifactId>
-				<reportSets>
-					<reportSet>
-						<id>changelog</id>
-						<configuration>
-							<type>date</type>
-							<dates>
-								<date implementation="java.lang.String">${changelog.start.date}</date>
-								<date implementation="java.lang.String">${changelog.end.date}</date>
-							</dates>
-							<dateFormat>${changelog.date.range.format}</dateFormat>
-						</configuration>
-						<reports>
-							<report>changelog</report>
-							<report>file-activity</report>
-							<report>dev-activity</report>
-						</reports>
-					</reportSet>
-				</reportSets>
-			</plugin>
-		</plugins>
-	</reporting>
+  <reporting>
+    <plugins>
+      <!-- Surefire Report Maven Plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+      </plugin>
+      <!-- Javadoc Maven Plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+      </plugin>
+      <!-- Spotbugs Maven Plugin -->
+      <plugin>
+        <groupId>com.github.spotbugs</groupId>
+        <artifactId>spotbugs-maven-plugin</artifactId>
+      </plugin>
+      <!-- Dependency Check Maven Plugin -->
+      <plugin>
+        <groupId>org.owasp</groupId>
+        <artifactId>dependency-check-maven</artifactId>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>check</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+      <!-- Jacoco Maven Plugin -->
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>report</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+      <!-- License Maven Plugin -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>license-maven-plugin</artifactId>
+      </plugin>
+      <!-- Dependency Maven plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+      </plugin>
+      <!-- Version Maven plugin -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>versions-maven-plugin</artifactId>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>dependency-updates-report</report>
+              <report>plugin-updates-report</report>
+              <report>property-updates-report</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+      <!-- PMD Maven Plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <reportSets>
+          <reportSet>
+            <id>default</id>
+            <!-- not necessary by default, id = "default" -->
+            <reports>
+              <!-- select non-aggregate reports -->
+              <report>pmd</report>
+              <report>cpd</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+      <!-- Checkstyle Maven Plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>checkstyle</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+      <!-- Maven Changelog Plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-changelog-plugin</artifactId>
+        <reportSets>
+          <reportSet>
+            <id>changelog</id>
+            <reports>
+              <report>changelog</report>
+              <report>file-activity</report>
+              <report>dev-activity</report>
+            </reports>
+            <configuration>
+              <type>date</type>
+              <dates>
+                <date implementation="java.lang.String">${changelog.start.date}</date>
+                <date implementation="java.lang.String">${changelog.end.date}</date>
+              </dates>
+              <dateFormat>${changelog.date.range.format}</dateFormat>
+            </configuration>
+          </reportSet>
+        </reportSets>
+      </plugin>
+    </plugins>
+  </reporting>
 
 </project>

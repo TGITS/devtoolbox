@@ -1,6 +1,6 @@
 # Datafaker Example Code
 
-Example code to illustrate the use of the library Datafaker :
+Examples of code to illustrate the use of the library Datafaker :
 
 * [Official Site](https://www.datafaker.net/)
 * [GitHub repository](https://github.com/datafaker-net/datafaker/)
