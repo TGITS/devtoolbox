@@ -30,7 +30,7 @@
         <!-- Version Number used with flatten plugin & CI -->
         <revision>1.0.0-SNAPSHOT</revision>
         <!-- Default Java version -->
-        <java.version>11</java.version>
+        <java.version>17</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <!-- Flatten Maven Plugin Version-->
@@ -137,7 +137,7 @@
         <!-- Failsafe Maven Plugin -->
         <maven-failsafe-plugin.version>3.0.0-M6</maven-failsafe-plugin.version>
         <!-- DataFaker Version -->
-        <datafaker.version>1.6.0</datafaker.version>
+        <datafaker.version>1.7.0</datafaker.version>
     </properties>
 
     <scm>
