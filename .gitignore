@@ -28,3 +28,4 @@ hs_err_pid*
 /java/library/guava/guava-cache-example/target
 /java/misc/jbang-example/.vscode
 /java/misc/jbang-example/target
+/java/library/guava/.vscode
