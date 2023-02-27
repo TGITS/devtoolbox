@@ -29,3 +29,4 @@ hs_err_pid*
 /java/misc/jbang-example/.vscode
 /java/misc/jbang-example/target
 /java/library/guava/.vscode
+/java/misc/jbang-example/src/main/script/output/westeros_houses.csv
