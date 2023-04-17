@@ -1,11 +1,11 @@
-//DEPS net.datafaker:datafaker:1.8.0
+//DEPS net.datafaker:datafaker:1.8.1
 
 /** 
  * Pour executer avec JBang :
  * <p>
  * jbang DataFakerUsingLocale.jsh
  * <p>
- * La ligne //DEPS net.datafaker:datafaker:1.8.0 au début du script est pour le lancement avec JBang.
+ * La ligne //DEPS net.datafaker:datafaker:1.8.1 au début du script est pour le lancement avec JBang.
  * Elle est ignorée si on lance directement avec JShell
  * <p>
  * Afin de pouvoir voir correctement les caractères accentués sous une invite de commande Windows, avant de lancer JShell, il faut au préalable :
@@ -17,7 +17,7 @@
  * Ensuite, à exécuter sous JShell :
  * 
  * Il faut avoir lancé JShell en précisant un classpath contenant la bibliothèque DataFaker.
- * par exemple : jshell --class-path .;.\lib\datafaker-1.8.0.jar
+ * par exemple : jshell --class-path .;.\lib\datafaker-1.8.1.jar
  * Ensuite, une fois sous jshell ouvrez et exécuter le script avec :
  * /open DataFakerUsingLocale.jsh
  * 
