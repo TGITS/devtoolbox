@@ -1,0 +1,65 @@
+[
+  {
+    "name": "Stark",
+    "mainSeat": "Winterfell",
+    "ancestralSeat": "Winterfell",
+    "sigil": "A Gray Direwolf",
+    "familyWords": "Winter is coming"
+  },
+  {
+    "name": "Lannister",
+    "mainSeat": "Casterly Rock",
+    "ancestralSeat": "Casterly Rock",
+    "sigil": "A Golden Lion",
+    "familyWords": "Hear me roar !"
+  },
+  {
+    "name": "Baratheon",
+    "mainSeat": "King's Landing",
+    "ancestralSeat": "Storm's End",
+    "sigil": "A Crowned Black Stag",
+    "familyWords": "Our is the fury !"
+  },
+  {
+    "name": "Greyjoy",
+    "mainSeat": "Pyke",
+    "ancestralSeat": "Pyke",
+    "sigil": "A Golden Kraken",
+    "familyWords": "We do not sow"
+  },
+  {
+    "name": "Arryn of the Eyrie",
+    "mainSeat": "The Eyrie",
+    "ancestralSeat": "The Eyrie",
+    "sigil": "Moon and Falcon",
+    "familyWords": "As high as Honor"
+  },
+  {
+    "name": "Targaryen",
+    "mainSeat": "Dragonstone",
+    "ancestralSeat": "Dragonstone",
+    "sigil": "Three-Headed Dragon",
+    "familyWords": "Fire and Blood"
+  },
+  {
+    "name": "Tully",
+    "mainSeat": "Riverun",
+    "ancestralSeat": "Riverun",
+    "sigil": "A leaping silver trout on a field of blue and mud red",
+    "familyWords": "Family, Duty, Honor"
+  },
+  {
+    "name": "Tyrell",
+    "mainSeat": "Highgarden",
+    "ancestralSeat": "Highgarden",
+    "sigil": "A golden rose, on a green field",
+    "familyWords": "Growing Strong"
+  },
+  {
+    "name": "Martell",
+    "mainSeat": "Old Palace within Sunspear",
+    "ancestralSeat": "Old Palace within Sunspear",
+    "sigil": "A gold spear piercing a red sun on an orange field",
+    "familyWords": "Unbowed, Unbent, Unbroken"
+  }
+]

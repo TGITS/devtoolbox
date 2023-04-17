@@ -32,7 +32,7 @@
     <!-- Version Number used with flatten plugin & CI -->
     <revision>1.0.0-SNAPSHOT</revision>
     <!-- Default Java version -->
-    <java.version>11</java.version>
+    <java.version>17</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <!-- Flatten Maven Plugin Version-->
@@ -40,24 +40,17 @@
     <!-- Maven Compiler Plugin -->
     <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
     <!-- Maven Jar Plugin -->
-    <maven-jar-plugin.version>3.2.2</maven-jar-plugin.version>
+    <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
     <!-- Maven Release Plugin Version -->
-    <maven.release.plugin.version>3.0.0-M7</maven.release.plugin.version>
-    <!-- JReleaser Maven Plugin Version -->
-    <jreleaser-maven-plugin.version>1.3.1</jreleaser-maven-plugin.version>
-    <!-- Maven Assembly Plugin Version -->
-    <maven-assembly-plugin.version>3.4.2</maven-assembly-plugin.version>
+    <maven-release-plugin.version>3.0.0-M7</maven-release-plugin.version>
     <!-- Maven Site Plugin Version -->
-    <maven-site-plugin.version>4.0.0-M3</maven-site-plugin.version>
-    <maven-project-info-reports-plugin.version>3.4.1</maven-project-info-reports-plugin.version>
-    <site.locales>fr</site.locales>
     <!-- Maven Surefire Plugin & Report Plugin -->
-    <surefire-maven-plugin.version>3.0.0-M7</surefire-maven-plugin.version>
-    <maven-surefire-report-plugin.version>3.0.0-M7</maven-surefire-report-plugin.version>
+    <surefire-maven-plugin.version>3.0.0-M9</surefire-maven-plugin.version>
+    <maven-surefire-report-plugin.version>3.0.0-M9</maven-surefire-report-plugin.version>
     <!-- Maven Dependency Plugin -->
-    <maven-dependency-plugin.version>3.3.0</maven-dependency-plugin.version>
+    <maven-dependency-plugin.version>3.5.0</maven-dependency-plugin.version>
     <!-- Dependency Check -->
-    <dependency-check.maven.version>7.3.2</dependency-check.maven.version>
+    <dependency-check-maven.version>8.1.0</dependency-check-maven.version>
     <!-- Jacoco -->
     <jacoco.version>0.8.8</jacoco.version>
     <!-- AsciiDoctor -->
@@ -65,9 +58,9 @@
     <asciidoctorj-pdf.version>2.3.3</asciidoctorj-pdf.version>
     <asciidoctorj-diagram.version>2.2.3</asciidoctorj-diagram.version>
     <!-- Javadoc / UMLDoclet -->
-    <umldoclet.version>2.0.20</umldoclet.version>
+    <umldoclet.version>2.1.0</umldoclet.version>
     <!-- Javadoc Maven Plugin -->
-    <maven-javadoc-plugin.version>3.4.1</maven-javadoc-plugin.version>
+    <maven-javadoc-plugin.version>3.5.0</maven-javadoc-plugin.version>
     <!-- SpotBugs -->
     <spotbugs.version>4.7.3</spotbugs.version>
     <spotbugs-maven-plugin.version>4.7.3.0</spotbugs-maven-plugin.version>
@@ -79,32 +72,30 @@
     <!-- Forcing Commons IO version to avoid a CVE -->
     <commons-io.version>2.11.0</commons-io.version>
     <!-- PiTest -->
-    <pitest.version>1.9.11</pitest.version>
-    <pitest-junit5-plugin.version>1.1.0</pitest-junit5-plugin.version>
+    <pitest.version>1.11.1</pitest.version>
+    <pitest-junit5-plugin.version>1.1.2</pitest-junit5-plugin.version>
     <!-- Lombok -->
     <lombok.version>1.18.24</lombok.version>
     <!-- JUnit 5  -->
-    <junit-jupiter.version>5.9.1</junit-jupiter.version>
+    <junit-jupiter.version>5.9.2</junit-jupiter.version>
     <!-- Mockito -->
-    <mockito.version>4.0.0</mockito.version>
+    <mockito.version>5.1.1</mockito.version>
     <!-- Jakarta Validation -->
     <jakarta-validation.version>2.0.2</jakarta-validation.version>
-    <!-- Log4j2 -->
-    <log4j2.version>2.17.2</log4j2.version>
     <!-- Logback -->
-    <logback.version>1.2.11</logback.version>
+    <logback.version>1.4.5</logback.version>
     <!-- SLF4J -->
-    <slf4j.version>1.7.36</slf4j.version>
+    <slf4j.version>2.0.6</slf4j.version>
     <!-- Wiremock Version -->
     <wiremock.version>2.35.0</wiremock.version>
     <!-- ArchUnit Version -->
     <archunit.version>1.0.1</archunit.version>
     <!-- JUnit Pioneer Version -->
-    <junit-pioneer.version>1.7.1</junit-pioneer.version>
+    <junit-pioneer.version>2.0.0</junit-pioneer.version>
     <!-- AssertJ Version -->
-    <assertj.version>3.23.1</assertj.version>
+    <assertj.version>3.24.2</assertj.version>
     <!-- Jqwik Version -->
-    <jqwik.version>1.7.1</jqwik.version>
+    <jqwik.version>1.7.2</jqwik.version>
     <!-- Licence Maven Plugin - org.codehaus.mojo -->
     <!-- Used to list the licenses used by the libraries of the project -->
     <license-maven-plugin.version>2.0.0</license-maven-plugin.version>
@@ -114,11 +105,11 @@
     <!-- Versions Maven Plugin -->
     <versions-maven-plugin.version>2.13.0</versions-maven-plugin.version>
     <!-- Surefire Maven Plugin -->
-    <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
+    <maven-surefire-plugin.version>3.0.0-M9</maven-surefire-plugin.version>
     <!-- PMD Maven Plugin -->
-    <maven-pmd-plugin.version>3.19.0</maven-pmd-plugin.version>
+    <maven-pmd-plugin.version>3.20.0</maven-pmd-plugin.version>
     <!-- Checkstyle Maven Plugin -->
-    <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
+    <maven-checkstyle-plugin.version>3.2.1</maven-checkstyle-plugin.version>
     <!-- Properties Maven Plugin -->
     <properties-maven-plugin.version>1.1.0</properties-maven-plugin.version>
     <!-- Maven Changelog Plugin -->
@@ -143,7 +134,7 @@
     <!-- Spotless Maven Plugin -->
     <spotless-maven-plugin.version>2.28.0</spotless-maven-plugin.version>
     <!-- DataFaker Version -->
-    <datafaker.version>1.7.0</datafaker.version>
+    <datafaker.version>1.8.0</datafaker.version>
     <!-- jshell-maven-plugin version -->
     <jshell-maven-plugin.version>1.3</jshell-maven-plugin.version>
   </properties>
@@ -371,28 +362,6 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <version>${surefire-maven-plugin.version}</version>
         </plugin>
-        <!-- Release Maven Plugin -->
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-release-plugin</artifactId>
-          <version>${maven-release-plugin.version}</version>
-        </plugin>
-        <!-- Assembly Maven Plugin -->
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-assembly-plugin</artifactId>
-          <version>${maven-assembly-plugin.version}</version>
-        </plugin>
-        <!-- Site Maven Plugin -->
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-site-plugin</artifactId>
-          <version>${maven-site-plugin.version}</version>
-          <configuration>
-            <locales>${site.locales}</locales>
-            <outputEncoding>${project.reporting.outputEncoding}</outputEncoding>
-          </configuration>
-        </plugin>
         <!-- Maven Project Info Reports Plugin -->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -463,7 +432,7 @@
         <plugin>
           <groupId>org.owasp</groupId>
           <artifactId>dependency-check-maven</artifactId>
-          <version>${dependency-check.maven.version}</version>
+          <version>${dependency-check-maven.version}</version>
           <configuration>
             <format>ALL</format>
             <!-- Beware, there are errors when running the version 5.3.2 of the plugin with pretty print to true -->

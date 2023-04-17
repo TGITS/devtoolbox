@@ -2,7 +2,7 @@ package tgits.datafaker.example.provider;
 
 import java.io.PrintStream;
 import net.datafaker.Faker;
-import net.datafaker.providers.movie.Pokemon;
+import net.datafaker.providers.entertainment.Pokemon;
 
 public class PokemonProviderExample {
   private final Faker faker;
