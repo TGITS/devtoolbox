@@ -1,4 +1,4 @@
-//DEPS net.datafaker:datafaker:1.8.0
+//DEPS net.datafaker:datafaker:1.9.0
 //DEPS com.github.mifmif:generex:1.0.2
 //DEPS dk.brics.automaton:automaton:1.11-8
 
@@ -17,14 +17,14 @@
  * <p>
  * Il faut donc récupérer : 
  * <ul>
- *  <li>datafaker-1.8.0.jar (https://mvnrepository.com/artifact/net.datafaker/datafaker/1.8.0 par exemple)
+ *  <li>datafaker-1.9.0.jar (https://mvnrepository.com/artifact/net.datafaker/datafaker/1.9.0 par exemple)
  *  <li>generex-1.0.2.jar (https://mvnrepository.com/artifact/com.github.mifmif/generex/1.0.2 par exemple)
  *  <li>automaton-1.11-8.jar (https://mvnrepository.com/artifact/dk.brics/automaton/1.11-8 par exemple)
  * </ul>
  * <p>
  * Il faut placer les jar récupérés dans le sous-répertoire <code>lib</code> par rapport au répertoire courant dans lequel se trouvent les scripts 
  * et dans lequel vous allez exécuter JShell, il faut lancer JShell de la manière suivante : 
- * jshell --class-path .;.\lib\datafaker-1.8.0.jar;.\lib\generex-1.0.2.jar;.\lib\automaton-1.11-8.jar
+ * jshell --class-path .;.\lib\datafaker-1.9.0.jar;.\lib\generex-1.0.2.jar;.\lib\automaton-1.11-8.jar
  * <p>
  * Ensuite, une fois sous jshell ouvrez et exécuter le script avec :
  * /open DataFakerRegexifyUsage.jsh

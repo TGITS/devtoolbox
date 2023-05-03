@@ -134,7 +134,7 @@
     <!-- Spotless Maven Plugin -->
     <spotless-maven-plugin.version>2.28.0</spotless-maven-plugin.version>
     <!-- DataFaker Version -->
-    <datafaker.version>1.8.1</datafaker.version>
+    <datafaker.version>1.9.0</datafaker.version>
     <!-- jshell-maven-plugin version -->
     <jshell-maven-plugin.version>1.3</jshell-maven-plugin.version>
   </properties>
