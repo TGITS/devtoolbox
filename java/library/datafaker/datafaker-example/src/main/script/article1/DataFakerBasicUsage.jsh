@@ -1,7 +1,7 @@
 //DEPS net.datafaker:datafaker:1.9.0
 
 /** 
- * Pour executer avec JBang :
+ * Pour exécuter avec JBang :
  * <p>
  * jbang DataFakerBasicUsage.jsh
  * <p>

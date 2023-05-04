@@ -1,16 +1,12 @@
 //DEPS net.datafaker:datafaker:1.9.0
-//DEPS com.github.mifmif:generex:1.0.2
-//DEPS dk.brics.automaton:automaton:1.11-8
 
 /** 
- * Pour executer avec JBang :
- * <p>
- * jbang DataFakerRegexifyUsage.jsh
+ * Pour executer avec JBang : jbang DataFakerRegexifyUsage.jsh
  * <p>
  * Les lignes commençant par //DEPS xxx au début du script sont pour le lancement avec JBang.
  * Elle est ignorée si on lance directement avec JShell
  * <p>
- * A exécuter sous JShell :
+ * Pour exécuter sous JShell :
  * <p>
  * Il faut avoir lancé JShell en précisant un classpath contenant la bibliothèque DataFaker 
  * et dans le cas particulier de ce shell de 2 autres bibliothèques dont Datafaker a besoin dans le classpath.

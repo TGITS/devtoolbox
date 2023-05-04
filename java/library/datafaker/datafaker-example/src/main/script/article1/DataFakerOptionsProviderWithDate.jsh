@@ -1,14 +1,14 @@
 //DEPS net.datafaker:datafaker:1.9.0
 
 /** 
- * Pour executer avec JBang :
+ * Pour exécuter avec JBang :
  * <p>
  * jbang DataFakerOptionsProviderWithDate.jsh
  * <p>
  * La ligne //DEPS net.datafaker:datafaker:1.9.0 au début du script est pour le lancement avec JBang.
  * Elle est ignorée si on lance directement avec JShell
  * <p>
- * A exécuter sous JShell :
+ * Pour exécuter sous JShell :
  * <p>
  * Il faut avoir lancé JShell en précisant un classpath contenant la bibliothèque DataFaker.
  * <p>
