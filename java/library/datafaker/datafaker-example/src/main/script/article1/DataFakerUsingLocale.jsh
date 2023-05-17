@@ -1,23 +1,25 @@
-//DEPS net.datafaker:datafaker:1.8.0
+//DEPS net.datafaker:datafaker:1.9.0
 
 /** 
- * Pour executer avec JBang :
+ * Afin de pouvoir voir correctement les caractères accentués sous une invite de commande Windows,
+ * avant de lancer JShell ou JBang, il faut au préalable :
+ * <ul>
+ *   <li>Définir la variable d'environnement JAVA_TOOL_OPTIONS à la valeur -Dfile.encoding
+ *   par exemple en saisissant dans l'invite de commande : SET JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF8</li>
+ *   <li>Il faut également définir l'encodage UTF-8 pour l'invite de commande en saisissant
+ *   la commande suivante : chcp 65001</li>
+ * </ul>
  * <p>
- * jbang DataFakerUsingLocale.jsh
+ * Pour exécuter avec JBang : jbang DataFakerUsingLocale.jsh
  * <p>
- * La ligne //DEPS net.datafaker:datafaker:1.8.0 au début du script est pour le lancement avec JBang.
+ * La ligne //DEPS net.datafaker:datafaker:1.9.0 au début du script est pour le lancement avec JBang.
  * Elle est ignorée si on lance directement avec JShell
  * <p>
- * Afin de pouvoir voir correctement les caractères accentués sous une invite de commande Windows, avant de lancer JShell, il faut au préalable :
- * - Définir la variable d'environnement JAVA_TOOL_OPTIONS à la valeur -Dfile.encoding par exemple en saisissant dans l'invite de commande :
- *   SET JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF8
- * - Il faut également définir l'encodage UTF-8 pour l'invite de commande en saisissant la commande suivante :
- *   chcp 65001 
- * 
- * Ensuite, à exécuter sous JShell :
- * 
+ *
+ * Ensuite, pour exécuter sous JShell :
+ * <p>
  * Il faut avoir lancé JShell en précisant un classpath contenant la bibliothèque DataFaker.
- * par exemple : jshell --class-path .;.\lib\datafaker-1.8.0.jar
+ * par exemple : jshell --class-path .;.\lib\datafaker-1.9.0.jar
  * Ensuite, une fois sous jshell ouvrez et exécuter le script avec :
  * /open DataFakerUsingLocale.jsh
  * 
