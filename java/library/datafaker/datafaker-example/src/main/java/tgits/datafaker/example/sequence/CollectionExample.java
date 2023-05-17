@@ -28,9 +28,8 @@ public class CollectionExample {
             .<String>collection()
             .suppliers(() -> faker.gameOfThrones().character(), () -> faker.babylon5().character())
             .minLen(5) // Minimum length of the collection
-            .maxLen(10) // Maximun length of the collection
-            .build()
-            .get();
+            .maxLen(10) // Maximum length of the collection
+            .generate();
     this.out.println(charactersFromTVShows.size() + " random characters from TV Show");
     charactersFromTVShows.forEach(this.out::println);
   }
@@ -43,8 +42,7 @@ public class CollectionExample {
             .nullRate(0.4) // Null values occurrences frequency in the collection
             .minLen(8)
             .maxLen(12)
-            .build()
-            .get();
+            .generate();
     this.out.println(isbns.size() + " ISBN (possible null value)");
     isbns.forEach(this.out::println);
   }
