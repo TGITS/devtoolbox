@@ -30,3 +30,6 @@ hs_err_pid*
 /java/misc/jbang-example/target
 /java/library/guava/.vscode
 /java/misc/jbang-example/src/main/script/output/westeros_houses.csv
+/java/algorithm/.vscode
+/java/algorithm/binary-tree/.flattened-pom.xml
+/java/algorithm/binary-tree/target

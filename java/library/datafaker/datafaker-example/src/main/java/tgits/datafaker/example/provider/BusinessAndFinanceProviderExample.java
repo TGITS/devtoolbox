@@ -3,7 +3,6 @@ package tgits.datafaker.example.provider;
 import java.io.PrintStream;
 import net.datafaker.Faker;
 import net.datafaker.providers.base.Business;
-import net.datafaker.providers.base.CreditCardType;
 import net.datafaker.providers.base.Finance;
 
 public class BusinessAndFinanceProviderExample {
@@ -31,7 +30,7 @@ public class BusinessAndFinanceProviderExample {
 
     final Finance finance = this.faker.finance();
     this.out.println("Credit card : " + finance.creditCard());
-    this.out.println("Credit card : " + finance.creditCard(CreditCardType.MASTERCARD));
+    this.out.println("Credit card : " + finance.creditCard(Finance.CreditCardType.MASTERCARD));
     this.out.println("BIC (Business Identifier Code): " + finance.bic());
     this.out.println("IBAN (International Bank Account Number): " + finance.iban());
     this.out.println("French IBAN (International Bank Account Number): " + finance.iban("FR"));
