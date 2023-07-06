@@ -38,7 +38,7 @@ public class StreamExample {
     Stream<String> isbns =
         faker.<String>stream()
             .suppliers(() -> faker.code().isbn10(true), () -> faker.code().isbn13(true))
-            .nullRate(0.4) // Null values occurrences frequency in the collection
+            .nullRate(0.4) // Null values occurrences frequency in the collection - about 40% of null values here
             .minLen(8)
             .maxLen(12)
             .build()
