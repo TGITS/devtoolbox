@@ -33,3 +33,4 @@ hs_err_pid*
 /java/algorithm/.vscode
 /java/algorithm/binary-tree/.flattened-pom.xml
 /java/algorithm/binary-tree/target
+/java/library/guava/guava-cache-example/.flattened-pom.xml
