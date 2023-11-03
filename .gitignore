@@ -37,3 +37,4 @@ hs_err_pid*
 /java/misc/java21-example/.flattened-pom.xml
 /java/misc/java21-example/.vscode
 /java/misc/java21-example/target
+/java/misc/java21-example/.idea
