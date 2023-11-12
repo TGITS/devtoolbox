@@ -11,6 +11,7 @@ import tgits.datafaker.example.model.RegexModelBasedGenerationExample;
 import tgits.datafaker.example.model.TemplateModelBasedGenerationExample;
 import tgits.datafaker.example.provider.*;
 import tgits.datafaker.example.provider.options.OptionsProviderExample;
+import tgits.datafaker.example.schema.SimpleSchemaExample;
 import tgits.datafaker.example.sequence.CollectionExample;
 import tgits.datafaker.example.sequence.StreamExample;
 
@@ -182,6 +183,25 @@ public class Main {
     streamExample.printRandomCharactersFromTVShow();
     defaultPrintStream.println("------------------");
     streamExample.printISBNs();
+    defaultPrintStream.println();
+    defaultPrintStream.println(SEPARATION);
+
+    defaultPrintStream.println();
+    defaultPrintStream.println("#### CSV generated from a schema ####");
+    defaultPrintStream.println();
+    final SimpleSchemaExample simpleSchemaExample = new SimpleSchemaExample(defaultFaker, defaultPrintStream);
+    simpleSchemaExample.printCsvFromSchema();
+    defaultPrintStream.println("------------------");
+    defaultPrintStream.println("#### JSON generated from a schema ####");
+    simpleSchemaExample.printJsonFromSchema();
+    defaultPrintStream.println();
+    defaultPrintStream.println("------------------");
+    defaultPrintStream.println("#### YAML generated from a schema ####");
+    simpleSchemaExample.printYamlFromSchema();
+    defaultPrintStream.println();
+    defaultPrintStream.println("------------------");
+    defaultPrintStream.println("#### XML generated from a schema ####");
+    simpleSchemaExample.printXmlFromSchema();
     defaultPrintStream.println();
     defaultPrintStream.println(SEPARATION);
   }
