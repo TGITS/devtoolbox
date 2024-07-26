@@ -1,12 +1,14 @@
 package tgits.concurrent.counter.examples.counter;
 
-public class NotSynchronizedLongCounter implements LongCounter {
+import java.util.concurrent.atomic.LongAdder;
 
-    private long counter;
+public class LongAdderCounter implements LongCounter {
+
+    private final LongAdder counter;
     private final String name;
 
-    public NotSynchronizedLongCounter(String name) {
-        this.counter = 0;
+    public LongAdderCounter(String name) {
+        this.counter = new LongAdder();
         this.name = name;
     }
 
@@ -17,11 +19,11 @@ public class NotSynchronizedLongCounter implements LongCounter {
 
     @Override
     public void increment() {
-        counter++;
+        this.counter.increment();
     }
 
     @Override
     public long value() {
-        return counter;
+        return counter.sum();
     }
 }

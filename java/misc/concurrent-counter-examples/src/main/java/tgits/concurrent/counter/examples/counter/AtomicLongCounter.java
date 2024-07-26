@@ -1,14 +1,14 @@
 package tgits.concurrent.counter.examples.counter;
 
-import java.util.concurrent.atomic.LongAdder;
+import java.util.concurrent.atomic.AtomicLong;
 
-public class LongAdderLongCounter implements LongCounter {
+public class AtomicLongCounter implements LongCounter {
 
-    private final LongAdder counter;
+    private final AtomicLong counter;
     private final String name;
 
-    public LongAdderLongCounter(String name) {
-        this.counter = new LongAdder();
+    public AtomicLongCounter(String name) {
+        this.counter = new AtomicLong(0);
         this.name = name;
     }
 
@@ -19,7 +19,7 @@ public class LongAdderLongCounter implements LongCounter {
 
     @Override
     public void increment() {
-        this.counter.increment();
+        this.counter.incrementAndGet();
     }
 
     @Override

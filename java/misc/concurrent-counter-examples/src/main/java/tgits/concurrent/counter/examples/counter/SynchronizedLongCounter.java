@@ -17,7 +17,7 @@ public class SynchronizedLongCounter implements LongCounter {
 
     @Override
     public synchronized void increment() {
-        counter ++;
+        counter++;
     }
 
     @Override

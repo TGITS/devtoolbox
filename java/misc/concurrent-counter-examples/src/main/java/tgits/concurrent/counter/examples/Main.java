@@ -2,7 +2,7 @@ package tgits.concurrent.counter.examples;
 
 import org.apache.commons.lang3.time.StopWatch;
 import tgits.concurrent.counter.examples.counter.*;
-import tgits.concurrent.counter.examples.worker.AdderWorker;
+import tgits.concurrent.counter.examples.worker.IncrementerWorker;
 
 public class Main {
 
@@ -14,19 +14,18 @@ public class Main {
         LongCounter synchronizedLongCounter = new SynchronizedLongCounter("synchronizedLongCounter");
         updateCounterFromThreads(synchronizedLongCounter);
 
-        LongCounter longAdderLongCounter = new LongAdderLongCounter("longAdderLongCounter");
-        updateCounterFromThreads(longAdderLongCounter);
-
-        LongCounter atomicLongLongCounter = new AtomicLongLongCounter("atomicLongLongCounter");
+        LongCounter atomicLongLongCounter = new AtomicLongCounter("atomicLongLongCounter");
         updateCounterFromThreads(atomicLongLongCounter);
 
+        LongCounter longAdderLongCounter = new LongAdderCounter("longAdderLongCounter");
+        updateCounterFromThreads(longAdderLongCounter);
     }
 
     public static void updateCounterFromThreads(LongCounter longCounter) throws InterruptedException {
         System.out.println(longCounter.name() + " initial value : " + longCounter.value());
-        Thread t1 = new Thread(new AdderWorker(longCounter));
-        Thread t2 = new Thread(new AdderWorker(longCounter));
-        Thread t3 = new Thread(new AdderWorker(longCounter));
+        Thread t1 = new Thread(new IncrementerWorker(longCounter));
+        Thread t2 = new Thread(new IncrementerWorker(longCounter));
+        Thread t3 = new Thread(new IncrementerWorker(longCounter));
         StopWatch watch = new StopWatch();
         watch.start();
         t1.start();
