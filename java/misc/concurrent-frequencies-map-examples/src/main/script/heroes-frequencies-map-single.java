@@ -26,7 +26,7 @@ class FrequenciesMapUpdater {
         for (String line : lines) {
             System.out.println(line);
             String[] elements = line.split(",");
-            //For the code example, we only need the publisher, which is the column of inex 6 (the 7th)
+            //For the code example, we only need the publisher, which is the column of index 6 (the 7th)
             frequencies.computeIfAbsent(elements[6].strip(), k -> new LongAdder()).increment();
         }
     }
