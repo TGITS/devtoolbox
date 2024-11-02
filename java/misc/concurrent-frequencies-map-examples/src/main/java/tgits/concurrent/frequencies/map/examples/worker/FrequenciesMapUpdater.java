@@ -23,7 +23,7 @@ public class FrequenciesMapUpdater implements Runnable {
     @Override
     public void run() {
         for (String element : elements) {
-            //If there is alreay a LongAdder object for this entry, we simply increment it
+            //If there is already a LongAdder object for this entry, we simply increment it
             //If there is no entry yet, we create it and increment it.
             frequencies.computeIfAbsent(element, k -> new LongAdder()).increment();
             try {

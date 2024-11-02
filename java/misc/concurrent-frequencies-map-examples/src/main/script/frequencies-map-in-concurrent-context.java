@@ -49,17 +49,17 @@ class Main {
         Thread t1 = new Thread(new FrequenciesMapUpdater(allDaysOfWeek, frequencies));
         Thread t2 = new Thread(new FrequenciesMapUpdater(workingDays, frequencies));
         Thread t3 = new Thread(new FrequenciesMapUpdater(weekendDays, frequencies));
-        Thread t4 = new Thread(new FrequenciesMapUpdater(workingDays, frequencies));
+
         //Starting the threads
         t1.start();
         t2.start();
         t3.start();
-        t4.start();
+
         //Waiting for the end of the work done by the threads
         t1.join();
         t2.join();
         t3.join();
-        t4.join();
+
         System.out.println("Content of the Map after update by the workers :");
         for(Map.Entry<String, LongAdder> entry:frequencies.entrySet()) {
             System.out.println(entry.getKey() + " -> " + entry.getValue());

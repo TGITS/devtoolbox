@@ -24,13 +24,13 @@ class FrequenciesMapUpdater implements Runnable {
 
     @Override
     public void run() {
-        // A line has the following structure : id,name,Gender,Eye color,Race,Hair color,Publisher,Alignment
+        // A line has the following structure : id, name, gender, eye color, race, hair color, publisher, alignment
         // We remove the first line which contains the header
         lines.remove(0);
         for (String line : lines) {
             //System.out.println(line);
             String[] elements = line.split(",");
-            //For the code example, we only need the publisher, which is the column of inex 6 (the 7th)
+            //For the code example, we only need the publisher, which is the column of index 6 (the 7th)
             frequencies.computeIfAbsent(elements[6].strip(), k -> new LongAdder()).increment();
             try {
                 Thread.sleep(Duration.ofMillis(10));

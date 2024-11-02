@@ -20,7 +20,7 @@ class FrequenciesMapUpdater {
     }
 
     public void execute() {
-        // A line has the following structure : id,name,Gender,Eye color,Race,Hair color,Publisher,Alignment
+        // A line has the following structure : id, name, gender, eye color, race, hair color, publisher, alignment
         // We remove the first line which contains the header
         lines.remove(0);
         for (String line : lines) {
