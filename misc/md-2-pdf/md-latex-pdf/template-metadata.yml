@@ -1,0 +1,71 @@
+---
+title: "XXX"
+
+subtitle: "YYY"
+
+document_id: "ODY-ZZZ-001"
+
+document_type: "ZZZ"
+
+project: "Cartographie Odyssée"
+
+organisation: "Noréade"
+
+author:
+  - "Auteur 1"
+  - "Auteur 2"
+
+reviewers:
+  - "Reviewer 1"
+  - "Reviewer 2"
+
+contributors:
+  - "Agent Code Local (Kilo Code)"
+
+ai_assistance:
+
+  tools:
+    - name: "Agent Code Local (Kilo Code)"
+      model: "gemma-4-31B"
+      role: "Analyse de code et aide à la rédaction"
+
+  disclaimer: >
+    Ce document a été partiellement assisté par des outils
+    d'intelligence artificielle. Le contenu produit a été
+    revu et validé par les auteurs.
+
+classification: "Interne"
+
+status: "Brouillon"
+
+version: "0.1"
+
+date: "2026-07-08"
+
+keywords:
+  - Odyssée
+
+subject: "Cartographie Odyssée"
+
+titlepage: true
+
+toc: true
+
+toc-own-page: true
+
+numbersections: true
+
+lang: fr-FR
+
+mainfont: "Noto Sans"
+
+sansfont: "Noto Sans"
+
+monofont: "Cascadia Code"
+
+revision_history:
+  - version: "0.1"
+    date: "2026-07-08"
+    author: "Christophe VAUDRY"
+    comment: "Création"
+---

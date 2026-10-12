@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+
+    <title>Document de validation Markdown → HTML &amp; PDF</title>
+
+        <link rel="stylesheet" href="style.css"">
+    
+    <script defer=""
+    src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"
+    type="text/javascript"></script>
+</head>
+
+<body>
+
+    <!-- ===================================================== -->
+    <!-- PAGE DE GARDE -->
+    <!-- ===================================================== -->
+
+    <section class="cover-page">
+
+        <div class="organisation">
+            <strong>Organisation :</strong> Octogone
+        </div>
+
+        <div class="document-type">
+            <strong>Type de document :</strong> Exemple
+        </div>
+
+        <h1 class="cover-title">
+            Document de validation Markdown → HTML &amp; PDF
+        </h1>
+
+                <div class="cover-subtitle">
+            Conversion de MD vers HTML &amp; PDF avec Pandoc
+        </div>
+        
+        <div class="cover-metadata">
+
+                        <div>
+                <strong>Projet :</strong> md2pdf
+            </div>
+            
+            <div>
+                <strong>Version :</strong> 1
+            </div>
+
+            <div>
+                <strong>Statut :</strong> draft
+            </div>
+
+            <div>
+                <strong>Classification :</strong> Document de test
+            </div>
+
+            <div>
+                <strong>Date :</strong> 2026-10-12
+            </div>
+
+        </div>
+
+    </section>
+
+    <div class="page-break"></div>
+
+    <!-- ===================================================== -->
+    <!-- INFORMATIONS DOCUMENTAIRES -->
+    <!-- ===================================================== -->
+
+    <section>
+
+        <h1>Informations documentaires</h1>
+
+        <table class="document-metadata">
+            <tbody>
+
+                <tr>
+                    <th>Titre</th>
+                    <td>Document de validation Markdown → HTML &amp;
+PDF</td>
+                </tr>
+
+                                <tr>
+                    <th>Identifiant</th>
+                    <td>tst_001</td>
+                </tr>
+                
+                <tr>
+                    <th>Type</th>
+                    <td>Exemple</td>
+                </tr>
+
+                <tr>
+                    <th>Version</th>
+                    <td>1</td>
+                </tr>
+
+                <tr>
+                    <th>Statut</th>
+                    <td>draft</td>
+                </tr>
+
+                <tr>
+                    <th>Classification</th>
+                    <td>Document de test</td>
+                </tr>
+
+                <tr>
+                    <th>Auteur(s)</th>
+                    <td>
+                        <ul>
+                                                        <li>Christophe
+VAUDRY</li>
+                                                        <li>GitHub
+Copilot</li>
+                                                    </ul>
+                    </td>
+                </tr>
+
+                                <tr>
+                    <th>Relecteur(s)</th>
+                    <td>
+                        <ul>
+                                                        <li>Reviewer
+1</li>
+                                                        <li>Reviewer
+2</li>
+                                                    </ul>
+                    </td>
+                </tr>
+                
+                                <tr>
+                    <th>Contributeur(s)</th>
+                    <td>
+                        <ul>
+                                                        <li>Contributor
+1</li>
+                                                        <li>Contributor
+2</li>
+                                                    </ul>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+
+    </section>
+
+    <!-- ===================================================== -->
+    <!-- HISTORIQUE -->
+    <!-- ===================================================== -->
+
+    
+    <!-- ===================================================== -->
+    <!-- SOMMAIRE -->
+    <!-- ===================================================== -->
+
+    
+    <div class="page-break"></div>
+
+    <section>
+
+        <h1>Sommaire</h1>
+
+        <nav id="TOC">
+            <ul>
+            <li><a href="#introduction" id="toc-introduction"><span
+            class="toc-section-number">1</span> Introduction</a>
+            <ul>
+            <li><a href="#caractères-spéciaux"
+            id="toc-caractères-spéciaux"><span
+            class="toc-section-number">1.1</span> Caractères
+            spéciaux</a></li>
+            </ul></li>
+            <li><a href="#titres" id="toc-titres"><span
+            class="toc-section-number">2</span> Titres</a>
+            <ul>
+            <li><a href="#niveau-2" id="toc-niveau-2"><span
+            class="toc-section-number">2.1</span> Niveau 2</a>
+            <ul>
+            <li><a href="#niveau-3" id="toc-niveau-3"><span
+            class="toc-section-number">2.1.1</span> Niveau 3</a></li>
+            </ul></li>
+            </ul></li>
+            <li><a href="#paragraphes-et-citations"
+            id="toc-paragraphes-et-citations"><span
+            class="toc-section-number">3</span> Paragraphes et
+            citations</a></li>
+            <li><a href="#listes" id="toc-listes"><span
+            class="toc-section-number">4</span> Listes</a>
+            <ul>
+            <li><a href="#liste-à-puces" id="toc-liste-à-puces"><span
+            class="toc-section-number">4.1</span> Liste à puces</a></li>
+            <li><a href="#liste-numérotée"
+            id="toc-liste-numérotée"><span
+            class="toc-section-number">4.2</span> Liste
+            numérotée</a></li>
+            <li><a href="#liste-de-tâches"
+            id="toc-liste-de-tâches"><span
+            class="toc-section-number">4.3</span> Liste de
+            tâches</a></li>
+            </ul></li>
+            <li><a href="#tableaux" id="toc-tableaux"><span
+            class="toc-section-number">5</span> Tableaux</a>
+            <ul>
+            <li><a href="#tableau-simple" id="toc-tableau-simple"><span
+            class="toc-section-number">5.1</span> Tableau
+            simple</a></li>
+            <li><a href="#tableau-large" id="toc-tableau-large"><span
+            class="toc-section-number">5.2</span> Tableau large</a></li>
+            </ul></li>
+            <li><a href="#code-source" id="toc-code-source"><span
+            class="toc-section-number">6</span> Code source</a>
+            <ul>
+            <li><a href="#python" id="toc-python"><span
+            class="toc-section-number">6.1</span> Python</a></li>
+            <li><a href="#json" id="toc-json"><span
+            class="toc-section-number">6.2</span> JSON</a></li>
+            <li><a href="#xml" id="toc-xml"><span
+            class="toc-section-number">6.3</span> XML</a></li>
+            </ul></li>
+            <li><a href="#bloc-préformaté"
+            id="toc-bloc-préformaté"><span
+            class="toc-section-number">7</span> Bloc préformaté</a></li>
+            <li><a href="#mathématiques" id="toc-mathématiques"><span
+            class="toc-section-number">8</span> Mathématiques</a>
+            <ul>
+            <li><a href="#formule-inline" id="toc-formule-inline"><span
+            class="toc-section-number">8.1</span> Formule
+            inline</a></li>
+            <li><a href="#formule-centrée"
+            id="toc-formule-centrée"><span
+            class="toc-section-number">8.2</span> Formule
+            centrée</a></li>
+            <li><a href="#matrice" id="toc-matrice"><span
+            class="toc-section-number">8.3</span> Matrice</a></li>
+            </ul></li>
+            <li><a href="#notes-de-bas-de-page"
+            id="toc-notes-de-bas-de-page"><span
+            class="toc-section-number">9</span> Notes de bas de
+            page</a></li>
+            <li><a href="#liens" id="toc-liens"><span
+            class="toc-section-number">10</span> Liens</a></li>
+            <li><a href="#images" id="toc-images"><span
+            class="toc-section-number">11</span> Images</a>
+            <ul>
+            <li><a href="#image-distante" id="toc-image-distante"><span
+            class="toc-section-number">11.1</span> Image
+            distante</a></li>
+            <li><a href="#image-locale" id="toc-image-locale"><span
+            class="toc-section-number">11.2</span> Image locale</a></li>
+            </ul></li>
+            <li><a href="#couleurs-html" id="toc-couleurs-html"><span
+            class="toc-section-number">12</span> Couleurs HTML</a></li>
+            <li><a href="#html-embarqué" id="toc-html-embarqué"><span
+            class="toc-section-number">13</span> HTML embarqué</a></li>
+            <li><a href="#saut-de-page" id="toc-saut-de-page"><span
+            class="toc-section-number">14</span> Saut de page</a></li>
+            <li><a href="#diagramme-mermaid"
+            id="toc-diagramme-mermaid"><span
+            class="toc-section-number">15</span> Diagramme
+            Mermaid</a></li>
+            <li><a href="#long-tableau" id="toc-long-tableau"><span
+            class="toc-section-number">16</span> Long tableau</a></li>
+            <li><a href="#test-de-pagination"
+            id="toc-test-de-pagination"><span
+            class="toc-section-number">17</span> Test de
+            pagination</a></li>
+            <li><a href="#quelques-symboles"
+            id="toc-quelques-symboles"><span
+            class="toc-section-number">18</span> Quelques
+            symboles</a></li>
+            <li><a href="#emoticônes-en-unicode"
+            id="toc-emoticônes-en-unicode"><span
+            class="toc-section-number">19</span> Emoticônes en
+            unicode</a></li>
+            <li><a href="#conclusion" id="toc-conclusion"><span
+            class="toc-section-number">20</span> Conclusion</a></li>
+            </ul>
+        </nav>
+
+    </section>
+
+    
+    <!-- ===================================================== -->
+    <!-- CORPS DU DOCUMENT -->
+    <!-- ===================================================== -->
+
+    <div class="page-break"></div>
+
+    <main>
+
+        <h1 data-number="1" id="introduction"><span
+        class="header-section-number">1</span> Introduction</h1>
+        <p>Ce document sert à valider la conversion d’un fichier
+        Markdown vers PDF avec plusieurs moteurs :</p>
+        <ul>
+        <li>HTML + Chrome</li>
+        <li>HTML + WeasyPrint</li>
+        <li>LuaLaTeX (MiKTeX)</li>
+        </ul>
+        <p>L’objectif est d’identifier les différences de rendu.</p>
+        <h2 data-number="1.1" id="caractères-spéciaux"><span
+        class="header-section-number">1.1</span> Caractères
+        spéciaux</h2>
+        <p>Accents :</p>
+        <p>à â ä ç é è ê ë î ï ô ö ù û ü ÿ</p>
+        <p>Guillemets :</p>
+        <p>« français » et “anglais”</p>
+        <p>Tirets :</p>
+        <ul>
+        <li>simple</li>
+        <li>moyen –</li>
+        <li>long —</li>
+        </ul>
+        <p>Symboles :</p>
+        <p>✓ ✗ ★ ☆ ☑ ☒</p>
+        <p>Flèches :</p>
+        <p>→ ← ↑ ↓ ⇒ ⇐ ⇔</p>
+        <p>Mathématiques Unicode :</p>
+        <p>≤ ≥ ≠ ± × ÷ ∞</p>
+        <hr />
+        <h1 data-number="2" id="titres"><span
+        class="header-section-number">2</span> Titres</h1>
+        <h2 data-number="2.1" id="niveau-2"><span
+        class="header-section-number">2.1</span> Niveau 2</h2>
+        <h3 data-number="2.1.1" id="niveau-3"><span
+        class="header-section-number">2.1.1</span> Niveau 3</h3>
+        <h4 data-number="2.1.1.1" id="niveau-4"><span
+        class="header-section-number">2.1.1.1</span> Niveau 4</h4>
+        <h5 data-number="2.1.1.1.1" id="niveau-5"><span
+        class="header-section-number">2.1.1.1.1</span> Niveau 5</h5>
+        <p>Texte normal.</p>
+        <p>Texte <strong>gras</strong>.</p>
+        <p>Texte <em>italique</em>.</p>
+        <p>Texte <strong><em>gras italique</em></strong>.</p>
+        <p>Texte <del>barré</del>.</p>
+        <p>Texte <code>inline code</code>.</p>
+        <hr />
+        <h1 data-number="3" id="paragraphes-et-citations"><span
+        class="header-section-number">3</span> Paragraphes et
+        citations</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+        non risus.</p>
+        <blockquote>
+        <p>Ceci est une citation.</p>
+        <p>Sur plusieurs lignes.</p>
+        <p>Auteur inconnu</p>
+        </blockquote>
+        <hr />
+        <h1 data-number="4" id="listes"><span
+        class="header-section-number">4</span> Listes</h1>
+        <h2 data-number="4.1" id="liste-à-puces"><span
+        class="header-section-number">4.1</span> Liste à puces</h2>
+        <ul>
+        <li>Premier élément</li>
+        <li>Deuxième élément
+        <ul>
+        <li>Sous élément A</li>
+        <li>Sous élément B</li>
+        </ul></li>
+        <li>Troisième élément</li>
+        </ul>
+        <h2 data-number="4.2" id="liste-numérotée"><span
+        class="header-section-number">4.2</span> Liste numérotée</h2>
+        <ol type="1">
+        <li>Étape 1</li>
+        <li>Étape 2</li>
+        <li>Étape 3</li>
+        </ol>
+        <h2 data-number="4.3" id="liste-de-tâches"><span
+        class="header-section-number">4.3</span> Liste de tâches</h2>
+        <ul class="task-list">
+        <li><label><input type="checkbox"
+        checked="" />Terminé</label></li>
+        <li><label><input type="checkbox" />À faire</label></li>
+        </ul>
+        <hr />
+        <h1 data-number="5" id="tableaux"><span
+        class="header-section-number">5</span> Tableaux</h1>
+        <h2 data-number="5.1" id="tableau-simple"><span
+        class="header-section-number">5.1</span> Tableau simple</h2>
+        <table>
+        <thead>
+        <tr>
+        <th>Colonne A</th>
+        <th>Colonne B</th>
+        <th>Colonne C</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>Valeur 1</td>
+        <td>Valeur 2</td>
+        <td>Valeur 3</td>
+        </tr>
+        <tr>
+        <td>Valeur 4</td>
+        <td>Valeur 5</td>
+        <td>Valeur 6</td>
+        </tr>
+        </tbody>
+        </table>
+        <h2 data-number="5.2" id="tableau-large"><span
+        class="header-section-number">5.2</span> Tableau large</h2>
+        <table>
+        <thead>
+        <tr>
+        <th>Produit</th>
+        <th style="text-align: right;">Quantité</th>
+        <th style="text-align: right;">Prix Unitaire</th>
+        <th style="text-align: right;">Montant</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>Article A</td>
+        <td style="text-align: right;">5</td>
+        <td style="text-align: right;">12.50</td>
+        <td style="text-align: right;">62.50</td>
+        </tr>
+        <tr>
+        <td>Article B</td>
+        <td style="text-align: right;">17</td>
+        <td style="text-align: right;">4.95</td>
+        <td style="text-align: right;">84.15</td>
+        </tr>
+        <tr>
+        <td>Article C</td>
+        <td style="text-align: right;">100</td>
+        <td style="text-align: right;">1.25</td>
+        <td style="text-align: right;">125.00</td>
+        </tr>
+        <tr>
+        <td>Total</td>
+        <td style="text-align: right;"></td>
+        <td style="text-align: right;"></td>
+        <td style="text-align: right;">271.65</td>
+        </tr>
+        </tbody>
+        </table>
+        <hr />
+        <h1 data-number="6" id="code-source"><span
+        class="header-section-number">6</span> Code source</h1>
+        <h2 data-number="6.1" id="python"><span
+        class="header-section-number">6.1</span> Python</h2>
+        <div class="sourceCode" id="cb1"><pre
+        class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hello(name: <span class="bu">str</span>):</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;Bonjour </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>hello(<span class="st">&quot;Pandoc&quot;</span>)</span></code></pre></div>
+        <h2 data-number="6.2" id="json"><span
+        class="header-section-number">6.2</span> JSON</h2>
+        <div class="sourceCode" id="cb2"><pre
+        class="sourceCode json"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;application&quot;</span><span class="fu">:</span> <span class="st">&quot;demo&quot;</span><span class="fu">,</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;version&quot;</span><span class="fu">:</span> <span class="st">&quot;1.0.0&quot;</span><span class="fu">,</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;enabled&quot;</span><span class="fu">:</span> <span class="kw">true</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+        <h2 data-number="6.3" id="xml"><span
+        class="header-section-number">6.3</span> XML</h2>
+        <div class="sourceCode" id="cb3"><pre
+        class="sourceCode xml"><code class="sourceCode xml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">customer</span> <span class="ot">id=</span><span class="st">&quot;123&quot;</span>&gt;</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">name</span>&gt;Jean Dupont&lt;/<span class="kw">name</span>&gt;</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">customer</span>&gt;</span></code></pre></div>
+        <hr />
+        <h1 data-number="7" id="bloc-préformaté"><span
+        class="header-section-number">7</span> Bloc préformaté</h1>
+        <pre><code>Ligne 1
+Ligne 2
+Ligne 3</code></pre>
+        <hr />
+        <h1 data-number="8" id="mathématiques"><span
+        class="header-section-number">8</span> Mathématiques</h1>
+        <h2 data-number="8.1" id="formule-inline"><span
+        class="header-section-number">8.1</span> Formule inline</h2>
+        <p>La formule de Pythagore est : <span
+        class="math inline">\(a^2+b^2=c^2\)</span>.</p>
+        <h2 data-number="8.2" id="formule-centrée"><span
+        class="header-section-number">8.2</span> Formule centrée</h2>
+        <p><span class="math display">\[
+        \int_{0}^{+\infty}
+        e^{-x}dx = 1
+        \]</span></p>
+        <h2 data-number="8.3" id="matrice"><span
+        class="header-section-number">8.3</span> Matrice</h2>
+        <p><span class="math display">\[
+        A=
+        \begin{bmatrix}
+        1 &amp; 2\\
+        3 &amp; 4
+        \end{bmatrix}
+        \]</span></p>
+        <hr />
+        <h1 data-number="9" id="notes-de-bas-de-page"><span
+        class="header-section-number">9</span> Notes de bas de page</h1>
+        <p>Une phrase avec une note<a href="#fn1" class="footnote-ref"
+        id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+        <p>Une autre note<a href="#fn2" class="footnote-ref" id="fnref2"
+        role="doc-noteref"><sup>2</sup></a>.</p>
+        <hr />
+        <h1 data-number="10" id="liens"><span
+        class="header-section-number">10</span> Liens</h1>
+        <ul>
+        <li>Site de Pandoc : <a href="https://pandoc.org"
+        class="uri">https://pandoc.org</a></li>
+        <li>Site de WeasyPrint : <a href="https://weasyprint.org"
+        class="uri">https://weasyprint.org</a></li>
+        <li>Site de MiKTeX : <a href="https://miktex.org"
+        class="uri">https://miktex.org</a></li>
+        </ul>
+        <p>Lien Markdown :</p>
+        <p><a href="https://pandoc.org">Pandoc</a></p>
+        <hr />
+        <h1 data-number="11" id="images"><span
+        class="header-section-number">11</span> Images</h1>
+        <h2 data-number="11.1" id="image-distante"><span
+        class="header-section-number">11.1</span> Image distante</h2>
+        <figure>
+        <img src="media/a92503fcf6fa5a3ca0437e82cc8031e41faff5a7.svg"
+        alt="Exemple d’image distante" />
+        <figcaption aria-hidden="true">Exemple d’image
+        distante</figcaption>
+        </figure>
+        <h2 data-number="11.2" id="image-locale"><span
+        class="header-section-number">11.2</span> Image locale</h2>
+        <figure>
+        <img src="media/img/bad-example.jpg"
+        alt="Exemple d’image locale" />
+        <figcaption aria-hidden="true">Exemple d’image
+        locale</figcaption>
+        </figure>
+        <hr />
+        <h1 data-number="12" id="couleurs-html"><span
+        class="header-section-number">12</span> Couleurs HTML</h1>
+        <p>Cette section permet de vérifier le comportement des moteurs
+        HTML.</p>
+        <p><span style="color:red">Texte rouge</span></p>
+        <p><span style="color:blue">Texte bleu</span></p>
+        <p><span style="background-color:yellow"> Fond jaune </span></p>
+        <hr />
+        <h1 data-number="13" id="html-embarqué"><span
+        class="header-section-number">13</span> HTML embarqué</h1>
+        <div style="border:2px solid black;padding:10px">
+        <p>Contenu HTML encapsulé.</p>
+        <ul>
+        <li>
+        Élément 1
+        </li>
+        <li>
+        Élément 2
+        </li>
+        </ul>
+        </div>
+        <hr />
+        <h1 data-number="14" id="saut-de-page"><span
+        class="header-section-number">14</span> Saut de page</h1>
+        <p>Cette page doit commencer après un saut de page.</p>
+        <hr />
+        <h1 data-number="15" id="diagramme-mermaid"><span
+        class="header-section-number">15</span> Diagramme Mermaid</h1>
+        <img src="media/1b1c7386c7689aca0ded4129197a1f27b57ffb1f.svg" />
+        <hr />
+        <h1 data-number="16" id="long-tableau"><span
+        class="header-section-number">16</span> Long tableau</h1>
+        <table>
+        <thead>
+        <tr>
+        <th>N°</th>
+        <th>Désignation</th>
+        <th>Commentaire</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>1</td>
+        <td>Élément</td>
+        <td>Test</td>
+        </tr>
+        <tr>
+        <td>2</td>
+        <td>Élément</td>
+        <td>Test</td>
+        </tr>
+        <tr>
+        <td>3</td>
+        <td>Élément</td>
+        <td>Test</td>
+        </tr>
+        <tr>
+        <td>4</td>
+        <td>Élément</td>
+        <td>Test</td>
+        </tr>
+        <tr>
+        <td>5</td>
+        <td>Élément</td>
+        <td>Test</td>
+        </tr>
+        <tr>
+        <td>6</td>
+        <td>Élément</td>
+        <td>Test</td>
+        </tr>
+        <tr>
+        <td>7</td>
+        <td>Élément</td>
+        <td>Test</td>
+        </tr>
+        <tr>
+        <td>8</td>
+        <td>Élément</td>
+        <td>Test</td>
+        </tr>
+        <tr>
+        <td>9</td>
+        <td>Élément</td>
+        <td>Test</td>
+        </tr>
+        <tr>
+        <td>10</td>
+        <td>Élément</td>
+        <td>Test</td>
+        </tr>
+        <tr>
+        <td>11</td>
+        <td>Élément</td>
+        <td>Test</td>
+        </tr>
+        <tr>
+        <td>12</td>
+        <td>Élément</td>
+        <td>Test</td>
+        </tr>
+        <tr>
+        <td>13</td>
+        <td>Élément</td>
+        <td>Test</td>
+        </tr>
+        <tr>
+        <td>14</td>
+        <td>Élément</td>
+        <td>Test</td>
+        </tr>
+        <tr>
+        <td>15</td>
+        <td>Élément</td>
+        <td>Test</td>
+        </tr>
+        <tr>
+        <td>16</td>
+        <td>Élément</td>
+        <td>Test</td>
+        </tr>
+        <tr>
+        <td>17</td>
+        <td>Élément</td>
+        <td>Test</td>
+        </tr>
+        <tr>
+        <td>18</td>
+        <td>Élément</td>
+        <td>Test</td>
+        </tr>
+        <tr>
+        <td>19</td>
+        <td>Élément</td>
+        <td>Test</td>
+        </tr>
+        <tr>
+        <td>20</td>
+        <td>Élément</td>
+        <td>Test</td>
+        </tr>
+        </tbody>
+        </table>
+        <hr />
+        <h1 data-number="17" id="test-de-pagination"><span
+        class="header-section-number">17</span> Test de pagination</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <hr />
+        <h1 data-number="18" id="quelques-symboles"><span
+        class="header-section-number">18</span> Quelques symboles</h1>
+        <p><span class="math inline">\(\rightarrow\)</span></p>
+        <p><span class="math inline">\(\leftarrow\)</span></p>
+        <p><span class="math inline">\(\checkmark\)</span></p>
+        <hr />
+        <h1 data-number="19" id="emoticônes-en-unicode"><span
+        class="header-section-number">19</span> Emoticônes en
+        unicode</h1>
+        <p>🎯</p>
+        <p>🛠️</p>
+        <p>🏛️</p>
+        <p>🚀</p>
+        <p>📉</p>
+        <hr />
+        <h1 data-number="20" id="conclusion"><span
+        class="header-section-number">20</span> Conclusion</h1>
+        <p>Le document a permis de tester :</p>
+        <ul>
+        <li>la table des matières ;</li>
+        <li>la numérotation ;</li>
+        <li>les tableaux ;</li>
+        <li>le code coloré ;</li>
+        <li>les mathématiques ;</li>
+        <li>les notes de bas de page ;</li>
+        <li>les images ;</li>
+        <li>le HTML embarqué ;</li>
+        <li>les caractères Unicode ;</li>
+        <li>les sauts de page ;</li>
+        <li>la pagination PDF.</li>
+        </ul>
+        <p>Fin du document.</p>
+        <section id="footnotes"
+        class="footnotes footnotes-end-of-document" role="doc-endnotes">
+        <hr />
+        <ol>
+        <li id="fn1"><p>Première note de bas de page.<a href="#fnref1"
+        class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+        <li id="fn2"><p>Deuxième note plus longue permettant de vérifier
+        le rendu.<a href="#fnref2" class="footnote-back"
+        role="doc-backlink">↩︎</a></p></li>
+        </ol>
+        </section>
+
+    </main>
+
+    <!-- ===================================================== -->
+    <!-- TRAÇABILITÉ IA -->
+    <!-- ===================================================== -->
+
+    
+</body>
+
+</html>

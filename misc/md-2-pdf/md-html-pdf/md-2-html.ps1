@@ -1,0 +1,1 @@
+pandoc test-file.md --template template-pandoc.html --toc --number-sections --syntax-highlighting=pygments -c style.css -o test-file.html
