@@ -259,3 +259,5 @@ Il y a néanmoins des solutions pour créer un PDF au rendu plus _professionnel_
 Dans cet article, je vous en présente 2 qui donnent des résultats très satisfaisants.
 L'une passe par une conversion intermédiaire en HTML puis de là permet de convertir le HTML en PDF, en agrémentant ces conversions avec des feuilles de style (CSS) et des templates (HTML).
 L'autre passe par l'utilisation d'un moteur LaTeX pour obtenir le PDF. Là encore, le coeur de la transformation passe par l'utilisation d'un _template_ qui permet de bien cadrer la conversion.
+
+Tous les exemples et les résultats des générations sont [disponibles sur GitHub dans ce petit projet](https://github.com/TGITS/devtoolbox/misc/md-2-pdf).
