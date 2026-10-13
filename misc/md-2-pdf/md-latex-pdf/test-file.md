@@ -1,27 +1,72 @@
 ---
-title: "Document de validation Markdown → HTML & PDF"
+title: "Document de validation Markdown $\rightarrow$ HTML & PDF"
+
 subtitle: "Conversion de MD vers HTML & PDF avec Pandoc"
-author: 
-  - "Christophe VAUDRY"
-  - "GitHub Copilot"
-date: "2026-10-12"
-lang: fr-FR
-geometry: margin=2cm
-fontsize: 11pt
-version: 1.0
-organisation: "Octogone"
-classification: "Document de test"
+
+document_id: "TST_002"
+
 document_type: "Exemple"
-document_id: "tst_001"
-status: "draft"
-project: "md2pdf"
-reviewers: 
+
+project: "MD2PDF"
+
+organisation: "Octogone"
+
+author:
+  - "Christophe VAUDRY"
+  - "Auteur 2"
+
+reviewers:
   - "Reviewer 1"
   - "Reviewer 2"
+
 contributors:
-  - "Contributor 1"
-  - "Contributor 2"
+  - "Contributeurr 1"
+  - "Contributeurr 2"
+
+classification: "Document de test"
+
+status: "Draft"
+
+version: "0.1"
+
+date: "2026-11-25"
+
+keywords:
+  - LaTeX
+  - TeX
+  - Markdown
+  - PDF
+
+subject: "Conversion de fichiers Markdown"
+
+titlepage: true
+
+toc: true
+
+toc-own-page: true
+
+numbersections: true
+
+lang: fr-FR
+
+mainfont: "Noto Sans"
+
+sansfont: "Noto Sans"
+
+monofont: "Cascadia Code"
+
+revision_history:
+  - version: "0.1"
+    date: "2026-11-25"
+    author: "Christophe VAUDRY"
+    comment: "Création"
+
+diagram:
+  engine:
+    mermaid:
+      execpath: [cmd.exe, /d, /c, mmdc.cmd]
 ---
+
 
 # Introduction
 
@@ -201,7 +246,7 @@ $$
 $$
 A=
 \begin{bmatrix}
-1 & 2 \\
+1 & 2\\
 3 & 4
 \end{bmatrix}
 $$
@@ -236,11 +281,11 @@ Lien Markdown :
 
 ## Image distante
 
-![Exemple d'image distante](https://pandoc.org/pandoc-cartoon.svgz)
+![Exemple d'image distante](https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/Markdown-mark.svg/langfr-250px-Markdown-mark.svg.png)
 
 ## Image locale
 
-![Exemple d'image locale](./img/bad-example.jpg)
+![Exemple d'image locale](./bad-example.jpg)
 
 ---
 

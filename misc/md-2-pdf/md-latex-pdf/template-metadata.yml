@@ -1,15 +1,15 @@
 ---
-title: "XXX"
+title: "XXXX"
 
-subtitle: "YYY"
+subtitle: "YYYY"
 
-document_id: "ODY-ZZZ-001"
+document_id: "DOC_ID"
 
-document_type: "ZZZ"
+document_type: "TYPE"
 
-project: "Cartographie Odyssée"
+project: "My Project"
 
-organisation: "Noréade"
+organisation: "My Organisation"
 
 author:
   - "Auteur 1"
@@ -20,32 +20,24 @@ reviewers:
   - "Reviewer 2"
 
 contributors:
-  - "Agent Code Local (Kilo Code)"
+  - "Contributeur 1"
+  - "Contributeur 2"
 
-ai_assistance:
+classification: "Document de test"
 
-  tools:
-    - name: "Agent Code Local (Kilo Code)"
-      model: "gemma-4-31B"
-      role: "Analyse de code et aide à la rédaction"
-
-  disclaimer: >
-    Ce document a été partiellement assisté par des outils
-    d'intelligence artificielle. Le contenu produit a été
-    revu et validé par les auteurs.
-
-classification: "Interne"
-
-status: "Brouillon"
+status: "Draft"
 
 version: "0.1"
 
-date: "2026-07-08"
+date: "2026-11-25"
 
 keywords:
-  - Odyssée
+  - keyword1
+  - keyword2
+  - keyword3
+  - keyword4
 
-subject: "Cartographie Odyssée"
+subject: "Template pour les metadata YAML"
 
 titlepage: true
 
@@ -65,7 +57,7 @@ monofont: "Cascadia Code"
 
 revision_history:
   - version: "0.1"
-    date: "2026-07-08"
-    author: "Christophe VAUDRY"
+    date: "YYYY-MM-DD"
+    author: "Auteur 1"
     comment: "Création"
 ---

@@ -4,7 +4,7 @@ subtitle: "Conversion de MD vers HTML & PDF avec Pandoc"
 author: 
   - "Christophe VAUDRY"
   - "GitHub Copilot"
-date: "2026-10-12"
+date: "2026-11-25"
 lang: fr-FR
 geometry: margin=2cm
 fontsize: 11pt
@@ -240,11 +240,11 @@ Lien Markdown :
 
 ## Image distante
 
-![Exemple d'image distante](https://pandoc.org/pandoc-cartoon.svgz)
+![Exemple d'image distante](https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/Markdown-mark.svg/langfr-250px-Markdown-mark.svg.png)
 
 ## Image locale
 
-![Exemple d'image locale](./img/bad-example.jpg)
+![Exemple d'image locale](./bad-example.jpg)
 
 ---
 
