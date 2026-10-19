@@ -254,10 +254,12 @@ Là aussi on obtient un rendu PDF très propre pouvant être considéré comme _
 
 ## Conclusion
 
-Il existe des outils pour convertir simplement et rapidement un fichier Markdown en PDF mais au prix d'un rendu qui lui aussi est simple.
-Il y a néanmoins des solutions pour créer un PDF au rendu plus _professionnel_ mais elles demandent un peu de travail.
-Dans cet article, je vous en présente 2 qui donnent des résultats très satisfaisants.
-L'une passe par une conversion intermédiaire en HTML puis de là permet de convertir le HTML en PDF, en agrémentant ces conversions avec des feuilles de style (CSS) et des templates (HTML).
-L'autre passe par l'utilisation d'un moteur LaTeX pour obtenir le PDF. Là encore, le coeur de la transformation passe par l'utilisation d'un _template_ qui permet de bien cadrer la conversion.
+Il existe des outils pour convertir simplement et rapidement un fichier **Markdown** en **PDF** mais au prix d'un rendu qui lui aussi est simple, voire simpliste.
+Il y a néanmoins des solutions pour créer un **PDF** avec un rendu plus _professionnel_ mais elles demandent un peu de travail.
 
-Tous les exemples et les résultats des générations sont [disponibles sur GitHub dans ce petit projet](https://github.com/TGITS/devtoolbox/misc/md-2-pdf).
+Dans cet article, je vous en présente 2 qui donnent des résultats très satisfaisants :
+
+- L'une passe par une conversion intermédiaire en **HTML** puis de là permet de convertir le **HTML** en **PDF**, en agrémentant ces conversions avec des feuilles de style (CSS) et des templates (HTML).
+- L'autre passe par l'utilisation d'un moteur **LaTeX** pour obtenir le **PDF**. Là encore, le coeur de la transformation passe par l'utilisation d'un _template_ qui permet de bien cadrer la conversion.
+
+J'espère que cela permettra de vous faire votre propre opinion est de pouvoir converger plus rapidement pour la solution qui correspond le mieux à vos besoins. Tous les exemples et les résultats des générations sont [disponibles sur GitHub dans ce petit projet](https://github.com/TGITS/devtoolbox/misc/md-2-pdf) et librement réutilisables : il faudra peut-être faire des adaptations par rapport à votre système et bien sûr tout cela vous est fourni _tel quel_ sans garantie aucune. En soit ce n'est pas du code dangeureux mais comme tout ce que vosu pouvez récupérer sur Internet, à utiliser avec précaution !
