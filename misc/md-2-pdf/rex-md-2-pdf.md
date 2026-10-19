@@ -3,16 +3,16 @@
 Outils et utilitaires utilisés dans ce projet.
 
 Markdown est depuis déjà longtemps un format largement utilisé pour écrire de la documentation technique. 
-Avec l'avènement des agents de code ce statut central pour la production documentaire s'est encore trouver renforcé, ces agents de code privilégiant l'ingestion et la production de document dans ce format.
-Ce qui est intéressant avec Markdown c'est que cela reste un format lisible pas un être humain et qu'il peut facilement être converti vers d'autres formats.
-Il en est ainsi de la conversion de Markdown vers PDF, elle se fait facilement et peut même être effectué depuis notre IDE préféré avec un simple _plugin_ dans le pire cas.
+Avec l'avènement des agents de code, ce statut central pour la production documentaire s'est encore trouvé renforcé, ces agents de code privilégiant l'ingestion et la production de documents dans ce format.
+Ce qui est intéressant avec Markdown, c'est que cela reste un format lisible par un être humain et qu'il peut facilement être converti vers d'autres formats.
+Il en est ainsi de la conversion de Markdown vers PDF : elle se fait facilement et peut même être effectuée depuis notre IDE préféré avec un simple _plugin_ dans le pire des cas.
 
 Alors pourquoi se donner la peine de faire un article sur ce sujet ?
 
 La conversion d'un fichier Markdown en HTML ou en PDF est assez directe mais donne un résultat visuel assez pauvre. 
-Par contre, afin d'avoir un rendu visuel qui soit suffisamment propre et agréable pour avoir une touche _professionnelle_ (une page de titre, un sommaire, un document aéré et facile à lire, agréable à l'oeil, etc.), cela demande un peu de travail.
+Par contre, afin d'avoir un rendu visuel qui soit suffisamment propre et agréable pour avoir une touche _professionnelle_ (une page de titre, un sommaire, un document aéré et facile à lire, agréable à l'œil, etc.), cela demande un peu de travail.
 
-L'objet de cet article est de vous faire un retour d'expérience sur la conversion d'un fichier Markdown en un fichier HTML ou PDF qui répondent à certaines exigences de présentations pour que le rendu fasse _professionnel_ et de donner au passage des pointeurs et de la mise en oeuvre concrète avec les limites et problèmes rencontrés.
+L'objet de cet article est de vous faire un retour d'expérience sur la conversion d'un fichier Markdown en un fichier HTML ou PDF répondant à certaines exigences de présentation pour que le rendu fasse _professionnel_, et de donner au passage des pointeurs et une mise en œuvre concrète avec les limites et problèmes rencontrés.
 
 ## Le contexte
 
@@ -25,8 +25,8 @@ Initialement il y avait peu de documents et l'urgence n'était pas la conversion
 Je pouvais toujours le faire facilement depuis mon IDE (ici VS Code). 
 Cependant à peu près en même temps, lors d'une intervention sur un autre projet, un collègue me demande une relecture d'un document PDF.
 Là en relisant le document, je reconnais le style de document généré avec [LaTeX](https://fr.wikipedia.org/wiki/LaTeX).
-Pour la petite histoire, lors de ma prime jeunesse, quand j'étais étudiant en DEA (l'équivalent d'un Master 2 actuellement... cela vous donne une idée de mon âge... mais bon il faut faire un saut de 30 ans en arrière !) puis en doctorat, j'ai utilisé abondamment [LaTeX](https://fr.wikipedia.org/wiki/LaTeX). Cet outil comme tout outil à ses forces et ses faiblesses. Pour de la production scientifique et académique ou pour produire des gros documents avec beaucoup d'images c'était bien mieux qu'un traitement de texte classique à l'époque.
-Je suis un peu surpris, car actuellement en dehors du monde académique il est rare d'utiliser directement [LaTeX](https://fr.wikipedia.org/wiki/LaTeX), les ingénieurs locigiels utilisent plus volontier des formats comme [Markdown](https://fr.wikipedia.org/wiki/Markdown) ou [AsciiDoc](https://fr.wikipedia.org/wiki/AsciiDoc).
+Pour la petite histoire, lors de ma prime jeunesse, quand j'étais étudiant en DEA (l'équivalent d'un Master 2 actuellement... cela vous donne une idée de mon âge... mais bon il faut faire un saut de 30 ans en arrière !) puis en doctorat, j'ai utilisé abondamment [LaTeX](https://fr.wikipedia.org/wiki/LaTeX). Cet outil, comme tout outil, a ses forces et ses faiblesses. Pour de la production scientifique et académique ou pour produire de gros documents avec beaucoup d'images, c'était bien mieux qu'un traitement de texte classique à l'époque.
+Je suis un peu surpris, car actuellement, en dehors du monde académique, il est rare d'utiliser directement [LaTeX](https://fr.wikipedia.org/wiki/LaTeX) ; les ingénieurs logiciels utilisent plus volontiers des formats comme [Markdown](https://fr.wikipedia.org/wiki/Markdown) ou [AsciiDoc](https://fr.wikipedia.org/wiki/AsciiDoc).
 En échangeant avec lui, je m'aperçois qu'il écrit bien en Markdown.
 Par contre il utilise [Pandoc](https://pandoc.org/) pour convertir le document en PDF.
 [Pandoc](https://pandoc.org/) je connais et j'ai déjà utilisé mais j'étais resté en surface.
@@ -36,19 +36,19 @@ Comme je savais que la conversion manuelle avec un plugin de l'IDE ne serait pas
 ## Pandoc
 
 [Pandoc](https://pandoc.org/) est un outil en ligne de commande, ce qui est très pratique pour pouvoir l'utiliser dans un _script shell_.
-De plus cet outil est disponible sur Linux, MacOs et Windows, ce dernier système d'exploitation étant celui que j'utilisais dans le cadre de ce projet (je sais ce n'est pas très _geek_ et je tiens à préciser que je n'ai rien contre Linux ou MacOs :-)).
+De plus cet outil est disponible sur Linux, macOS et Windows, ce dernier système d'exploitation étant celui que j'utilisais dans le cadre de ce projet (je sais, ce n'est pas très _geek_ et je tiens à préciser que je n'ai rien contre Linux ou macOS :-)).
 Dans tous les cas, que Pandoc soit une **CLI** (Command Line Interface) multi-plateforme est clairement un très gros avantage.
-Rien que pour cela il est à avoir dans sa trousse à outil pour ce type de situation.
+Rien que pour cela, il est à avoir dans sa trousse à outils pour ce type de situation.
 
 ## Conversion de Markdown en PDF en passant par le HTML
 
 En creusant un peu le sujet, on s'aperçoit qu'il y a plusieurs options pour convertir un Markdown en PDF en utilisant Pandoc.
-Dans la suite de cet article, je vais m'intéresser à 2 chemins pour passer d'un Makdown à un PDF avec une bonne quamité de rendu:
+Dans la suite de cet article, je vais m'intéresser à deux chemins pour passer d'un Markdown à un PDF avec une bonne qualité de rendu :
 
 - Markdown → HTML → PDF
-- Markodwn → LaTeX → PDF
+- Markdown → LaTeX → PDF
 
-Nous explorons d'abord la conversion en PDF en passant par HTML car c'est celle qui demande le moins de grosse installation sur sa machine. Donc si le résultat sous convient c'est la solution la moins lourdre à implémenter. 
+Nous explorons d'abord la conversion en PDF en passant par HTML, car c'est celle qui demande le moins de grosses installations sur sa machine. Donc, si le résultat vous convient, c'est la solution la moins lourde à implémenter.
 
 Le processus est simple : on utilise Pandoc pour convertir le Markdown en HTML, puis Chrome en mode _headless_ pour convertir le HTML en PDF.
 
@@ -57,7 +57,7 @@ Pour que cela marche dans la ligne de commande ou dans un script il faut s'assur
 - le binaire `pandoc` soit dans le chemin d'exécution 
 - le binaire `Chrome` soit dans le chemin d'exécution (même si vous l'avez comme navigateur, l'exécutable de Chrome n'est pas nécessairement dans le `PATH`, il faut bien s'assurer de l'y ajouter)
 
-Pandoc permet de paramètrer assez finement la conversion comme nous allons le voir. 
+Pandoc permet de paramétrer assez finement la conversion, comme nous allons le voir.
 Pour convertir le fichier Markdown en HTML, on pourrait avoir une ligne de commande similaire à ce qui suit :
 
 ```bash
@@ -66,10 +66,10 @@ pandoc test-file.md --template template-pandoc.html --toc --number-sections --ma
 
 - Le _template_ HTML à utiliser (`--template template-pandoc.html`)
 - Le fichier de style CSS à utiliser dans le HTML (`-c style.css`)
-- Le style de _syntax highligthing_ à utiliser pour le code dans le document le cas échéant (par exemple pour avoir un style similaire à [pygments](https://pygments.org/) `--syntax-highlighting=pygments`, qui est d'ailleurs le style pas défaut si on ne précise rien) ; à noter que le style CSS fournit peut surcharger le rendu initial.
+- Le style de _syntax highlighting_ à utiliser pour le code dans le document le cas échéant (par exemple pour avoir un style similaire à [Pygments](https://pygments.org/) `--syntax-highlighting=pygments`, qui est d'ailleurs le style par défaut si on ne précise rien) ; à noter que le style CSS fourni peut surcharger le rendu initial.
 - si on souhaite avoir une table des matières (`--toc`)
 - si on souhaite avoir une numérotation des sections  (`--number-sections`)
-- si on souhaite que le code LaTeX inline soit correctement rendi il faut utiliser l'option `--mathjax` (et dans le `<head>` de template on doit avoir un `$math$`)
+- si on souhaite que le code LaTeX inline soit correctement rendu, il faut utiliser l'option `--mathjax` (et dans le `<head>` du template, on doit avoir un `$math$`)
 - `test-file.md` est le fichier Markdown que nous cherchons à transformer
 - `-o test-file.html` indique le fichier de sortie résultat de la conversion
 
@@ -82,15 +82,15 @@ En fait c'est normal, il faut ajouter un [filtre supplémentaire](https://github
 pandoc test-file.md --template template-pandoc.html --toc --number-sections --mathjax --syntax-highlighting=pygments -c style.css --lua-filter diagram.lua --extract-media=media -o test-file.html
 ```
 
-Comme l'indique le [README](https://github.com/pandoc-ext/diagram/blob/main/README.md), il faut ajouter l'option `--extract-media` pour que l'image générée à partir du diagramme Mermaid soit créée sur le disque (ici dans le répertoire `media`) et puisse être liée dans la page HTML. A noter que tous les médias sont _extraits_ du fichier Markdown, y compris les images locales ou distantes.
+Comme l'indique le [README](https://github.com/pandoc-ext/diagram/blob/main/README.md), il faut ajouter l'option `--extract-media` pour que l'image générée à partir du diagramme Mermaid soit créée sur le disque (ici dans le répertoire `media`) et puisse être liée dans la page HTML. À noter que tous les médias sont _extraits_ du fichier Markdown, y compris les images locales ou distantes.
 
-Il est également normalement possible d'après le le [README](https://github.com/pandoc-ext/diagram/blob/main/README.md) de faire en sorte que l'image générée soit directement incluse dans le HTML en utilisant l'option `--embed-resources`. Comme pour `--extract-media`, l'option est globale et concernera l'ensemble des images référencées dans le document Markdown qui se retrouveront toutes incluses dans le HTML.
+Il est également normalement possible, d'après le [README](https://github.com/pandoc-ext/diagram/blob/main/README.md), de faire en sorte que l'image générée soit directement incluse dans le HTML en utilisant l'option `--embed-resources`. Comme pour `--extract-media`, l'option est globale et concernera l'ensemble des images référencées dans le document Markdown qui se retrouveront toutes incluses dans le HTML.
 
 ```bash
 pandoc test-file.md --template template-pandoc.html --toc --number-sections --mathjax --syntax-highlighting=pygments -c style.css --lua-filter diagram.lua --embed-resources -o test-file.html
 ```
 
-A noter que sous Windows avec une version de Node gérée via [fnm](https://github.com/schniz/fnm), j'ai eu des difficultés pour que le script Lua trouve la CLI `mmdc` pourtant installé de manière globale avec [npm](https://www.npmjs.com/). Il a été nécessaire que j'ajoute les lignes ci-après dans le `front-matter` YAML du fichier Markdown à convertir. GitHub Copilot en _mode Ask_ a été bien utile pour m'aider à trouver quels étaient les problèmes et comment les résoudre rapidement !
+À noter que sous Windows, avec une version de Node gérée via [fnm](https://github.com/schniz/fnm), j'ai eu des difficultés pour que le script Lua trouve la CLI `mmdc`, pourtant installée de manière globale avec [npm](https://www.npmjs.com/). Il a été nécessaire que j'ajoute les lignes ci-après dans le `front-matter` YAML du fichier Markdown à convertir. GitHub Copilot en _mode Ask_ a été bien utile pour m'aider à trouver quels étaient les problèmes et comment les résoudre rapidement !
 
 ```yaml
 diagram:
@@ -107,9 +107,9 @@ Maintenant que nous avons le fichier HTML, nous pouvons le convertir en PDF avec
 Chrome --headless --disable-gpu --no-pdf-header-footer --print-to-pdf="/chemin/complet/vers/fichier/test-file.pdf" "/chemin/complet/vers/fichier/test-file.html"
 ```
 
-Attention il faut indiquer les chemins complets vers le fichier source que l'on transforme et le fichier cible résultat, vous devez adapter légèrement la ligne de commande ci-dessus avec les chemins corrects vers les fichiers source et cible.
+Attention, il faut indiquer les chemins complets vers le fichier source que l'on transforme et le fichier cible ; vous devez adapter légèrement la ligne de commande ci-dessus avec les chemins corrects vers les fichiers source et cible.
 Bien sûr l'option `--headless` est nécessaire pour ne pas démarrer Chrome sans que la fenêtre du navigateur ne soit lancée.
-L'option `--no-pdf-header-footer` permet de ne pas avoir les entêtes et pieds de page classique avec la date et le numéro de page.
+L'option `--no-pdf-header-footer` permet de ne pas avoir les en-têtes et pieds de page classiques avec la date et le numéro de page.
 
 Pour un meilleur rendu des caractères Unicode et des emojis présents dans le document, il faut éventuellement installer des fontes supplémentaires ; pour ma part j'ai installé les fontes suivantes :
 
@@ -126,7 +126,7 @@ pandoc test-file.md --template template-pandoc.html --toc --number-sections --ma
 Chrome --headless --disable-gpu --no-pdf-header-footer --print-to-pdf="/chemin/complet/vers/fichier/test-file.pdf" "/chemin/complet/vers/fichier/test-file.html"
 ```
 
-Au final, le rendu HTML et PDF sont très propres et peuvent être considérés professionnels. Si on maitrise bien CSS et HTML, cela peut être une option particulièrement pertinente pour personnaliser le rendu. 
+Au final, les rendus HTML et PDF sont très propres et peuvent être considérés comme professionnels. Si on maîtrise bien CSS et HTML, cela peut être une option particulièrement pertinente pour personnaliser le rendu.
 
 Avant de voir ce que cela peut donner en utilisant [LaTeX](https://fr.wikipedia.org/wiki/LaTeX), un petit mot sur les options à Chrome pour convertir du HTML vers PDF.
 
@@ -134,11 +134,11 @@ En effet, il est également possible d'effectuer la conversion avec [weasyprint]
 
 ## Utilisation de weasyprint plutôt que Chrome
 
-Etant un utilisateur occasionnel de Python, j'en avais déjà une version sur ma machine et j'ai essayé [weasyprint](https://weasyprint.org/).
+Étant un utilisateur occasionnel de Python, j'en avais déjà une version sur ma machine et j'ai essayé [weasyprint](https://weasyprint.org/).
 L'installation via Python est classique via `pip`: `pip install weasyprint`
 Cependant sous Windows, il faut _installer_ **GTK** pour que **weasyprint** fonctionne correctement
 Donc téléchargement du [runtime GTK pour Windows](https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer/releases).
-Une fois l'installation effectuée, il faut ajoutez le répertoire `bin` au `PATH` Windows.
+Une fois l'installation effectuée, il faut ajouter le répertoire `bin` au `PATH` Windows.
 Pour vérifier l'installation de GTK:
 
 - Système Unix : `where libgobject-2.0-0.dll`
@@ -150,14 +150,14 @@ Néanmoins, en plus de l'installation du _runtime GTK_, sur ma version de Window
 En conséquence, il a également fallu que j'installe une version adaptée de `pydyf`
 
 - désinstallation de `pydyf` s'il était déjà installé par ailleurs `pip uninstall pydyf`
-- installation de la version _ compatible avec la version **59** de **weasyprint** : `pip install pydyf==0.6.0`
+- installation de la version compatible avec la version **59** de **weasyprint** : `pip install pydyf==0.6.0`
 
-Ensuite, j'ai eu des erreurs liées au fontes `Fontconfig error: Cannot load default config file`.
+Ensuite, j'ai eu des erreurs liées aux fontes : `Fontconfig error: Cannot load default config file`.
 
 Pour régler ce problème-là, il faut ajouter une variable d'environnement `FONTCONFIG_PATH`.
-Sous PowerShell pour faire un ajout temporaire on peut faire `$env:FONTCONFIG_PATH="C:\Outils\Misc\GTK3-Runtime Win64\etc\fonts"` dans un shell de commande PowerShell (à ajuster avec le répertoire d'installation du _runtime GTK_, dans l'exemple précédent c'était `"C:\Outils\Misc\GTK3-Runtime Win64"`.
+Sous PowerShell, pour ajouter temporairement cette variable, on peut définir `$env:FONTCONFIG_PATH="C:\Outils\Misc\GTK3-Runtime Win64\etc\fonts"` dans un shell de commande PowerShell (chemin à ajuster selon le répertoire d'installation du _runtime GTK_ ; dans l'exemple précédent, il s'agissait de `"C:\Outils\Misc\GTK3-Runtime Win64"`).
 
-Pour un ajout plus permanent de la variable d'environnement on peut l'ajouter directement aux variables d'environnement système via l'interface graphique soit avec PowerShell directement :
+Pour ajouter la variable d'environnement de façon plus permanente, on peut l'ajouter aux variables d'environnement via l'interface graphique ou directement avec PowerShell :
 
 ```powershell
 :SetEnvironmentVariable(
@@ -168,7 +168,7 @@ Pour un ajout plus permanent de la variable d'environnement on peut l'ajouter di
 ```
 
 Sachant que **weasyprint 59** ne supporte pas toutes les fonctionnalités _Flexbox/Grid_ modernes et que le rendu au final n'est pas mieux qu'avec Chrome, cela n'a pas été une expérience concluante de mon côté. 
-Cela ne signifie pas que ce ne peut pas être une option intéressante du vôtre.
+Cela ne signifie pas que cette option ne puisse pas être intéressante pour vous.
 
 Il est important que vous ayez cette possibilité en tête si pour une raison ou une autre l'utilisation de Chrome n'est pas possible pour vous ou pose problème.
 
@@ -186,29 +186,29 @@ wkhtmltopdf test-file.html test-file-wkhtmltopdf.pdf
 Après quelques essais avec différentes options je n'ai pas réussi à générer un document PDF avec la qualité attendue (voir dans certains cas la génération du PDF n'a même pas fonctionné).
 
 Donc comme avec **weasyprint**, **wkhtmltopdf** n'a pas été une expérience concluante de mon côté. 
-Encore une fois cela ne signifie pas que ce ne peut pas être une option intéressante du vôtre et il est important que vous ayez cette possibilité en tête si pour une raison ou une autre l'utilisation de Chrome n'est pas possible pour vous.
+Encore une fois, cela ne signifie pas que cette option ne puisse pas être intéressante pour vous, et il est important que vous ayez cette possibilité en tête si, pour une raison ou une autre, l'utilisation de Chrome n'est pas possible pour vous.
 
 ## Génération d'un PDF en passant par LaTeX
 
 Toujours en utilisant [Pandoc](https://pandoc.org/) un autre chemin est possible pour passer d'un document au format Markdown à PDF, en passant par le format [TeX](https://fr.wikipedia.org/wiki/TeX)/[LaTeX](https://fr.wikipedia.org/wiki/LaTeX) plutôt que par HTML.
 
-Sous Windows, le plus simple est d'installer [MikTeX](https://miktex.org/) qui est également disponible pour les plateformes Linux et MacOs.
-L'installation de MikTeX n'est pas compliqué (Elle se fait via un installeur graphique) et est [documenté](https://docs.miktex.org/manual/installing.html) mais prend un peu de temps et de place sur votre disque dur.
+Sous Windows, le plus simple est d'installer [MiKTeX](https://miktex.org/), qui est également disponible pour les plateformes Linux et macOS.
+L'installation de MiKTeX n'est pas compliquée (elle se fait via un installeur graphique) et est [documentée](https://docs.miktex.org/manual/installing.html), mais prend un peu de temps et de place sur votre disque dur.
 Selon votre système d'exploitation, il existe d'autres distributions de [LaTeX](https://fr.wikipedia.org/wiki/LaTeX), vous avez donc le choix à ce niveau. Par contre dans tous les cas, vous avez besoin d'une installation de **LaTeX**.
 
-Comme pour la contrepartie HTMML, pour avoir un minimum de contrôle sur le rendu finale il est recommandé d'utiliser un _template_.
+Comme pour la contrepartie HTML, pour avoir un minimum de contrôle sur le rendu final, il est recommandé d'utiliser un _template_.
 Il est bien sûr toujours possible de créer le vôtre si vous avez la compétence, le temps et/ou les tokens (je n'ai pas essayé mais cela doit être possible de piloter un agent de code pour qu'il produise ce template)
 Néanmoins, pourquoi réinventer la roue, si une solution de bonne facture existe déjà ?
 Ainsi, pour ma part j'ai installé les _templates_ [_Eisvogel_](https://github.com/wandmalfarbe/Pandoc-latex-template).
-L'installation n'est pas compliquée et expliquée dans le [README](https://github.com/Wandmalfarbe/pandoc-latex-template/blob/master/README.md) du projet : il faut récupérer une archive `.zip` et mettre les bons fichiers au dans le bon répertoire (un sous-répertoire de données de **Pandoc**)
+L'installation n'est pas compliquée et est expliquée dans le [README](https://github.com/Wandmalfarbe/pandoc-latex-template/blob/master/README.md) du projet : il faut récupérer une archive `.zip` et mettre les bons fichiers dans le bon répertoire (un sous-répertoire de données de **Pandoc**).
 
 J'ai suivi la procédure d'installation des templates décrite dans le `README` et je n'ai pas rencontré de problème particulier.
 
-Ce _template_ vient avec un certain nombre de paramètres que l'on peut _injecter_ : les metadonnées lues dans un _front matter_ `yaml` en début du document Markdown à convertir peuvent alimenter les valeurs de ces paramètres.
+Ce _template_ vient avec un certain nombre de paramètres que l'on peut _injecter_ : les métadonnées lues dans un _front matter_ `yaml` en début du document Markdown à convertir peuvent alimenter les valeurs de ces paramètres.
 
-Le fichier d'exemple [test-file.md](./md-latex-pdf/test-file.md) a le _front matter_ initialisé et il y a un [fichier _template_  des metadonnées également disponible](./md-latex-pdf/template-metadata.yml). Un fichier d'exemple de ce qu'il faut faire est plus simple pour spécifier à un agent ou pour spécifier dans un _skill_.
+Le fichier d'exemple [test-file.md](./md-latex-pdf/test-file.md) est doté d'un _front matter_ prérempli ; un [fichier modèle de métadonnées](./md-latex-pdf/template-metadata.yml) est également disponible. Cet exemple facilite la spécification à un agent ou dans un _skill_.
 
-Au niveau de `pandoc` on spécifie le moteur **LaTeX** que l'on souhaite utiliser (option `--pdf-engine` ; pour ma part j'utilise `lualatex` mais il y en a d'autres ; il faut juste s'assurer que ce moteur **LaTeX** que vous souhaitez utiliser a bien était installé lors de l'installation ou compléter cette dernière) 
+Au niveau de `pandoc`, on spécifie le moteur **LaTeX** que l'on souhaite utiliser (option `--pdf-engine` ; pour ma part, j'utilise `lualatex`, mais il y en a d'autres ; il faut juste s'assurer que ce moteur **LaTeX** a bien été installé ou compléter l'installation).
 
 ```bash
 pandoc test-file.md --pdf-engine=lualatex --template=eisvogel --toc --number-sections --resource-path=. --lua-filter diagram.lua --extract-media=media --from markdown --to pdf -o test-file.pdf
@@ -241,16 +241,16 @@ monofont: "Cascadia Code"
 ---
 ```
 
-A noter que malgré cela certains caractères Unicode ou certains Emoji en Unicode ne sont pas traduits correctement : normalement vous aurez des avertissements lors de la conversion même si cela ne bloque pas la génération du PDF.
-Le plus simple est plutôt d'utiliser d'éviter ces caractères en les remplaçant par d'autres équivalents (il existe souvent des alternatives).
-Après cela peut être un critère de choix pour préférer la conversion en **PDF** depuis du **HTML** plutôt qu'en passant par **LaTeX**.
+À noter que, malgré cela, certains caractères Unicode ou certains émojis ne sont pas traduits correctement : normalement, vous aurez des avertissements lors de la conversion, même si cela ne bloque pas la génération du PDF.
+Le plus simple est d'éviter ces caractères en les remplaçant par d'autres équivalents (il existe souvent des alternatives).
+Cela peut être un critère de choix pour préférer la conversion en **PDF** depuis du **HTML** plutôt qu'en passant par **LaTeX**.
 
-Avec MikTex, lors de la conversion des _packages_ LaTeX nécessaires à la conversion mais manquant peuvent être téléchargés directement après une demande de validation par l'utilisateur.
+Avec MiKTeX, les _packages_ LaTeX nécessaires à la conversion mais manquants peuvent être téléchargés après validation par l'utilisateur.
 
-Selon la machine que vous avez, la conversion peut prendre un peu de temps (quelques minutes). Si vous avez un gros volume de document Markdown à convertir, il faut éventuellement en tenir compte.
+Selon la machine que vous avez, la conversion peut prendre un peu de temps (quelques minutes). Si vous avez un gros volume de documents Markdown à convertir, il faut éventuellement en tenir compte.
 
-Le fichier PDF résultat est [test-file.pdf](./md-latex-pdf/test-file.pdf).
-Là aussi on obtient un rendu PDF très propre pouvant être considéré comme _professionnel_.
+Le fichier PDF obtenu est [test-file.pdf](./md-latex-pdf/test-file.pdf).
+Là aussi, on obtient un rendu PDF très propre pouvant être considéré comme _professionnel_.
 
 ## Conclusion
 
@@ -260,6 +260,6 @@ Il y a néanmoins des solutions pour créer un **PDF** avec un rendu plus _profe
 Dans cet article, je vous en présente 2 qui donnent des résultats très satisfaisants :
 
 - L'une passe par une conversion intermédiaire en **HTML** puis de là permet de convertir le **HTML** en **PDF**, en agrémentant ces conversions avec des feuilles de style (CSS) et des templates (HTML).
-- L'autre passe par l'utilisation d'un moteur **LaTeX** pour obtenir le **PDF**. Là encore, le coeur de la transformation passe par l'utilisation d'un _template_ qui permet de bien cadrer la conversion.
+- L'autre passe par l'utilisation d'un moteur **LaTeX** pour obtenir le **PDF**. Là encore, le cœur de la transformation passe par l'utilisation d'un _template_ qui permet de bien cadrer la conversion.
 
-J'espère que cela permettra de vous faire votre propre opinion est de pouvoir converger plus rapidement pour la solution qui correspond le mieux à vos besoins. Tous les exemples et les résultats des générations sont [disponibles sur GitHub dans ce petit projet](https://github.com/TGITS/devtoolbox/misc/md-2-pdf) et librement réutilisables : il faudra peut-être faire des adaptations par rapport à votre système et bien sûr tout cela vous est fourni _tel quel_ sans garantie aucune. En soit ce n'est pas du code dangeureux mais comme tout ce que vosu pouvez récupérer sur Internet, à utiliser avec précaution !
+J'espère que cela permettra de vous faire votre propre opinion et de pouvoir converger plus rapidement vers la solution qui correspond le mieux à vos besoins. Tous les exemples et les résultats des générations sont [disponibles sur GitHub dans ce petit projet](https://github.com/TGITS/devtoolbox/misc/md-2-pdf) et librement réutilisables : il faudra peut-être faire des adaptations par rapport à votre système et, bien sûr, tout cela vous est fourni _tel quel_ sans garantie aucune. En soi, ce n'est pas du code dangereux, mais, comme tout ce que vous pouvez récupérer sur Internet, c'est à utiliser avec précaution !
