@@ -15,7 +15,7 @@ L'objet de cet article est de vous faire un retour d'expérience sur la conversi
 ## Le contexte
 
 Le contexte dans lequel se situe ce besoin de conversion de fichiers Markdown vers HTML & PDF est celui d'une mission d'analyse et de rétro-documentation d'une application _legacy_ pour laquelle la connaissance s'est perdue. Je ne vais pas rentrer dans les détails ici (ce n'est pas l'objet) mais comme les lignes précédentes le laissent penser, dans ce projet on a généré beaucoup de documentation.
-Le choix du format de génération s'est naturellement porté sur Markdown puisqu'il reste lisible pour les humains, qu'il est facile à lire et consommer par des agents et qu'il est facilement convertible vers du HTML et du PDF par exemple.
+Le choix du format de génération s'est naturellement porté sur Markdown puisqu'il reste lisible pour les humains, qu'il est facile à lire et à consommer par des agents et qu'il est facilement convertible vers du HTML et du PDF par exemple.
 
 ## In the beginning
 
@@ -50,7 +50,7 @@ Nous explorons d'abord la conversion en PDF en passant par HTML, car c'est celle
 
 Le processus est simple : on utilise Pandoc pour convertir le Markdown en HTML, puis Chrome en mode _headless_ pour convertir le HTML en PDF.
 
-Pour que cela marche dans la ligne de commande ou dans un script il faut s'assurer que :
+Pour que cela marche sur la ligne de commande ou dans un script, il faut s'assurer que :
 
 - le binaire `pandoc` soit dans le chemin d'exécution 
 - le binaire `Chrome` soit dans le chemin d'exécution (même si vous l'avez comme navigateur, l'exécutable de Chrome n'est pas nécessairement dans le `PATH`, il faut bien s'assurer de l'y ajouter)
@@ -97,7 +97,7 @@ diagram:
       execpath: [cmd.exe, /d, /c, mmdc.cmd]
 ```
 
-A noter que l'exemple ci-dessus (que vous retrouverez dans le fichier `test-file.md`) ne sera valable que sous Windows.
+À noter que l'exemple ci-dessus (que vous retrouverez dans le fichier `test-file.md`) ne sera valable que sous Windows.
 Pour les besoins de l'exemple, j'ai recopié le [filtre en Lua](./md-html-pdf/diagram.lua) directement dans le répertoire de travail dans lequel j'ai lancé la ligne de commande mais il provient sans modification de [Diagram Generator](https://github.com/pandoc-ext/diagram). 
 
 Maintenant que nous avons le fichier HTML, nous pouvons le convertir en PDF avec Chrome.
@@ -107,7 +107,7 @@ Chrome --headless --disable-gpu --no-pdf-header-footer --print-to-pdf="/chemin/c
 ```
 
 Attention, il faut indiquer les chemins complets vers le fichier source que l'on transforme et le fichier cible ; vous devez adapter légèrement la ligne de commande ci-dessus avec les chemins corrects vers les fichiers source et cible.
-Bien sûr l'option `--headless` est nécessaire pour ne pas démarrer Chrome sans que la fenêtre du navigateur ne soit lancée.
+Bien sûr, l'option `--headless` est nécessaire pour ne pas démarrer Chrome sans que la fenêtre du navigateur ne soit lancée.
 L'option `--no-pdf-header-footer` permet de ne pas avoir les en-têtes et pieds de page classiques avec la date et le numéro de page.
 
 Pour un meilleur rendu des caractères Unicode et des emojis présents dans le document, il faut éventuellement installer des fontes supplémentaires ; pour ma part j'ai installé les fontes suivantes :
@@ -127,7 +127,7 @@ Chrome --headless --disable-gpu --no-pdf-header-footer --print-to-pdf="/chemin/c
 
 Au final, les rendus HTML et PDF sont très propres et peuvent être considérés comme professionnels. Si on maîtrise bien CSS et HTML, cela peut être une option particulièrement pertinente pour personnaliser le rendu.
 
-Avant de voir ce que cela peut donner en utilisant [LaTeX](https://fr.wikipedia.org/wiki/LaTeX), un petit mot sur les options à Chrome pour convertir du HTML vers PDF.
+Avant de voir ce que cela peut donner en utilisant [LaTeX](https://fr.wikipedia.org/wiki/LaTeX), un petit mot sur les options de Chrome pour convertir du HTML vers PDF.
 
 En effet, il est également possible d'effectuer la conversion avec [weasyprint](https://weasyprint.org/) ou [wkhtmltopdf](https://wkhtmltopdf.org/) plutôt qu'avec Chrome.
 
@@ -136,16 +136,16 @@ En effet, il est également possible d'effectuer la conversion avec [weasyprint]
 L'expérience avec [weasyprint](https://weasyprint.org/) relatée ci-après dépend aussi fortement de l’environnement dans lequel je l’ai menée (à savoir Windows) et pourrait être assez différente avec un autre _OS_. En conséquence ce paragraphe est aussi très orienté pour des utilisateurs de Windows et aura beaucoup moins d'intérêt pour des utilisateurs de Linux ou macOS.
 
 Étant un utilisateur occasionnel de Python, j'en avais déjà une version sur ma machine et j'ai essayé [weasyprint](https://weasyprint.org/).
-L'installation via Python est classique via `pip`: `pip install weasyprint`
-Cependant sous Windows, il faut _installer_ **GTK** pour que **weasyprint** fonctionne correctement
+L'installation via Python est classique avec `pip` : `pip install weasyprint`
+Cependant sous Windows, il faut _installer_ **GTK** pour que **weasyprint** fonctionne correctement.
 Il faut donc télécharger le [runtime GTK pour Windows](https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer/releases).
 Une fois l'installation effectuée, il faut ajouter le répertoire `bin` au `PATH` Windows.
 Pour vérifier l'installation de GTK sous Windows avec PowerShell si vous avez effectué l'installation sous `C:\Outils\misc` : `Get-ChildItem -Recurse "C:\Outils\misc" -Filter libgobject-2.0-0.dll`
 
-Pour tester **weasyprint** une fois qu'il a été installé via `pip`: `weasyprint --info` 
+Pour tester **weasyprint** une fois qu'il a été installé avec `pip` : `weasyprint --info`.
 
 Néanmoins, en plus de l'installation du _runtime GTK_, sur ma version de Windows j'ai été obligé d'installer la version **59** de **weasyprint** plutôt que la dernière version : `pip install weasyprint==59.0`
-En conséquence, il a également fallu que j'installe une version adaptée de `pydyf`
+En conséquence, il a également fallu que j'installe une version adaptée de `pydyf` :
 
 - désinstallation de `pydyf` s'il était déjà installé par ailleurs `pip uninstall pydyf`
   - Attention ici, si vous n'avez pas utilisé un environnement virtuel et si `pydyf` est installé de manière globale, il faut s'assurer avant de le désinstaller qu'il n'est pas utilisé par un autre projet Python.
@@ -199,7 +199,7 @@ L'installation de MiKTeX n'est pas compliquée (elle se fait via un installeur g
 Selon votre système d'exploitation, il existe d'autres distributions de [LaTeX](https://fr.wikipedia.org/wiki/LaTeX), vous avez donc le choix à ce niveau. Par contre dans tous les cas, vous avez besoin d'une installation de **LaTeX**.
 
 Comme pour la contrepartie HTML, pour avoir un minimum de contrôle sur le rendu final, il est recommandé d'utiliser un _template_.
-Il est bien sûr toujours possible de créer le vôtre si vous avez la compétence, le temps et/ou les tokens (je n'ai pas essayé mais cela doit être possible de piloter un agent de code pour qu'il produise ce template)
+Il est bien sûr toujours possible de créer le vôtre si vous avez la compétence, le temps et/ou les tokens (je n'ai pas essayé, mais cela doit être possible de piloter un agent de code pour qu'il produise ce template).
 Néanmoins, pourquoi réinventer la roue, si une solution de bonne facture existe déjà ?
 Ainsi, pour ma part j'ai installé les _templates_ [_Eisvogel_](https://github.com/wandmalfarbe/Pandoc-latex-template).
 L'installation n'est pas compliquée et est expliquée dans le [README](https://github.com/Wandmalfarbe/pandoc-latex-template/blob/master/README.md) du projet : il faut récupérer une archive `.zip` et mettre les bons fichiers dans le bon répertoire (un sous-répertoire de données de **Pandoc**).
@@ -229,7 +229,7 @@ Comme indiqué un peu plus haut, pour un meilleur rendu des caractères Unicode 
 - https://fonts.google.com/noto/specimen/Noto+Emoji
 - https://fonts.google.com/specimen/Cascadia+Code
 
-Leur utilisation est explicite au niveau du _front matter_ **YAML**  :
+Leur utilisation est explicite au niveau du _front matter_ **YAML** :
 
 ```yaml
 ---
@@ -261,14 +261,14 @@ L'option `--sandbox` ne suffit pas à isoler les filtres et moteurs PDF, comme l
 
 ## Conclusion
 
-Il existe des outils pour convertir simplement et rapidement un fichier **Markdown** en **PDF** mais au prix d'un rendu qui lui aussi est simple, voire simpliste.
+Il existe des outils pour convertir simplement et rapidement un fichier **Markdown** en **PDF**, mais au prix d'un rendu qui est lui aussi simple, voire simpliste.
 Il y a néanmoins des solutions pour créer un **PDF** avec un rendu plus _professionnel_ mais elles demandent un peu de travail.
 
 Dans cet article, je vous en présente 2 qui donnent des résultats très satisfaisants.
 
-L'une passe par une conversion intermédiaire en **HTML** puis de là permet de convertir le **HTML** en **PDF**, en agrémentant ces conversions avec des feuilles de style (**CSS**) et des templates (**HTML**). Il gère bien les emojis et est un bon choix si on a également besoin de la version **HTML**. Elle sera particulièrement attirante pour ceux qui ont déjà une bonne maitrise de **CSS** et **HTML**. Enfin elle ne nécessite que l'installation de [Pandoc](https://pandoc.org/) et Chrome (et éventuellement Node et Mermaid CLI si vous avez besoin de gérer des diagrammes de ce type).
+L'une passe par une conversion intermédiaire en **HTML** puis de là permet de convertir le **HTML** en **PDF**, en agrémentant ces conversions avec des feuilles de style (**CSS**) et des templates (**HTML**). Cette solution gère bien les emojis et est un bon choix si on a également besoin de la version **HTML**. Elle sera particulièrement attirante pour ceux qui ont déjà une bonne maitrise de **CSS** et **HTML**. Enfin elle ne nécessite que l'installation de [Pandoc](https://pandoc.org/) et Chrome (et éventuellement Node et Mermaid CLI si vous avez besoin de gérer des diagrammes de ce type).
 
-L'autre passe par l'utilisation d'un moteur **LaTeX** pour obtenir le **PDF**. Là encore, le cœur de la transformation passe par l'utilisation d'un _template_ qui permet de bien cadrer la conversion. Les emojis ne sont pas bien gérés mais la pagination finale du document PDF produit est meilleure que pour la première option à mon sens. J'apprécie également le rendu final mais j'ai probablement un biais pour les rendus que permet d'offrir **LaTeX**. Enfin, il faut noter que par rapport à la première option, il faut prévoir des installations plus lourdes (il faut installer une distribution **LaTeX** et éventuellement Node et Mermaid CLI comme la première option).
+L'autre passe par l'utilisation d'un moteur **LaTeX** pour obtenir le **PDF**. Là encore, le cœur de la transformation passe par l'utilisation d'un _template_ qui permet de bien cadrer la conversion. Les emojis ne sont pas bien gérés mais la pagination finale du document PDF produit est meilleure que pour la première option à mon sens. J'apprécie également le rendu final mais j'ai probablement un biais pour les rendus que permet d'offrir **LaTeX**. Enfin, il faut noter que par rapport à la première option, il faut prévoir des installations plus lourdes (il faut installer une distribution **LaTeX** et éventuellement Node et Mermaid CLI comme pour la première option).
 
 J'espère que cela permettra de vous faire votre propre opinion et de pouvoir converger plus rapidement vers la solution qui correspond le mieux à vos besoins. Tous les exemples et les résultats des générations sont [disponibles sur GitHub dans ce petit projet](https://github.com/TGITS/devtoolbox/misc/md-2-pdf) et librement réutilisables : il faudra peut-être faire des adaptations par rapport à votre système et, bien sûr, tout cela vous est fourni _tel quel_ sans garantie aucune. 
 À ce sujet, il faut garder à l’esprit que les exemples supposent que les fichiers Markdown et HTML proviennent d’une source que vous maîtrisez et en laquelle vous avez confiance. En effet, j'ai effectué ce travail dans un contexte où j'étais le producteur des fichiers Markdown et HTML. 
