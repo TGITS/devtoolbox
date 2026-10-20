@@ -1,0 +1,63 @@
+---
+title: "XXXX"
+
+subtitle: "YYYY"
+
+document_id: "DOC_ID"
+
+document_type: "TYPE"
+
+project: "My Project"
+
+organisation: "My Organisation"
+
+author:
+  - "Auteur 1"
+  - "Auteur 2"
+
+reviewers:
+  - "Reviewer 1"
+  - "Reviewer 2"
+
+contributors:
+  - "Contributeur 1"
+  - "Contributeur 2"
+
+classification: "Document de test"
+
+status: "Draft"
+
+version: "0.1"
+
+date: "2026-11-25"
+
+keywords:
+  - keyword1
+  - keyword2
+  - keyword3
+  - keyword4
+
+subject: "Template pour les metadata YAML"
+
+titlepage: true
+
+toc: true
+
+toc-own-page: true
+
+numbersections: true
+
+lang: fr-FR
+
+mainfont: "Noto Sans"
+
+sansfont: "Noto Sans"
+
+monofont: "Cascadia Code"
+
+revision_history:
+  - version: "0.1"
+    date: "YYYY-MM-DD"
+    author: "Auteur 1"
+    comment: "Création"
+---

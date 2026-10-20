@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+
+    <title>$title$</title>
+
+    $for(css)$
+    <link rel="stylesheet" href="$css$">
+    $endfor$
+
+    $math$
+</head>
+
+<body>
+
+    <!-- ===================================================== -->
+    <!-- PAGE DE GARDE -->
+    <!-- ===================================================== -->
+
+    <section class="cover-page">
+
+        <div class="organisation">
+            <strong>Organisation :</strong> $organisation$
+        </div>
+
+        <div class="document-type">
+            <strong>Type de document :</strong> $document_type$
+        </div>
+
+        <h1 class="cover-title">
+            $title$
+        </h1>
+
+        $if(subtitle)$
+        <div class="cover-subtitle">
+            $subtitle$
+        </div>
+        $endif$
+
+        <div class="cover-metadata">
+
+            $if(project)$
+            <div>
+                <strong>Projet :</strong> $project$
+            </div>
+            $endif$
+
+            <div>
+                <strong>Version :</strong> $version$
+            </div>
+
+            <div>
+                <strong>Statut :</strong> $status$
+            </div>
+
+            <div>
+                <strong>Classification :</strong> $classification$
+            </div>
+
+            <div>
+                <strong>Date :</strong> $date$
+            </div>
+
+        </div>
+
+    </section>
+
+    <div class="page-break"></div>
+
+    <!-- ===================================================== -->
+    <!-- INFORMATIONS DOCUMENTAIRES -->
+    <!-- ===================================================== -->
+
+    <section>
+
+        <h1>Informations documentaires</h1>
+
+        <table class="document-metadata">
+            <tbody>
+
+                <tr>
+                    <th>Titre</th>
+                    <td>$title$</td>
+                </tr>
+
+                $if(document_id)$
+                <tr>
+                    <th>Identifiant</th>
+                    <td>$document_id$</td>
+                </tr>
+                $endif$
+
+                <tr>
+                    <th>Type</th>
+                    <td>$document_type$</td>
+                </tr>
+
+                <tr>
+                    <th>Version</th>
+                    <td>$version$</td>
+                </tr>
+
+                <tr>
+                    <th>Statut</th>
+                    <td>$status$</td>
+                </tr>
+
+                <tr>
+                    <th>Classification</th>
+                    <td>$classification$</td>
+                </tr>
+
+                <tr>
+                    <th>Auteur(s)</th>
+                    <td>
+                        <ul>
+                            $for(author)$
+                            <li>$author$</li>
+                            $endfor$
+                        </ul>
+                    </td>
+                </tr>
+
+                $if(reviewers)$
+                <tr>
+                    <th>Relecteur(s)</th>
+                    <td>
+                        <ul>
+                            $for(reviewers)$
+                            <li>$reviewers$</li>
+                            $endfor$
+                        </ul>
+                    </td>
+                </tr>
+                $endif$
+
+                $if(contributors)$
+                <tr>
+                    <th>Contributeur(s)</th>
+                    <td>
+                        <ul>
+                            $for(contributors)$
+                            <li>$contributors$</li>
+                            $endfor$
+                        </ul>
+                    </td>
+                </tr>
+                $endif$
+
+            </tbody>
+        </table>
+
+    </section>
+
+    <!-- ===================================================== -->
+    <!-- HISTORIQUE -->
+    <!-- ===================================================== -->
+
+    $if(revision_history)$
+
+    <div class="page-break"></div>
+
+    <section>
+
+        <h1>Historique des révisions</h1>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Version</th>
+                    <th>Date</th>
+                    <th>Auteur</th>
+                    <th>Commentaire</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                $for(revision_history)$
+
+                <tr>
+                    <td>$version$</td>
+                    <td>$date$</td>
+                    <td>$author$</td>
+                    <td>$comment$</td>
+                </tr>
+
+                $endfor$
+
+            </tbody>
+
+        </table>
+
+    </section>
+
+    $endif$
+
+    <!-- ===================================================== -->
+    <!-- SOMMAIRE -->
+    <!-- ===================================================== -->
+
+    $if(toc)$
+
+    <div class="page-break"></div>
+
+    <section>
+
+        <h1>Sommaire</h1>
+
+        <nav id="TOC">
+            $toc$
+        </nav>
+
+    </section>
+
+    $endif$
+
+    <!-- ===================================================== -->
+    <!-- CORPS DU DOCUMENT -->
+    <!-- ===================================================== -->
+
+    <div class="page-break"></div>
+
+    <main>
+
+        $body$
+
+    </main>
+
+    <!-- ===================================================== -->
+    <!-- TRAÇABILITÉ IA -->
+    <!-- ===================================================== -->
+
+    $if(ai_assistance)$
+
+    <div class="page-break"></div>
+
+    <section>
+
+        <h1>Traçabilité IA</h1>
+
+        $if(ai_assistance.tools)$
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Outil</th>
+                    <th>Modèle</th>
+                    <th>Rôle</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                $for(ai_assistance.tools)$
+
+                <tr>
+                    <td>$name$</td>
+                    <td>$model$</td>
+                    <td>$role$</td>
+                </tr>
+
+                $endfor$
+
+            </tbody>
+
+        </table>
+
+        $endif$
+
+        $if(ai_assistance.disclaimer)$
+
+        <div class="ai-disclaimer">
+            $ai_assistance.disclaimer$
+        </div>
+
+        $endif$
+
+    </section>
+
+    $endif$
+
+</body>
+
+</html>
